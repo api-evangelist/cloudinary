@@ -10,12 +10,7 @@ Cloudinary is a cloud-based service that provides comprehensive solutions for ma
 - **Position:** Consuming 
 - **Access:** 3rd-Party 
 
-## Tags
-
-- Images
-- Videos
-- Media
-
+## Tags: Images, Videos, Media, 
 ## Timestamps
 
 - **Created:** 2024-11-13 
@@ -27,12 +22,9 @@ Cloudinary is a cloud-based service that provides comprehensive solutions for ma
 Cloudinarys image API enables the creation of automated workflows with preset configurations. This saves time and ensures that files are transformed and ready ...
 
 **Human URL:** [https://cloudinary.com/image-api](https://cloudinary.com/image-api)
-r
 
-#### Tags
 
-- API
-
+#### Tags: API, 
 #### Properties
 
 - [Documentation](https://cloudinary.com/image-api)
