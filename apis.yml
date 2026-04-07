@@ -25,10 +25,9 @@ access: 3rd-Party
 created: '2024-11-13'
 modified: '2024-12-22'
 position: Consuming
-description: >
-  Cloudinary is a cloud-based service that provides comprehensive solutions for
-  managing digital media assets, including images and videos, for websites and
-  mobile applications. 
+description: >-
+  Cloudinary is a cloud-based service that provides comprehensive solutions for managing
+  digital media assets, including images and videos, for websites and mobile applications.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
