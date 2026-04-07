@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: cloudinary:cloudinary
     name: Cloudinary
-    tags:
-      - API
+    tags: []
     humanURL: https://cloudinary.com/image-api
     properties:
       - url: https://cloudinary.com/image-api
@@ -17,8 +16,8 @@ apis:
 name: Cloudinary
 tags:
   - Images
-  - Videos
   - Media
+  - Videos
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
