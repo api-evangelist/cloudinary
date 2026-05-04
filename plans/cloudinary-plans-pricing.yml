@@ -1,0 +1,123 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Cloudinary
+providerId: cloudinary
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Media
+  - Image
+  - Video
+  - DAM
+description: Cloudinary credit-based pricing across Free / Plus / Advanced / Enterprise.
+sources:
+  - https://cloudinary.com/pricing
+plans:
+  - id: cloudinary-free
+    name: Free
+    type: freemium
+    description: $0; 25 monthly credits.
+    entries:
+      - label: Monthly credits
+        name: credits
+        type: quota
+        metric: credit
+        limit: 25
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Upload widget, API, search
+      - name: Remote fetch, auto-backup, revision tracking
+      - name: Image and video transformations
+      - name: Video transcoding + adaptive streaming
+      - name: CDN delivery
+      - name: Forum/email support
+  - id: cloudinary-plus
+    name: Plus
+    type: paid
+    description: $99/month ($89/mo yearly); 225 monthly credits.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '99.00'
+        userMultiplied: false
+      - label: Monthly credits
+        name: credits
+        type: quota
+        metric: credit
+        limit: 225
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: S3 backup
+      - name: Auto-tagging search
+      - name: Free + paid add-ons
+      - name: Expedited support
+      - name: Asset allow/blocklist
+      - name: Video Bandwidth Boost 2:1
+      - name: RBAC
+  - id: cloudinary-advanced
+    name: Advanced
+    type: paid
+    description: $249/month ($224/mo yearly); 600 monthly credits.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '249.00'
+        userMultiplied: false
+      - label: Monthly credits
+        name: credits
+        type: quota
+        metric: credit
+        limit: 600
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Custom domain (CNAME)
+      - name: Optional HTTPS SSL Certificate
+      - name: Authentication options
+  - id: cloudinary-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom pricing.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Security/compliance review
+      - name: Multi-CDN
+      - name: Enterprise SLAs
+      - name: Designated CSM
+      - name: Custom contracts/invoicing
+      - name: SSO and provisioning API

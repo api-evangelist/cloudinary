@@ -1,0 +1,42 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Cloudinary
+providerId: cloudinary
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Media
+description: Cloudinary Admin API rate limits per cloud (account).
+sources:
+  - https://cloudinary.com/pricing
+  - https://cloudinary.com/documentation/admin_api
+headers:
+  limit: X-FeatureRateLimit-Limit
+  remaining: X-FeatureRateLimit-Remaining
+  reset: X-FeatureRateLimit-Reset
+responseCodes:
+  throttled: 420
+  throttled429: 429
+limits:
+  - name: Admin API (Free)
+    scope: cloud
+    metric: requests_per_hour
+    limit: 500
+    timeFrame: hour
+  - name: Admin API (Paid)
+    scope: cloud
+    metric: requests_per_hour
+    limit: 2000
+    timeFrame: hour
+  - name: Upload API
+    scope: cloud
+    metric: uploads_per_minute
+    limit: scales with credits
+  - name: Bulk delete
+    scope: request
+    metric: resources
+    limit: 1000
+    timeFrame: request
