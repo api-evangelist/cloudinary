@@ -183,6 +183,80 @@ common:
     sources:
       - https://cloudinary.com/pricing
     updated: '2026-05-04'
+  - type: Integrations
+    url: https://cloudinary.com/integrations
+integrations:
+  - name: AWS
+  - name: Shopify
+  - name: Contentful
+  - name: Syndigo
+  - name: WordPress
+  - name: ContentSquare
+  - name: Actindo
+  - name: Adobe Commerce
+  - name: Adobe Creative Cloud Connector
+  - name: Adobe Workfront
+  - name: Agility
+  - name: Akeneo
+  - name: AltText.ai
+  - name: Bluestone PIM
+  - name: 'Braze + Cloudinary: Instant, At-Scale Personalization'
+  - name: Builder.io
+  - name: ButterCMS
+  - name: Chioro (eCube)
+  - name: CloudCannon
+  - name: CloudEagle.ai
+  - name: Commercetools
+  - name: Conscia
+  - name: Contentstack
+  - name: Creative Force
+  - name: Digital Wave
+  - name: Dropbox
+  - name: Drupal
+  - name: FADEL
+  - name: Figma
+  - name: Front-Commerce
+  - name: Gemini
+  - name: Gettyimages
+  - name: Google chrome media library extension
+  - name: Google Cloud CDN
+  - name: Google Cloud Storage
+  - name: Google Translate
+  - name: Google Workspace
+  - name: Hootsuite
+  - name: HubSpot
+  - name: Hygraph (Graphcms)
+  - name: Intuiface
+  - name: iStock
+  - name: Kontent.ai
+  - name: LiveStory
+  - name: Magnolia
+  - name: Mailchimp (Intuit)
+  - name: Marketo
+  - name: Microsoft Office Microsoft 365
+  - name: Mobius Labs
+  - name: monday.com
+  - name: Movidmo
+  - name: Netlify
+  - name: Netlify Create (Stackbit)
+  - name: OpenAI
+  - name: OpenText for Teamsite (by Klish)
+  - name: Progress Sitefinity
+  - name: SalesForce Commerce Cloud
+  - name: SalesForce Marketing Cloud
+  - name: SalesForce Page Designer
+  - name: Sanity
+  - name: SAP Commerce Extension
+  - name: Shutterstock
+  - name: Slack
+  - name: Smint.io
+  - name: STEP - Stibo Systems Platform
+  - name: Storyblok
+  - name: Uniform
+  - name: Unsplash
+  - name: Wrike
+  - name: Zapier
+  - name: Ziflow
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
