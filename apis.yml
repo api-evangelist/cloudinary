@@ -8,7 +8,7 @@ access: 3rd-Party
 position: Consumer
 specificationVersion: '0.19'
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-x-type: company
+kind: company
 tags:
   - Asset Management
   - Digital Asset Management
@@ -37,7 +37,7 @@ apis:
       - url: https://cloudinary.com/documentation/image_upload_api_reference
         type: Documentation
       - url: https://cloudinary.com/documentation/upload_images
-        type: Getting Started
+        type: GettingStarted
       - url: openapi/cloudinary-openapi.yml
         type: OpenAPI
     description: The Upload API exposes methods for uploading and managing assets, including advanced
@@ -154,11 +154,11 @@ common:
     url: https://cloudinary.com/users/register_free
   - type: Pricing
     url: https://cloudinary.com/pricing
-  - type: Status
+  - type: StatusPage
     url: https://status.cloudinary.com/
   - type: GitHub
     url: https://github.com/cloudinary
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://cloudinary.com/tos
   - type: Privacy
     url: https://cloudinary.com/privacy
