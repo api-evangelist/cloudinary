@@ -1,0 +1,84 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cloudinary Upload API — Backup
+  description: 'Cloudinary Upload API — Backup. 1 operations. Lead operation: Download a backed-up asset version. Self-contained
+    Naftiko capability covering one Cloudinary business surface.'
+  tags:
+  - Cloudinary
+  - Backup
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDINARY_API_KEY: CLOUDINARY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudinary-backup
+    baseUri: https://api.cloudinary.com/v1_1/{cloud_name}
+    description: Cloudinary Upload API — Backup business capability. Self-contained, no shared references.
+    resources:
+    - name: download_backup
+      path: /download_backup
+      operations:
+      - name: downloadbackup
+        method: GET
+        description: Download a backed-up asset version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: asset_id
+          in: query
+          type: string
+        - name: version_id
+          in: query
+          type: string
+    authentication:
+      type: basic
+      username: '{{env.CLOUDINARY_USER}}'
+      password: '{{env.CLOUDINARY_PASS}}'
+  exposes:
+  - type: rest
+    namespace: cloudinary-backup-rest
+    port: 8080
+    description: REST adapter for Cloudinary Upload API — Backup. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/download-backup
+      name: download-backup
+      description: REST surface for download_backup.
+      operations:
+      - method: GET
+        name: downloadbackup
+        description: Download a backed-up asset version
+        call: cloudinary-backup.downloadbackup
+        with:
+          asset_id: rest.asset_id
+          version_id: rest.version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudinary-backup-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cloudinary Upload API — Backup. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: download-backed-up-asset-version
+      description: Download a backed-up asset version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloudinary-backup.downloadbackup
+      with:
+        asset_id: tools.asset_id
+        version_id: tools.version_id
+      outputParameters:
+      - type: object
+        mapping: $.
