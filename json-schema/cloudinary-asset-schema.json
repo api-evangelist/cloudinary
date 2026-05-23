@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Asset",
+  "title": "Asset",
+  "type": "object",
+  "properties": {
+    "asset_id": {
+      "type": "string"
+    },
+    "public_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "format": {
+      "type": "string"
+    },
+    "resource_type": {
+      "type": "string"
+    },
+    "secure_url": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "additionalProperties": true
+}

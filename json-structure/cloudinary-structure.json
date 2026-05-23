@@ -1,0 +1,108 @@
+{
+  "provider": "Cloudinary",
+  "providerId": "cloudinary",
+  "kind": "json-structure",
+  "description": "Structural overview of the Cloudinary API surface; extracted from openapi/.",
+  "schemaCount": 4,
+  "operationCount": 8,
+  "schemas": [
+    {
+      "name": "UploadRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "GenericRequest",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "GenericResponse",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Asset",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/{resource_type}/upload",
+      "operationId": "uploadAsset",
+      "summary": "Upload an asset",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/explicit",
+      "operationId": "explicitAction",
+      "summary": "Apply explicit actions to an existing asset",
+      "tags": [
+        "Transformation"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/rename",
+      "operationId": "renameAsset",
+      "summary": "Rename an asset",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/destroy",
+      "operationId": "destroyAsset",
+      "summary": "Delete an asset",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/tags",
+      "operationId": "manageTags",
+      "summary": "Manage asset tags",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/context",
+      "operationId": "manageContext",
+      "summary": "Update contextual metadata",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{resource_type}/metadata",
+      "operationId": "updateMetadata",
+      "summary": "Update structured metadata",
+      "tags": [
+        "Upload"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/download_backup",
+      "operationId": "downloadBackup",
+      "summary": "Download a backed-up asset version",
+      "tags": [
+        "Backup"
+      ]
+    }
+  ]
+}

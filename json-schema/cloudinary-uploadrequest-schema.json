@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UploadRequest",
+  "title": "UploadRequest",
+  "type": "object",
+  "properties": {
+    "file": {
+      "type": "string",
+      "description": "File data, URL, or base64 encoded payload."
+    },
+    "public_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "integer"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "api_key": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

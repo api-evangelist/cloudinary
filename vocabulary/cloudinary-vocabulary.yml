@@ -1,0 +1,11 @@
+name: Cloudinary Domain Vocabulary
+provider: Cloudinary
+providerId: cloudinary
+description: Tag-derived vocabulary for the Cloudinary API surface; sourced from openapi/ tags.
+terms:
+- term: Upload
+  description: Asset upload and management.
+- term: Transformation
+  description: Apply transformations to existing assets.
+- term: Backup
+  description: Backup retrieval operations.
