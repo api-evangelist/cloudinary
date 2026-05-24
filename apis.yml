@@ -187,6 +187,8 @@ common:
   updated: '2026-05-04'
 - type: Integrations
   url: https://cloudinary.com/integrations
+- type: LLMsTxt
+  url: https://cloudinary.com/llms.txt
 integrations:
 - name: AWS
 - name: Shopify
