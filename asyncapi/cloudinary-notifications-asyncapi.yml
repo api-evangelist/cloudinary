@@ -1,0 +1,893 @@
+asyncapi: 2.6.0
+info:
+  title: Cloudinary Notifications
+  version: '1.0.0'
+  description: |-
+    AsyncAPI description of Cloudinary's outbound notification (webhook) surface.
+    Cloudinary delivers event notifications by issuing HTTP POST requests with a
+    JSON body to a notification URL the customer configures, either globally per
+    product environment (via the Admin API or the Webhook Notifications settings
+    in the Console) or on a per-call basis with the `notification_url` and
+    `eager_notification_url` parameters on Upload API methods.
+
+    Each notification carries a `notification_type` discriminator that identifies
+    the event class. Cloudinary retries delivery up to three times (at roughly
+    3, 6, and 9 minutes) when the subscriber response is not HTTP 200.
+
+    Source documentation:
+      - Notifications overview: https://cloudinary.com/documentation/notifications
+      - Verifying notification signatures: https://cloudinary.com/documentation/notifications#verifying_a_notification_signature
+
+    Signing and verification:
+      Cloudinary sends two signature headers on every notification request:
+        - X-Cld-Timestamp     Unix epoch timestamp of the notification.
+        - X-Cld-Signature     HMAC-SHA1 signature (legacy) over the JSON body
+                              and timestamp, signed with the product environment
+                              API secret.
+        - X-Cld-Signature_v2  EdDSA v2 signature variant.
+      The payload also includes a `signature_key` field that identifies the API
+      key associated with the signing secret, which is useful when an account
+      rotates or maintains multiple keys.
+  contact:
+    name: Cloudinary Support
+    url: https://cloudinary.com/contact
+  license:
+    name: Cloudinary Terms of Service
+    url: https://cloudinary.com/tos
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{notificationUrl}'
+    protocol: https
+    description: |-
+      Customer-hosted HTTPS endpoint that receives notification POSTs from
+      Cloudinary. Configure globally via the Admin API triggers endpoint or
+      the Console Webhook Notifications screen (up to 30 URLs per product
+      environment), or per-call via the `notification_url` /
+      `eager_notification_url` parameters on Upload API methods.
+    variables:
+      notificationUrl:
+        default: https://example.com/cloudinary/notifications
+        description: Fully-qualified HTTPS URL of the subscriber endpoint.
+
+channels:
+  /cloudinary/notifications:
+    description: |-
+      Single subscriber endpoint that receives every Cloudinary notification
+      for the configured product environment. The `notification_type` field on
+      the JSON body identifies the event class. Cloudinary POSTs one
+      notification per HTTP request.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    publish:
+      operationId: receiveCloudinaryNotification
+      summary: Receive a Cloudinary notification
+      description: |-
+        Cloudinary POSTs a JSON notification to the subscriber endpoint.
+        Subscribers should respond with HTTP 200 to acknowledge receipt;
+        non-200 responses are retried up to three times at approximately
+        3, 6, and 9 minute intervals.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Upload'
+          - $ref: '#/components/messages/Eager'
+          - $ref: '#/components/messages/Rename'
+          - $ref: '#/components/messages/Delete'
+          - $ref: '#/components/messages/Move'
+          - $ref: '#/components/messages/CreateFolder'
+          - $ref: '#/components/messages/DeleteFolder'
+          - $ref: '#/components/messages/MoveOrRenameAssetFolder'
+          - $ref: '#/components/messages/ResourceTagsChanged'
+          - $ref: '#/components/messages/ResourceContextChanged'
+          - $ref: '#/components/messages/ResourceMetadataChanged'
+          - $ref: '#/components/messages/ResourceDisplayNameChanged'
+          - $ref: '#/components/messages/AccessControlChanged'
+          - $ref: '#/components/messages/RelatedAssets'
+          - $ref: '#/components/messages/Multi'
+          - $ref: '#/components/messages/Explode'
+          - $ref: '#/components/messages/ProofStatusChanged'
+
+components:
+  messages:
+    Upload:
+      name: upload
+      title: Upload completed
+      summary: Fired when an asset upload completes.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              X-Cld-Timestamp:
+                type: string
+                description: Unix epoch timestamp of the notification.
+              X-Cld-Signature:
+                type: string
+                description: HMAC-SHA1 signature over the body and timestamp.
+              X-Cld-Signature_v2:
+                type: string
+                description: EdDSA v2 signature over the body and timestamp.
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/UploadPayload'
+
+    Eager:
+      name: eager
+      title: Eager transformation completed
+      summary: Fired when one or more eager transformations finish processing.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EagerPayload'
+
+    Rename:
+      name: rename
+      title: Asset renamed
+      summary: Fired when an asset's public ID changes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RenamePayload'
+
+    Delete:
+      name: delete
+      title: Asset deleted
+      summary: Fired when one or more assets are deleted.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DeletePayload'
+
+    Move:
+      name: move
+      title: Asset moved
+      summary: Fired when assets move between folders.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/MovePayload'
+
+    CreateFolder:
+      name: create_folder
+      title: Folder created
+      summary: Fired when a new asset folder is created.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/CreateFolderPayload'
+
+    DeleteFolder:
+      name: delete_folder
+      title: Folder deleted
+      summary: Fired when an asset folder is deleted.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DeleteFolderPayload'
+
+    MoveOrRenameAssetFolder:
+      name: move_or_rename_asset_folder
+      title: Asset folder moved or renamed
+      summary: Fired when an asset folder path is moved or renamed.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/MoveOrRenameAssetFolderPayload'
+
+    ResourceTagsChanged:
+      name: resource_tags_changed
+      title: Resource tags changed
+      summary: Fired when tags are added to or removed from one or more resources.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ResourceTagsChangedPayload'
+
+    ResourceContextChanged:
+      name: resource_context_changed
+      title: Resource contextual metadata changed
+      summary: Fired when contextual metadata on a resource is added, updated, or removed.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ResourceContextChangedPayload'
+
+    ResourceMetadataChanged:
+      name: resource_metadata_changed
+      title: Resource structured metadata changed
+      summary: Fired when structured metadata on a resource is modified.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ResourceMetadataChangedPayload'
+
+    ResourceDisplayNameChanged:
+      name: resource_display_name_changed
+      title: Resource display name changed
+      summary: Fired when an asset's display name is modified.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ResourceDisplayNameChangedPayload'
+
+    AccessControlChanged:
+      name: access_control_changed
+      title: Access control changed
+      summary: Fired when an asset's access control settings change.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/AccessControlChangedPayload'
+
+    RelatedAssets:
+      name: related_assets
+      title: Related assets changed
+      summary: Fired when related-asset relationships are added or removed.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RelatedAssetsPayload'
+
+    Multi:
+      name: multi
+      title: Multi generation completed
+      summary: Fired when a multi (animated GIF / sprite / PDF) generation completes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/MultiPayload'
+
+    Explode:
+      name: explode
+      title: Explode completed
+      summary: Fired when a multi-page asset explosion (e.g. PDF) completes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ExplodePayload'
+
+    ProofStatusChanged:
+      name: proof_status_changed
+      title: Proof status changed
+      summary: Fired when a creative approval proof status changes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ProofStatusChangedPayload'
+
+  schemas:
+    NotificationContext:
+      type: object
+      description: |-
+        Common contextual envelope sent with every notification. Identifies when
+        the underlying event occurred and what triggered it.
+      properties:
+        triggered_at:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp at which the event was triggered.
+        triggered_by:
+          type: object
+          description: Source of the triggering action.
+          properties:
+            source:
+              type: string
+              description: Source of the trigger (e.g. user, api, sdk).
+            id:
+              type: string
+              description: Identifier of the triggering principal.
+
+    AssetReference:
+      type: object
+      description: Reference to an asset by its identifiers.
+      properties:
+        asset_id:
+          type: string
+          description: Cloudinary asset identifier.
+        public_id:
+          type: string
+          description: Public ID of the asset.
+        resource_type:
+          type: string
+          description: Resource type of the asset (image, video, raw).
+        type:
+          type: string
+          description: Delivery type of the asset (e.g. upload, private, authenticated).
+
+    UploadPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: upload
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp at which the notification was generated.
+        request_id:
+          type: string
+          description: Cloudinary request identifier.
+        asset_id:
+          type: string
+        public_id:
+          type: string
+        version:
+          type: integer
+        version_id:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          type: string
+        resource_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        tags:
+          type: array
+          items:
+            type: string
+        bytes:
+          type: integer
+        type:
+          type: string
+        etag:
+          type: string
+        placeholder:
+          type: boolean
+        url:
+          type: string
+          format: uri
+        secure_url:
+          type: string
+          format: uri
+        asset_folder:
+          type: string
+        display_name:
+          type: string
+        original_filename:
+          type: string
+        api_key:
+          type: string
+        pages:
+          type: integer
+          description: Number of pages, when applicable (e.g. PDFs).
+        moderation:
+          type: array
+          description: |-
+            Moderation results when a moderation add-on is configured (e.g.
+            aws_rek). Each entry carries status and provider-specific response
+            data.
+          items:
+            type: object
+        info:
+          type: object
+          description: |-
+            Aggregated add-on information. May include `categorization`
+            (e.g. imagga_tagging), `detection` (e.g. aws_rek_face) and other
+            provider-specific blocks.
+        faces:
+          type: array
+          description: Detected face coordinates, when face detection is enabled.
+          items:
+            type: array
+            items:
+              type: integer
+        coordinates:
+          type: object
+          description: Custom and detected coordinates associated with the asset.
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+          description: API key associated with the signing secret.
+
+    EagerPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: eager
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+        batch_id:
+          type: string
+          description: Identifier of the eager batch.
+        asset_id:
+          type: string
+        public_id:
+          type: string
+        eager:
+          type: array
+          description: One entry per eager derivation.
+          items:
+            type: object
+            properties:
+              transformation:
+                type: string
+              width:
+                type: integer
+              height:
+                type: integer
+              bytes:
+                type: integer
+              format:
+                type: string
+              url:
+                type: string
+                format: uri
+              secure_url:
+                type: string
+                format: uri
+              status:
+                type: string
+                description: Status of the derivation (e.g. complete, failed).
+              reason:
+                type: string
+                description: Failure reason when status is failed.
+        api_key:
+          type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    RenamePayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: rename
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+        resource_type:
+          type: string
+        type:
+          type: string
+        asset_id:
+          type: string
+        asset_folder:
+          type: string
+        display_name:
+          type: string
+        from_public_id:
+          type: string
+        to_public_id:
+          type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    DeletePayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: delete
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              resource_type:
+                type: string
+              type:
+                type: string
+              asset_id:
+                type: string
+              public_id:
+                type: string
+              version:
+                type: integer
+              asset_folder:
+                type: string
+              display_name:
+                type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    MovePayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: move
+        source:
+          type: string
+          description: Source of the move action.
+        resources:
+          type: object
+          description: Map keyed by public_id, with per-resource move details.
+          additionalProperties:
+            type: object
+            properties:
+              asset_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+              from_asset_folder:
+                type: string
+              to_asset_folder:
+                type: string
+              display_name:
+                type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    CreateFolderPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: create_folder
+        source:
+          type: string
+        folder_path:
+          type: string
+        folder_name:
+          type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    DeleteFolderPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: delete_folder
+        source:
+          type: string
+        folder_path:
+          type: string
+        folder_name:
+          type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    MoveOrRenameAssetFolderPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: move_or_rename_asset_folder
+        from_path:
+          type: string
+          description: Previous folder path.
+        to_path:
+          type: string
+          description: New folder path.
+        status:
+          type: string
+          description: Status of the move/rename operation.
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ResourceTagsChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: resource_tags_changed
+        source:
+          type: string
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              asset_id:
+                type: string
+              public_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+              added:
+                type: array
+                items:
+                  type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ResourceContextChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: resource_context_changed
+        source:
+          type: string
+        resources:
+          type: object
+          description: Map keyed by public_id, with per-resource context changes.
+          additionalProperties:
+            type: object
+            properties:
+              added:
+                type: object
+                additionalProperties:
+                  type: string
+              removed:
+                type: array
+                items:
+                  type: string
+              updated:
+                type: object
+                additionalProperties:
+                  type: string
+              asset_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ResourceMetadataChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: resource_metadata_changed
+        source:
+          type: string
+        resources:
+          type: object
+          description: Map keyed by public_id, with per-resource metadata changes.
+          additionalProperties:
+            type: object
+            properties:
+              previous_metadata:
+                type: object
+                additionalProperties: true
+              new_metadata:
+                type: object
+                additionalProperties: true
+              asset_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ResourceDisplayNameChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: resource_display_name_changed
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+        source:
+          type: string
+        resources:
+          type: object
+          description: Map keyed by public_id, with display-name change details.
+          additionalProperties:
+            type: object
+            properties:
+              previous_display_name:
+                type: string
+              new_display_name:
+                type: string
+              asset_id:
+                type: string
+              public_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+              asset_folder:
+                type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    AccessControlChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: access_control_changed
+        source:
+          type: string
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              asset_id:
+                type: string
+              public_id:
+                type: string
+              resource_type:
+                type: string
+              type:
+                type: string
+              previous_access_control:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+              new_access_control:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    RelatedAssetsPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: related_assets
+        action_type:
+          type: string
+          description: Type of relationship action (e.g. add, delete).
+        asset_id:
+          type: string
+        total_failed:
+          type: integer
+        total_success:
+          type: integer
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    MultiPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: multi
+        url:
+          type: string
+          format: uri
+        secure_url:
+          type: string
+          format: uri
+        asset_id:
+          type: string
+        public_id:
+          type: string
+        version:
+          type: integer
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ExplodePayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: explode
+        pages:
+          type: integer
+        image_infos:
+          type: array
+          items:
+            type: object
+            properties:
+              bytes:
+                type: integer
+              url:
+                type: string
+                format: uri
+              secure_url:
+                type: string
+                format: uri
+        batch_id:
+          type: string
+        asset_id:
+          type: string
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string
+
+    ProofStatusChangedPayload:
+      type: object
+      required:
+        - notification_type
+      properties:
+        notification_type:
+          type: string
+          const: proof_status_changed
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+        proof_id:
+          type: string
+        proof_name:
+          type: string
+        previous_status:
+          type: string
+        new_status:
+          type: string
+        stage_name:
+          type: string
+        stage_number:
+          type: integer
+        reviewer:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetReference'
+        notification_context:
+          $ref: '#/components/schemas/NotificationContext'
+        signature_key:
+          type: string

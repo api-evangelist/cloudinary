@@ -2,7 +2,7 @@ aid: cloudinary
 url: https://raw.githubusercontent.com/api-evangelist/cloudinary/refs/heads/main/apis.yml
 name: Cloudinary
 created: '2024-11-13'
-modified: '2026-05-19'
+modified: '2026-05-30'
 type: Index
 access: 3rd-Party
 position: Consumer
@@ -140,6 +140,8 @@ apis:
   properties:
   - url: https://cloudinary.com/documentation/notifications
     type: Documentation
+  - url: asyncapi/cloudinary-notifications-asyncapi.yml
+    type: AsyncAPI
   description: Cloudinary fires HTTP webhook notifications for upload completion, eager transformation completion, AI moderation
     outcomes, asset deletion, and backup events. Notifications include signatures for verification and can target multiple
     endpoints per product environment.
