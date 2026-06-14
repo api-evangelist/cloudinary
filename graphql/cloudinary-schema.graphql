@@ -1,0 +1,903 @@
+"""
+Cloudinary GraphQL Schema (Conceptual)
+Derived from: Upload API, Admin API, Search API, Provisioning API,
+              Permissions API, and Transformation URL API.
+No public GraphQL endpoint exists at this time; this schema represents
+the Cloudinary domain model for tooling and integration design purposes.
+"""
+
+# ──────────────────────────────────────────────
+# Scalars
+# ──────────────────────────────────────────────
+
+"""ISO-8601 datetime string."""
+scalar DateTime
+
+"""Arbitrary JSON object (contextual metadata, raw response bodies, etc.)."""
+scalar JSON
+
+"""A Cloudinary delivery or API URL."""
+scalar URL
+
+"""An opaque cursor for paginated result sets."""
+scalar Cursor
+
+# ──────────────────────────────────────────────
+# Enums
+# ──────────────────────────────────────────────
+
+"""Top-level resource classification in Cloudinary."""
+enum ResourceType {
+  IMAGE
+  VIDEO
+  RAW
+}
+
+"""How an asset was stored or fetched."""
+enum DeliveryType {
+  UPLOAD
+  FETCH
+  PRIVATE
+  AUTHENTICATED
+  SPRITE
+  TEXT
+  MULTI
+  FACEBOOK
+  TWITTER
+  TWITTER_NAME
+  GRAVATAR
+  YOUTUBE
+  VIMEO
+  ANIMOTO
+  WORLDSTARHIPHOP
+  DAILYMOTION
+}
+
+"""Asset moderation status."""
+enum ModerationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+"""Cropping mode applied during transformation."""
+enum CropMode {
+  SCALE
+  FIT
+  LIMIT
+  MFIT
+  FILL
+  LFILL
+  PAD
+  LPAD
+  MPAD
+  FILL_PAD
+  CROP
+  THUMB
+  IMAGGA_CROP
+  IMAGGA_SCALE
+  AUTO
+}
+
+"""Gravity / anchor point for crop and positioning."""
+enum Gravity {
+  CENTER
+  NORTH
+  NORTH_EAST
+  EAST
+  SOUTH_EAST
+  SOUTH
+  SOUTH_WEST
+  WEST
+  NORTH_WEST
+  FACE
+  FACES
+  BODY
+  ADHERE
+  LIQUID
+  OCRVTEXT
+  AUTO
+  CUSTOM
+}
+
+"""Target delivery format."""
+enum Format {
+  AUTO
+  JPG
+  PNG
+  WEBP
+  AVIF
+  GIF
+  MP4
+  WEBM
+  OGG
+  PDF
+  SVG
+  TIFF
+  BMP
+  ICO
+  HEIC
+  HEIF
+  MKV
+  MOV
+  AVI
+  FLV
+  M3U8
+  MPD
+  ZIP
+  TAR
+}
+
+"""Quality setting strategy."""
+enum Quality {
+  AUTO
+  AUTO_BEST
+  AUTO_GOOD
+  AUTO_ECO
+  AUTO_LOW
+  JPEGMINI
+}
+
+"""Backup copy status in external storage."""
+enum BackupStatus {
+  EXISTS
+  DELETED
+  NOT_CONFIGURED
+}
+
+"""Metadata field value type."""
+enum MetadataFieldType {
+  STRING
+  INTEGER
+  DATE
+  ENUM
+  SET
+}
+
+"""Access mode for an asset."""
+enum AccessMode {
+  PUBLIC
+  AUTHENTICATED
+}
+
+"""Permission scope."""
+enum PermissionScope {
+  ASSET
+  FOLDER
+  ENVIRONMENT
+}
+
+"""Principal kind for permission grants."""
+enum PrincipalType {
+  USER
+  GROUP
+  API_KEY
+}
+
+# ──────────────────────────────────────────────
+# Interfaces
+# ──────────────────────────────────────────────
+
+"""Common fields shared by all Cloudinary assets."""
+interface Asset {
+  publicId: String!
+  assetId: String!
+  resourceType: ResourceType!
+  type: DeliveryType!
+  format: String!
+  version: Int!
+  url: URL!
+  secureUrl: URL!
+  createdAt: DateTime!
+  uploadedAt: DateTime!
+  bytes: Int!
+  etag: String
+  placeholder: Boolean
+  accessMode: AccessMode!
+  tags: [Tag!]!
+  context: Context
+  metadata: [StructuredMetadata!]!
+  folder: Folder
+  backupStatus: BackupStatus
+  versions: [AssetVersion!]!
+}
+
+# ──────────────────────────────────────────────
+# Core Asset Types
+# ──────────────────────────────────────────────
+
+"""A raster or vector image asset."""
+type Image implements Asset {
+  publicId: String!
+  assetId: String!
+  resourceType: ResourceType!
+  type: DeliveryType!
+  format: String!
+  version: Int!
+  url: URL!
+  secureUrl: URL!
+  createdAt: DateTime!
+  uploadedAt: DateTime!
+  bytes: Int!
+  etag: String
+  placeholder: Boolean
+  accessMode: AccessMode!
+  tags: [Tag!]!
+  context: Context
+  metadata: [StructuredMetadata!]!
+  folder: Folder
+  backupStatus: BackupStatus
+  versions: [AssetVersion!]!
+  width: Int!
+  height: Int!
+  aspectRatio: Float
+  pixels: Int
+  colors: [[JSON]]
+  predominant: JSON
+  illustration_score: Float
+  semi_transparent: Boolean
+  grayscale: Boolean
+  phash: String
+  moderationStatus: ModerationStatus
+  aiTags: [Tag!]!
+}
+
+"""A video or audio asset."""
+type Video implements Asset {
+  publicId: String!
+  assetId: String!
+  resourceType: ResourceType!
+  type: DeliveryType!
+  format: String!
+  version: Int!
+  url: URL!
+  secureUrl: URL!
+  createdAt: DateTime!
+  uploadedAt: DateTime!
+  bytes: Int!
+  etag: String
+  placeholder: Boolean
+  accessMode: AccessMode!
+  tags: [Tag!]!
+  context: Context
+  metadata: [StructuredMetadata!]!
+  folder: Folder
+  backupStatus: BackupStatus
+  versions: [AssetVersion!]!
+  width: Int!
+  height: Int!
+  duration: Float
+  bitRate: Int
+  frameRate: Float
+  audioCodec: String
+  videoCodec: String
+  chapters: [VideoChapter!]!
+  streamProfile: StreamProfile
+  moderationStatus: ModerationStatus
+}
+
+"""A non-media (binary/document) file asset."""
+type RawFile implements Asset {
+  publicId: String!
+  assetId: String!
+  resourceType: ResourceType!
+  type: DeliveryType!
+  format: String!
+  version: Int!
+  url: URL!
+  secureUrl: URL!
+  createdAt: DateTime!
+  uploadedAt: DateTime!
+  bytes: Int!
+  etag: String
+  placeholder: Boolean
+  accessMode: AccessMode!
+  tags: [Tag!]!
+  context: Context
+  metadata: [StructuredMetadata!]!
+  folder: Folder
+  backupStatus: BackupStatus
+  versions: [AssetVersion!]!
+}
+
+"""A historical version snapshot of an asset."""
+type AssetVersion {
+  version: Int!
+  publicId: String!
+  url: URL!
+  secureUrl: URL!
+  bytes: Int!
+  format: String!
+  createdAt: DateTime!
+}
+
+# ──────────────────────────────────────────────
+# Folder & URL Types
+# ──────────────────────────────────────────────
+
+"""A folder in the Cloudinary asset hierarchy."""
+type Folder {
+  name: String!
+  path: String!
+  externalId: String
+  assetFolderEnabled: Boolean
+  subfolders: [Folder!]!
+  assetCount: Int
+  createdAt: DateTime!
+}
+
+"""A delivery URL pointing to a stored Cloudinary asset."""
+type StoredURL {
+  url: URL!
+  secureUrl: URL!
+  publicId: String!
+  resourceType: ResourceType!
+  type: DeliveryType!
+}
+
+"""A URL that Cloudinary fetches and optionally caches from a remote source."""
+type FetchedURL {
+  remoteUrl: URL!
+  cachedUrl: URL
+  publicId: String
+  resourceType: ResourceType!
+}
+
+# ──────────────────────────────────────────────
+# Tags & Metadata
+# ──────────────────────────────────────────────
+
+"""A string label attached to one or more assets."""
+type Tag {
+  name: String!
+}
+
+"""Arbitrary key-value pairs attached to an asset (contextual metadata)."""
+type Context {
+  custom: JSON
+  alt: String
+  caption: String
+}
+
+"""A typed structured metadata value on an asset."""
+type StructuredMetadata {
+  field: MetadataField!
+  value: JSON!
+}
+
+"""A structured metadata field definition for a product environment."""
+type MetadataField {
+  externalId: String!
+  label: String!
+  type: MetadataFieldType!
+  mandatory: Boolean!
+  defaultValue: JSON
+  validationRules: JSON
+  datasource: JSON
+}
+
+# ──────────────────────────────────────────────
+# Transformation Types
+# ──────────────────────────────────────────────
+
+"""A single step in a chained Cloudinary transformation pipeline."""
+type TransformationLayer {
+  width: Int
+  height: Int
+  aspectRatio: Float
+  crop: CropMode
+  gravity: Gravity
+  zoom: Float
+  x: Int
+  y: Int
+  format: Format
+  quality: Quality
+  effect: Effect
+  adjustment: Adjustment
+  overlay: Overlay
+  underlay: Underlay
+  angle: Float
+  radius: String
+  background: String
+  color: String
+  opacity: Int
+  dpr: Float
+  flags: [String!]!
+  raw: String
+}
+
+"""A fully-compiled transformation string for use in delivery URLs."""
+type TransformationString {
+  raw: String!
+  layers: [TransformationLayer!]!
+}
+
+"""A saved, named transformation template."""
+type TransformationTemplate {
+  name: String!
+  transformation: TransformationString!
+  namedTransformation: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An image or video effect parameter."""
+type Effect {
+  name: String!
+  value: String
+}
+
+"""A color, tone, or quality adjustment parameter."""
+type Adjustment {
+  name: String!
+  value: String
+}
+
+"""An image or text layer composited over the base asset."""
+type Overlay {
+  publicId: String
+  text: String
+  textStyle: String
+  gravity: Gravity
+  x: Int
+  y: Int
+  transformation: TransformationString
+}
+
+"""An image layer composited under the base asset."""
+type Underlay {
+  publicId: String
+  gravity: Gravity
+  x: Int
+  y: Int
+  transformation: TransformationString
+}
+
+# ──────────────────────────────────────────────
+# Upload Types
+# ──────────────────────────────────────────────
+
+"""The result of an asset upload operation."""
+type Upload {
+  publicId: String!
+  version: Int!
+  signature: String!
+  width: Int
+  height: Int
+  format: String!
+  resourceType: ResourceType!
+  createdAt: DateTime!
+  bytes: Int!
+  type: DeliveryType!
+  url: URL!
+  secureUrl: URL!
+  eagerTransformations: [StoredURL!]!
+  tags: [Tag!]!
+  context: Context
+  moderationStatus: ModerationStatus
+  accessMode: AccessMode!
+}
+
+"""Reusable upload configuration defaults for unsigned or signed uploads."""
+type UploadPreset {
+  name: String!
+  unsigned: Boolean!
+  settings: JSON!
+  folder: String
+  allowedFormats: [String!]!
+  accessMode: AccessMode!
+  tags: [Tag!]!
+  context: Context
+  metadata: [StructuredMetadata!]!
+  eagerTransformations: [TransformationString!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A computed HMAC-SHA1 signature for an upload or API request."""
+type Signature {
+  signature: String!
+  timestamp: Timestamp!
+  apiKey: String!
+}
+
+"""A Unix epoch timestamp."""
+type Timestamp {
+  unix: Int!
+  iso: DateTime!
+}
+
+# ──────────────────────────────────────────────
+# Composite / Batch Asset Types
+# ──────────────────────────────────────────────
+
+"""A CSS sprite generated from multiple image assets."""
+type Sprite {
+  imageUrl: URL!
+  cssUrl: URL!
+  jsonUrl: URL!
+  publicId: String!
+  version: Int!
+  tag: String!
+  createdAt: DateTime!
+  resources: [Image!]!
+}
+
+"""A multi-page PDF or animated GIF generated from multiple images."""
+type MultiImage {
+  url: URL!
+  secureUrl: URL!
+  publicId: String!
+  version: Int!
+  tag: String!
+  createdAt: DateTime!
+  resources: [Image!]!
+}
+
+"""A ZIP or TAR archive of multiple assets."""
+type Archive {
+  url: URL!
+  secureUrl: URL!
+  publicId: String!
+  resourceCount: Int!
+  fileCount: Int!
+  bytes: Int!
+  format: Format!
+  createdAt: DateTime!
+  resources: [Asset!]!
+}
+
+# ──────────────────────────────────────────────
+# Streaming Types
+# ──────────────────────────────────────────────
+
+"""An adaptive bitrate streaming profile."""
+type StreamProfile {
+  name: String!
+  displayName: String
+  representations: [JSON!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A live video stream."""
+type LiveStream {
+  publicId: String!
+  name: String!
+  cloudName: String!
+  inputUrl: URL!
+  outputUrl: URL!
+  streamProfile: StreamProfile!
+  status: String!
+  activeAssetPublicId: String
+  chapters: [VideoChapter!]!
+  idleTimeoutDuration: Int
+  maxRuntimeDuration: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A named chapter marker within a video or live stream."""
+type VideoChapter {
+  startTime: Float!
+  endTime: Float
+  title: String
+}
+
+# ──────────────────────────────────────────────
+# Access Control Types
+# ──────────────────────────────────────────────
+
+"""Access control rules for an asset."""
+type AccessControl {
+  accessType: AccessMode!
+  start: DateTime
+  end: DateTime
+}
+
+"""A granular permission grant on an asset, folder, or environment."""
+type Permission {
+  id: String!
+  scope: PermissionScope!
+  scopeId: String!
+  principalType: PrincipalType!
+  principalId: String!
+  role: String!
+  createdAt: DateTime!
+}
+
+"""A signed delivery or API access token."""
+type AccessToken {
+  token: String!
+  expiration: DateTime!
+  assetPublicId: String
+  acl: [String!]!
+  startTime: DateTime
+  duration: Int
+}
+
+# ──────────────────────────────────────────────
+# Notification Types
+# ──────────────────────────────────────────────
+
+"""A generic notification event payload from Cloudinary."""
+type Notification {
+  notificationType: String!
+  timestamp: DateTime!
+  cloudName: String!
+  resourceType: ResourceType
+  publicId: String
+  url: URL
+  secureUrl: URL
+  payload: JSON
+}
+
+"""A signed webhook notification delivered to a registered endpoint."""
+type WebhookNotification {
+  notificationType: String!
+  timestamp: DateTime!
+  requestId: String!
+  cloudName: String!
+  resourceType: ResourceType
+  publicId: String
+  signature: String!
+  payload: JSON
+}
+
+# ──────────────────────────────────────────────
+# Operation Result Types
+# ──────────────────────────────────────────────
+
+"""Result of a bulk operation (delete, tag, context update, etc.)."""
+type BulkResult {
+  deleted: [String!]!
+  deletedCounts: JSON
+  partial: Boolean!
+  notFound: [String!]!
+}
+
+"""Result of restoring deleted assets from backup."""
+type RestoreResult {
+  restored: [Asset!]!
+  restoredVersionCount: Int!
+}
+
+# ──────────────────────────────────────────────
+# Media Library
+# ──────────────────────────────────────────────
+
+"""The Cloudinary Digital Asset Management (DAM) media library configuration."""
+type MediaLibrary {
+  cloudName: String!
+  apiKey: String!
+  defaultFolder: String
+  allowedFormats: [String!]!
+  maxFiles: Int
+  multiple: Boolean!
+  searchByRights: Boolean!
+  showAdvancedSearch: Boolean!
+  showUploadMoreButton: Boolean!
+  inlineContainer: String
+}
+
+# ──────────────────────────────────────────────
+# Paginated Result Wrappers
+# ──────────────────────────────────────────────
+
+"""Paginated list of assets returned by search."""
+type AssetConnection {
+  edges: [AssetEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  aggregations: JSON
+}
+
+type AssetEdge {
+  node: Asset!
+  cursor: Cursor!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: Cursor
+  endCursor: Cursor
+  nextCursor: String
+}
+
+type FolderConnection {
+  folders: [Folder!]!
+  nextCursor: String
+  totalCount: Int!
+}
+
+# ──────────────────────────────────────────────
+# Root Query
+# ──────────────────────────────────────────────
+
+type Query {
+  """Fetch a single asset by public ID and resource type."""
+  asset(publicId: String!, resourceType: ResourceType = IMAGE, type: DeliveryType = UPLOAD): Asset
+
+  """Search assets using Lucene-style expressions."""
+  searchAssets(
+    expression: String
+    sortBy: [[String]]
+    maxResults: Int
+    nextCursor: String
+    aggregations: [String]
+    withField: [String]
+  ): AssetConnection!
+
+  """List assets in a folder."""
+  assetsInFolder(
+    folder: String!
+    resourceType: ResourceType
+    nextCursor: String
+    maxResults: Int
+  ): AssetConnection!
+
+  """List root-level or child folders."""
+  folders(parentFolder: String, nextCursor: String, maxResults: Int): FolderConnection!
+
+  """Get a folder by path."""
+  folder(path: String!): Folder
+
+  """List all structured metadata field definitions."""
+  metadataFields: [MetadataField!]!
+
+  """Get a single metadata field by external ID."""
+  metadataField(externalId: String!): MetadataField
+
+  """List upload presets."""
+  uploadPresets(nextCursor: String, maxResults: Int, signed: Boolean): [UploadPreset!]!
+
+  """Get an upload preset by name."""
+  uploadPreset(name: String!): UploadPreset
+
+  """List named transformation templates."""
+  transformationTemplates(nextCursor: String, maxResults: Int): [TransformationTemplate!]!
+
+  """Get a transformation template by name."""
+  transformationTemplate(name: String!): TransformationTemplate
+
+  """List streaming profiles."""
+  streamProfiles: [StreamProfile!]!
+
+  """Get a streaming profile by name."""
+  streamProfile(name: String!): StreamProfile
+
+  """List live streams."""
+  liveStreams(nextCursor: String, maxResults: Int): [LiveStream!]!
+
+  """Get a live stream by public ID."""
+  liveStream(publicId: String!): LiveStream
+
+  """List permissions for a scope."""
+  permissions(scope: PermissionScope!, scopeId: String!): [Permission!]!
+
+  """Generate a signed upload signature."""
+  uploadSignature(params: JSON!): Signature!
+
+  """Get the media library widget configuration."""
+  mediaLibrary: MediaLibrary!
+}
+
+# ──────────────────────────────────────────────
+# Root Mutation
+# ──────────────────────────────────────────────
+
+type Mutation {
+  """Upload a new asset."""
+  uploadAsset(
+    file: String!
+    publicId: String
+    folder: String
+    resourceType: ResourceType
+    uploadPreset: String
+    tags: [String]
+    context: JSON
+    transformation: String
+    eagerTransformations: [String]
+    accessMode: AccessMode
+  ): Upload!
+
+  """Delete an asset."""
+  deleteAsset(publicId: String!, resourceType: ResourceType = IMAGE, type: DeliveryType = UPLOAD): BulkResult!
+
+  """Bulk delete assets by public IDs."""
+  deleteAssets(publicIds: [String!]!, resourceType: ResourceType = IMAGE): BulkResult!
+
+  """Rename an asset."""
+  renameAsset(fromPublicId: String!, toPublicId: String!, resourceType: ResourceType = IMAGE): Asset!
+
+  """Restore a deleted asset from backup."""
+  restoreAssets(publicIds: [String!]!, resourceType: ResourceType = IMAGE): RestoreResult!
+
+  """Add tags to assets."""
+  addTags(publicIds: [String!]!, tags: [String!]!, resourceType: ResourceType = IMAGE): BulkResult!
+
+  """Remove tags from assets."""
+  removeTags(publicIds: [String!]!, tags: [String!]!, resourceType: ResourceType = IMAGE): BulkResult!
+
+  """Replace all tags on assets."""
+  replaceTags(publicIds: [String!]!, tags: [String!]!, resourceType: ResourceType = IMAGE): BulkResult!
+
+  """Update contextual metadata on assets."""
+  updateContext(publicIds: [String!]!, context: JSON!, resourceType: ResourceType = IMAGE): BulkResult!
+
+  """Create a folder."""
+  createFolder(path: String!): Folder!
+
+  """Rename a folder."""
+  renameFolder(fromPath: String!, toPath: String!): Folder!
+
+  """Delete a folder."""
+  deleteFolder(path: String!): BulkResult!
+
+  """Create a metadata field."""
+  createMetadataField(label: String!, type: MetadataFieldType!, mandatory: Boolean, defaultValue: JSON): MetadataField!
+
+  """Update a metadata field."""
+  updateMetadataField(externalId: String!, label: String, mandatory: Boolean, defaultValue: JSON): MetadataField!
+
+  """Delete a metadata field."""
+  deleteMetadataField(externalId: String!): Boolean!
+
+  """Create an upload preset."""
+  createUploadPreset(name: String!, unsigned: Boolean, settings: JSON): UploadPreset!
+
+  """Update an upload preset."""
+  updateUploadPreset(name: String!, settings: JSON!): UploadPreset!
+
+  """Delete an upload preset."""
+  deleteUploadPreset(name: String!): Boolean!
+
+  """Create a named transformation template."""
+  createTransformationTemplate(name: String!, transformation: String!): TransformationTemplate!
+
+  """Update a named transformation template."""
+  updateTransformationTemplate(name: String!, transformation: String!): TransformationTemplate!
+
+  """Delete a named transformation template."""
+  deleteTransformationTemplate(name: String!): Boolean!
+
+  """Create a streaming profile."""
+  createStreamProfile(name: String!, displayName: String, representations: [JSON!]!): StreamProfile!
+
+  """Update a streaming profile."""
+  updateStreamProfile(name: String!, representations: [JSON!]!): StreamProfile!
+
+  """Delete a streaming profile."""
+  deleteStreamProfile(name: String!): Boolean!
+
+  """Create a live stream."""
+  createLiveStream(name: String!, streamProfileName: String!, idleTimeoutDuration: Int, maxRuntimeDuration: Int): LiveStream!
+
+  """Activate a live stream."""
+  activateLiveStream(publicId: String!): LiveStream!
+
+  """Stop a live stream."""
+  stopLiveStream(publicId: String!): LiveStream!
+
+  """Delete a live stream."""
+  deleteLiveStream(publicId: String!): Boolean!
+
+  """Add a chapter to a live stream or video."""
+  addVideoChapter(publicId: String!, startTime: Float!, title: String): LiveStream!
+
+  """Grant a permission."""
+  grantPermission(scope: PermissionScope!, scopeId: String!, principalType: PrincipalType!, principalId: String!, role: String!): Permission!
+
+  """Revoke a permission."""
+  revokePermission(permissionId: String!): Boolean!
+
+  """Generate a multi-image (PDF/GIF) from a tag group."""
+  generateMultiImage(tag: String!, transformation: String, format: Format): MultiImage!
+
+  """Generate a sprite from a tag group."""
+  generateSprite(tag: String!, transformation: String): Sprite!
+
+  """Create an archive (ZIP/TAR) from assets."""
+  createArchive(publicIds: [String!]!, resourceType: ResourceType = IMAGE, targetPublicId: String, format: Format): Archive!
+}
