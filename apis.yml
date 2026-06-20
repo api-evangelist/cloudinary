@@ -7,7 +7,7 @@ type: Index
 access: 3rd-Party
 position: Consumer
 specificationVersion: '0.19'
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 kind: company
 tags:
 - Asset Management
@@ -31,7 +31,7 @@ apis:
   - Image Processing
   - Media
   - Transformation
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.cloudinary.com/v1_1
   humanURL: https://cloudinary.com/documentation/image_upload_api_reference
   properties:
@@ -56,7 +56,7 @@ apis:
   - Folders
   - Metadata
   - Webhooks
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.cloudinary.com/v1_1
   humanURL: https://cloudinary.com/documentation/admin_api
   properties:
@@ -74,7 +74,7 @@ apis:
   - Asset Discovery
   - Search
   - Visual Search
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.cloudinary.com/v1_1
   humanURL: https://cloudinary.com/documentation/search_api
   properties:
@@ -92,7 +92,7 @@ apis:
   - API Keys
   - Provisioning
   - Users
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.cloudinary.com/v1_1/provisioning
   humanURL: https://cloudinary.com/documentation/provisioning_api
   properties:
@@ -109,7 +109,7 @@ apis:
   - Permissions
   - RBAC
   - Roles
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.cloudinary.com/v1_1
   humanURL: https://cloudinary.com/documentation/permissions_api
   properties:
@@ -125,7 +125,7 @@ apis:
   - Image Transformation
   - URL API
   - Video Transformation
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://res.cloudinary.com
   humanURL: https://cloudinary.com/documentation/transformation_reference
   properties:
@@ -141,7 +141,7 @@ apis:
   - Events
   - Notifications
   - Webhooks
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://cloudinary.com/documentation/notifications
   properties:
   - url: https://cloudinary.com/documentation/notifications
