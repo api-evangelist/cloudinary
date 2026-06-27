@@ -161,7 +161,7 @@ common:
   url: https://console.cloudinary.com/
 - type: Documentation
   url: https://cloudinary.com/documentation
-- type: SignUp
+- type: Signup
   url: https://cloudinary.com/users/register_free
 - type: Pricing
   url: https://cloudinary.com/pricing
@@ -196,7 +196,7 @@ common:
   updated: '2026-05-04'
 - type: Integrations
   url: https://cloudinary.com/integrations
-- type: LLMsTxt
+- type: LlmsText
   url: https://cloudinary.com/llms.txt
 integrations:
 - name: AWS
