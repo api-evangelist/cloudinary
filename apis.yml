@@ -153,6 +153,10 @@ apis:
     events. Notifications include signatures for verification and can target multiple
     endpoints per product environment.
 common:
+- type: DomainSecurity
+  url: security/cloudinary-domain-security.yml
+- type: Authentication
+  url: authentication/cloudinary-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/cloudinary
 - type: Website
@@ -270,6 +274,8 @@ integrations:
 - name: Wrike
 - name: Zapier
 - name: Ziflow
+- url: https://cloudinary.com/blog/feed
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
