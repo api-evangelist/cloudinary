@@ -153,6 +153,8 @@ apis:
     events. Notifications include signatures for verification and can target multiple
     endpoints per product environment.
 common:
+- type: AgenticAccess
+  url: agentic-access/cloudinary-agentic-access.yml
 - type: DomainSecurity
   url: security/cloudinary-domain-security.yml
 - type: Authentication
