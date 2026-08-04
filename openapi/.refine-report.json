@@ -1,0 +1,18 @@
+{
+  "provider": "cloudinary",
+  "sources": [
+    "cloudinary-backup-api-openapi.yml",
+    "cloudinary-transformation-api-openapi.yml",
+    "cloudinary-upload-api-openapi.yml"
+  ],
+  "outputs": [
+    "cloudinary-backup-api-openapi.yml",
+    "cloudinary-transformation-api-openapi.yml",
+    "cloudinary-upload-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

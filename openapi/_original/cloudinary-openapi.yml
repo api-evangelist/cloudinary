@@ -1,0 +1,286 @@
+openapi: 3.1.0
+info:
+  title: Cloudinary Upload API
+  description: >-
+    The Cloudinary Upload API provides server-side endpoints for uploading,
+    transforming, renaming, and managing assets (images, videos, raw files)
+    in a Cloudinary product environment. Endpoints are versioned under
+    /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key
+    and secret.
+  version: 1.0.0
+  contact:
+    name: Cloudinary Support
+    url: https://cloudinary.com/contact
+  license:
+    name: Proprietary
+    url: https://cloudinary.com/tos
+x-generated-from: https://cloudinary.com/documentation/image_upload_api_reference
+x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://api.cloudinary.com/v1_1/{cloud_name}
+    description: Cloudinary Upload API base
+    variables:
+      cloud_name:
+        default: YOUR_CLOUD_NAME
+        description: Your Cloudinary cloud name
+security:
+  - basicAuth: []
+tags:
+  - name: Upload
+    description: Asset upload and management.
+  - name: Transformation
+    description: Apply transformations to existing assets.
+  - name: Backup
+    description: Backup retrieval operations.
+paths:
+  /{resource_type}/upload:
+    post:
+      operationId: uploadAsset
+      summary: Upload an asset
+      description: Upload an image, video, or raw file to the product environment.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [image, video, raw, auto]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadRequest'
+      responses:
+        '200':
+          description: Asset uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+  /{resource_type}/explicit:
+    post:
+      operationId: explicitAction
+      summary: Apply explicit actions to an existing asset
+      description: Update tags, metadata, or apply eager transformations on an existing asset.
+      tags:
+        - Transformation
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Action applied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+  /{resource_type}/rename:
+    post:
+      operationId: renameAsset
+      summary: Rename an asset
+      description: Modify the public ID of an existing asset.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Asset renamed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+  /{resource_type}/destroy:
+    post:
+      operationId: destroyAsset
+      summary: Delete an asset
+      description: Permanently delete a single asset by public ID.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Asset deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /{resource_type}/tags:
+    post:
+      operationId: manageTags
+      summary: Manage asset tags
+      description: Add, remove, or replace tags on existing assets.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Tags updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /{resource_type}/context:
+    post:
+      operationId: manageContext
+      summary: Update contextual metadata
+      description: Add or remove contextual metadata key-value pairs on assets.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Context updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /{resource_type}/metadata:
+    post:
+      operationId: updateMetadata
+      summary: Update structured metadata
+      description: Update structured metadata fields for one or more assets.
+      tags:
+        - Upload
+      parameters:
+        - name: resource_type
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        '200':
+          description: Metadata updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+  /download_backup:
+    get:
+      operationId: downloadBackup
+      summary: Download a backed-up asset version
+      description: Retrieve a specific version of a backed-up asset.
+      tags:
+        - Backup
+      parameters:
+        - name: asset_id
+          in: query
+          schema:
+            type: string
+        - name: version_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Backup download URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth using API key as username and API secret as password.
+  schemas:
+    UploadRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          description: File data, URL, or base64 encoded payload.
+        public_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+        api_key:
+          type: string
+      additionalProperties: true
+    GenericRequest:
+      type: object
+      additionalProperties: true
+    GenericResponse:
+      type: object
+      additionalProperties: true
+    Asset:
+      type: object
+      properties:
+        asset_id:
+          type: string
+        public_id:
+          type: string
+        version:
+          type: integer
+        format:
+          type: string
+        resource_type:
+          type: string
+        secure_url:
+          type: string
+          format: uri
+      additionalProperties: true
