@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudinary Backup Upload API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Upload",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/upload",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Upload an image, video, or raw file to the product environment."
+        },
+        {
+          "info": {
+            "name": "Rename an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/rename",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Modify the public ID of an existing asset."
+        },
+        {
+          "info": {
+            "name": "Delete an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/destroy",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Permanently delete a single asset by public ID."
+        },
+        {
+          "info": {
+            "name": "Manage asset tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/tags",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Add, remove, or replace tags on existing assets."
+        },
+        {
+          "info": {
+            "name": "Update contextual metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/context",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Add or remove contextual metadata key-value pairs on assets."
+        },
+        {
+          "info": {
+            "name": "Update structured metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/metadata",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update structured metadata fields for one or more assets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudinary Upload Backup API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Backup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a backed-up asset version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/download_backup",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific version of a backed-up asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

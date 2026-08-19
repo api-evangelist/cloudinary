@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloudinary Upload Backup Transformation API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transformation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apply explicit actions to an existing asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudinary.com/v1_1/{cloud_name}/:resource_type/explicit",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update tags, metadata, or apply eager transformations on an existing asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

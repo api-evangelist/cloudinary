@@ -1,0 +1,954 @@
+{
+  "item": [
+    {
+      "id": "bad55006-14e1-461b-9b8a-ec1c796af8eb",
+      "name": "Upload",
+      "description": {
+        "content": "Asset upload and management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e95a7419-678e-4f70-bf48-1f80936310b2",
+          "name": "Upload an asset",
+          "request": {
+            "name": "Upload an asset",
+            "description": {
+              "content": "Upload an image, video, or raw file to the product environment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "File data, URL, or base64 encoded payload."
+                },
+                {
+                  "key": "public_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "timestamp",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "signature",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "api_key",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "key_0",
+                  "value": "394",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "key_1",
+                  "value": "string",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "key_2",
+                  "value": "false",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "key_3",
+                  "value": "false",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "718a404b-2545-4b87-9584-848f57c3cdc3",
+              "name": "Asset uploaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "File data, URL, or base64 encoded payload.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "public_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "timestamp",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "signature",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "api_key",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"string\",\n  \"public_id\": \"string\",\n  \"version\": 2144,\n  \"format\": \"string\",\n  \"resource_type\": \"string\",\n  \"secure_url\": \"https://mudybRhnHEEzZSmbPlNeeM.ajtjMK,opQmO3aO3MySDEt0VK8aQCNEGuBxKRPhZE021\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da130eed-1748-4713-b883-8a4695b02b55",
+          "name": "Rename an asset",
+          "request": {
+            "name": "Rename an asset",
+            "description": {
+              "content": "Modify the public ID of an existing asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "rename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "2696.8996389805798"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c7b161bc-e818-4e86-ad40-1f2ad3329c87",
+              "name": "Asset renamed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "6391.556035758843"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "433.68990167918065"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"string\",\n  \"public_id\": \"string\",\n  \"version\": 2144,\n  \"format\": \"string\",\n  \"resource_type\": \"string\",\n  \"secure_url\": \"https://mudybRhnHEEzZSmbPlNeeM.ajtjMK,opQmO3aO3MySDEt0VK8aQCNEGuBxKRPhZE021\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd337a8c-1822-4e04-932c-5fe91b6baf1a",
+          "name": "Delete an asset",
+          "request": {
+            "name": "Delete an asset",
+            "description": {
+              "content": "Permanently delete a single asset by public ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "2696.8996389805798"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43b66e5b-ecb3-4e52-a706-4c5d3e7de043",
+              "name": "Asset deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "6391.556035758843"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "433.68990167918065"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6391.556035758843,\n  \"key_1\": 433.68990167918065\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c92a0052-e882-45db-b134-bf6089577b13",
+          "name": "Manage asset tags",
+          "request": {
+            "name": "Manage asset tags",
+            "description": {
+              "content": "Add, remove, or replace tags on existing assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "2696.8996389805798"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b27a5bb6-5e6a-4440-bf7c-e8cf6ae13f52",
+              "name": "Tags updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "6391.556035758843"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "433.68990167918065"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6391.556035758843,\n  \"key_1\": 433.68990167918065\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f417d1b-ca85-476a-b5bd-4073870347fa",
+          "name": "Update contextual metadata",
+          "request": {
+            "name": "Update contextual metadata",
+            "description": {
+              "content": "Add or remove contextual metadata key-value pairs on assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "context"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "2696.8996389805798"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2db107e9-e583-4b1b-b151-871db36f1968",
+              "name": "Context updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "6391.556035758843"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "433.68990167918065"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6391.556035758843,\n  \"key_1\": 433.68990167918065\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45af5da6-8015-4847-9ec5-54e0c8e512a3",
+          "name": "Update structured metadata",
+          "request": {
+            "name": "Update structured metadata",
+            "description": {
+              "content": "Update structured metadata fields for one or more assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_type",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Cloudinary cloud name",
+                  "type": "any",
+                  "value": "{{cloud_name}}",
+                  "key": "cloud_name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "2696.8996389805798"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0dc93b84-f145-4561-afb7-642164b6adaf",
+              "name": "Metadata updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_type",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Cloudinary cloud name",
+                      "type": "any",
+                      "value": "{{cloud_name}}",
+                      "key": "cloud_name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "6391.556035758843"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_1",
+                      "value": "433.68990167918065"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6391.556035758843,\n  \"key_1\": 433.68990167918065\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Cloudinary cloud name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "YOUR_CLOUD_NAME",
+      "key": "cloud_name"
+    },
+    {
+      "type": "string",
+      "value": "https://api.cloudinary.com/v1_1/{{cloud_name}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "138e761a-4129-4d99-94a6-cdcbc06a2618",
+    "name": "Cloudinary Backup Upload API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.\n\nContact Support:\n Name: Cloudinary Support",
+      "type": "text/plain"
+    }
+  }
+}
