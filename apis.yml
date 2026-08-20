@@ -28,6 +28,14 @@ tags:
 - Image Processing
 - Image Transformation
 - Media
+- Software-as-a-Service
+- Video Processing
+tags_raw:
+- Asset Management
+- Digital Asset Management
+- Image Processing
+- Image Transformation
+- Media
 - SaaS
 - Video Processing
 description: Cloudinary is a cloud-based service that provides comprehensive solutions
@@ -40,6 +48,12 @@ apis:
 - aid: cloudinary:admin
   name: Cloudinary Admin API
   tags:
+  - Administration
+  - Asset Management
+  - Folders
+  - Metadata
+  - Webhook
+  tags_raw:
   - Administration
   - Asset Management
   - Folders
@@ -77,6 +91,11 @@ apis:
 - aid: cloudinary:provisioning
   name: Cloudinary Provisioning API
   tags:
+  - Account Management
+  - APIKeys
+  - Provisioning
+  - User
+  tags_raw:
   - Account Management
   - API Keys
   - Provisioning
@@ -129,6 +148,10 @@ apis:
 - aid: cloudinary:notifications
   name: Cloudinary Notifications and Webhooks
   tags:
+  - Event
+  - Notification
+  - Webhook
+  tags_raw:
   - Events
   - Notifications
   - Webhooks
