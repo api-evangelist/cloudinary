@@ -227,6 +227,9 @@ apis:
   - type: GraphQL
     url: graphql/cloudinary-graphql.md
 common:
+- type: CapabilityMap
+  url: capabilities/cloudinary-capability-edges.yml
+  name: Cloudinary Business Capability Map
 - type: AgenticAccess
   url: agentic-access/cloudinary-agentic-access.yml
 - type: DomainSecurity
