@@ -1,0 +1,1 @@
+{"resource":"https://asset-management.mcp.cloudinary.com","authorization_servers":["https://asset-management.mcp.cloudinary.com"],"scopes_supported":["openid","profile","email","offline_access","asset_management","upload","media_generation"],"bearer_methods_supported":["header"],"resource_documentation":"https://asset-management.mcp.cloudinary.com/docs"}

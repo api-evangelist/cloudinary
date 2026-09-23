@@ -1,9 +1,7 @@
 {
   "provider": "cloudinary",
   "sources": [
-    "cloudinary-backup-api-openapi.yml",
-    "cloudinary-transformation-api-openapi.yml",
-    "cloudinary-upload-api-openapi.yml"
+    "_ae-authored/cloudinary-openapi.yml"
   ],
   "outputs": [
     "cloudinary-backup-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloudinary-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cloudinary-backup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudinary-transformation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudinary-upload-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

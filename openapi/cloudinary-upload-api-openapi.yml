@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Cloudinary Backup Upload API
+  title: Cloudinary Upload API
   description: The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.
   version: 1.0.0
   contact:
@@ -188,9 +188,6 @@ components:
     GenericResponse:
       type: object
       additionalProperties: true
-    GenericRequest:
-      type: object
-      additionalProperties: true
     Asset:
       type: object
       properties:
@@ -207,6 +204,9 @@ components:
         secure_url:
           type: string
           format: uri
+      additionalProperties: true
+    GenericRequest:
+      type: object
       additionalProperties: true
     UploadRequest:
       type: object

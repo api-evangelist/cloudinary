@@ -1,0 +1,35 @@
+# Front Door AI Index — cloudinary — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: cloudinary
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: cloudinary.com
+  final_host: cloudinary.com
+  ownership: own
+  owner: cloudinary
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 41
+  host_score: 41
+  density: 25.95
+  words: 1580
+  tiers:
+    agentic: 13
+    core: 28
+    model: 0
+  ambiguous: 34
+  top_terms:
+    agent: 25
+    AI: 24
+    AI agent: 6
+    automation: 4
+    MCP: 3
+    agentic: 3
+    gen ai: 3
+    intelligence: 3
+    smart: 2
+    LLMs: 1
+    prompts: 1
