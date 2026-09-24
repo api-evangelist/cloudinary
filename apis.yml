@@ -193,8 +193,6 @@ apis:
     url: https://cloudinary.com/documentation/image_upload_api_reference
   - type: GettingStarted
     url: https://cloudinary.com/documentation/upload_images
-  - type: GraphQL
-    url: graphql/cloudinary-graphql.md
 - aid: cloudinary:cloudinary-transformation-api
   name: Cloudinary Transformation API
   description: Apply transformations to existing assets.
@@ -209,8 +207,6 @@ apis:
     url: https://cloudinary.com/documentation/image_upload_api_reference
   - type: GettingStarted
     url: https://cloudinary.com/documentation/upload_images
-  - type: GraphQL
-    url: graphql/cloudinary-graphql.md
 - aid: cloudinary:cloudinary-upload-api
   name: Cloudinary Upload API
   description: Asset upload and management.
@@ -225,8 +221,6 @@ apis:
     url: https://cloudinary.com/documentation/image_upload_api_reference
   - type: GettingStarted
     url: https://cloudinary.com/documentation/upload_images
-  - type: GraphQL
-    url: graphql/cloudinary-graphql.md
 common:
 - type: CapabilityMap
   url: capabilities/cloudinary-capability-edges.yml
