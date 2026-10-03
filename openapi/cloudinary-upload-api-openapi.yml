@@ -185,20 +185,11 @@ paths:
                 $ref: '#/components/schemas/GenericResponse'
 components:
   schemas:
-    UploadRequest:
+    GenericRequest:
       type: object
-      properties:
-        file:
-          type: string
-          description: File data, URL, or base64 encoded payload.
-        public_id:
-          type: string
-        timestamp:
-          type: integer
-        signature:
-          type: string
-        api_key:
-          type: string
+      additionalProperties: true
+    GenericResponse:
+      type: object
       additionalProperties: true
     Asset:
       type: object
@@ -217,11 +208,20 @@ components:
           type: string
           format: uri
       additionalProperties: true
-    GenericResponse:
+    UploadRequest:
       type: object
-      additionalProperties: true
-    GenericRequest:
-      type: object
+      properties:
+        file:
+          type: string
+          description: File data, URL, or base64 encoded payload.
+        public_id:
+          type: string
+        timestamp:
+          type: integer
+        signature:
+          type: string
+        api_key:
+          type: string
       additionalProperties: true
   securitySchemes:
     basicAuth:
