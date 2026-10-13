@@ -1,0 +1,25 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=3cde1270-ba13-417c-9e5f-a23f6d3312fc
+  listing_count: 5
+  apps:
+  - Cloudinary Dynamic Media Platform and Digital Asset Management Solution
+  - Cloudinary Assets (Digital Asset Management)
+  - Cloudinary Image (Generative AI Powered Platform)
+  - Cloudinary Video (AI Powered Platform)
+  - Cloudinary Image and Video Platform & Digital Asset Management Solution
+  seller_name: Cloudinary
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
