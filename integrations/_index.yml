@@ -57,3 +57,44 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: cloudinary-c2pa-content-credentials-conformance-programme
+  label: C2PA (Content Credentials conformance programme)
+  partner_name: C2PA (Content Credentials conformance programme)
+  category: content provenance (Content Credentials) conformance
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/c2pa-org/conformance-public/blob/main/conforming-products/conforming-products-list.json
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: C2PA conforming products list (c2pa-org/conformance-public)
+    spec_file: null
+    role: c2pa-conformant-applicant
+    registered_name: Cloudinary LTD
+    register_id: Cloudinary LTD
+    product_types:
+    - generatorProduct
+    assurance_levels:
+    - 1
+    spec_versions:
+    - '2.2'
+    media_types:
+    - image/avif
+    - image/heic
+    - image/heif
+    - image/jpeg
+    - image/png
+    - image/svg+xml
+    - image/tiff
+    - image/webp
+    products:
+    - product: Cloudinary
+      record_id: 019e44ec-6d2b-718c-a441-ec04bdd392f8
+      conformance_date: '2026-08-05'
+    matched_domain: cloudinary.com
+    matched_by: domain
+    identity: wikidata Q27150151 'Cloudinary' P856 https://cloudinary.com/
+    detected_by: sweep-media.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null

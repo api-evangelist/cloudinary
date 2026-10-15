@@ -2,6 +2,8 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://ddex.net/membership/current-members/
+- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
 - https://registry.modelcontextprotocol.io/v0/servers
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 marketplace_apps: []
@@ -80,3 +82,47 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-adtech.py
   detected: '2026-10-14'
+- partner_name: C2PA (Content Credentials conformance programme)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://github.com/c2pa-org/conformance-public/blob/main/conforming-products/conforming-products-list.json
+  category: content provenance (Content Credentials) conformance
+  contract_reference:
+    register: C2PA conforming products list (c2pa-org/conformance-public)
+    spec_file: null
+    role: c2pa-conformant-applicant
+    registered_name: Cloudinary LTD
+    register_id: Cloudinary LTD
+    product_types:
+    - generatorProduct
+    assurance_levels:
+    - 1
+    spec_versions:
+    - '2.2'
+    media_types:
+    - image/avif
+    - image/heic
+    - image/heif
+    - image/jpeg
+    - image/png
+    - image/svg+xml
+    - image/tiff
+    - image/webp
+    products:
+    - product: Cloudinary
+      record_id: 019e44ec-6d2b-718c-a441-ec04bdd392f8
+      conformance_date: '2026-08-05'
+    matched_domain: cloudinary.com
+    matched_by: domain
+    identity: wikidata Q27150151 'Cloudinary' P856 https://cloudinary.com/
+    detected_by: sweep-media.py
+    detected: '2026-10-15'
+  detected_by: sweep-media.py
+  first_seen: '2026-10-15'
+source:
+- https://ddex.net/membership/current-members/
+- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
