@@ -6,6 +6,7 @@ checked:
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
 - https://registry.modelcontextprotocol.io/v0/servers
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+- shopify/integrations/shopify-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -123,6 +124,22 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-media.py
   first_seen: '2026-10-15'
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/cloudinary-assetlink
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - Cloudinary AssetLink
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
 source:
 - https://ddex.net/membership/current-members/
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
