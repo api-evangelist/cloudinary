@@ -185,7 +185,7 @@ paths:
                 $ref: '#/components/schemas/GenericResponse'
 components:
   schemas:
-    GenericResponse:
+    GenericRequest:
       type: object
       additionalProperties: true
     Asset:
@@ -205,7 +205,7 @@ components:
           type: string
           format: uri
       additionalProperties: true
-    GenericRequest:
+    GenericResponse:
       type: object
       additionalProperties: true
     UploadRequest:

@@ -50,6 +50,9 @@ paths:
                 $ref: '#/components/schemas/Asset'
 components:
   schemas:
+    GenericRequest:
+      type: object
+      additionalProperties: true
     Asset:
       type: object
       properties:
@@ -66,9 +69,6 @@ components:
         secure_url:
           type: string
           format: uri
-      additionalProperties: true
-    GenericRequest:
-      type: object
       additionalProperties: true
   securitySchemes:
     basicAuth:
