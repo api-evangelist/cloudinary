@@ -1,0 +1,451 @@
+openapi: 3.2.0
+info:
+  title: Cloudinary Account Provisioning Access Keys API
+  version: 0.2.0
+  description: 'Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.
+
+
+    Provisioning API access is available upon request for accounts on an Enterprise plan.
+
+
+    The API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.
+
+
+    The Provisioning API has dedicated SDKs for the following languages:
+
+
+    * JavaScript
+
+    * Python
+
+    * PHP
+
+    * Java
+
+
+    > **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.
+
+
+    Useful links:
+
+    * Provisioning API reference (Classic) (includes SDKs for additional languages)
+
+    * Permissions API reference'
+  contact:
+    name: Cloudinary Support
+    email: support@cloudinary.com
+    url: https://support.cloudinary.com
+  termsOfService: https://cloudinary.com/tou
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-cld-module-context: account
+  x-cld-module-name: account-provisioning
+servers:
+- url: https://api.cloudinary.com/v1_1/provisioning/accounts/{accountId}
+  variables:
+    accountId:
+      default: ACCOUNT_ID
+      description: Your Account ID.
+security:
+- basicAuth: []
+tags:
+- name: Access Keys
+  description: Manage the access keys, including a key and secret pair, for your product environment (sub-account). (In the Cloudinary Console and documentation, these are referred to as product environment API keys.)
+  externalDocs:
+    description: Learn more about access keys management.
+    url: https://cloudinary.com/documentation/provisioning_api#access_keys
+paths:
+  /sub_accounts/{sub_account_id}/access_keys:
+    parameters:
+    - $ref: '#/components/parameters/subAccountId'
+    get:
+      tags:
+      - Access Keys
+      summary: Get access keys
+      description: Retrieve an array of all access keys for a product environment.
+      externalDocs:
+        description: Learn more about retrieving access keys.
+        url: https://cloudinary.com/documentation/provisioning_api#get_access_keys
+      operationId: getAccessKeys
+      parameters:
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+        description: How many entries to display on each page.
+      - name: page
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+        description: 'Which page to return (maximum pages 100). **Default**: All pages are returned.
+
+          '
+      - name: sort_by
+        in: query
+        schema:
+          type: string
+          enum:
+          - api_key
+          - created_at
+          - name
+          - enabled
+        description: 'Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.
+
+          '
+        example: created_at
+      - name: sort_order
+        in: query
+        schema:
+          type: string
+          enum:
+          - desc
+          - asc
+        description: 'Control the order of returned keys. **Possible values**: `desc` (default), `asc`.
+
+          '
+        example: asc
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessKeysResponse'
+              examples:
+                AccessKeys:
+                  $ref: '#/components/examples/AccessKeys'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    post:
+      tags:
+      - Access Keys
+      summary: Generate an access key
+      description: Generate a new access key.
+      externalDocs:
+        description: Learn more about generating access keys.
+        url: https://cloudinary.com/documentation/provisioning_api#generate_an_access_key
+      operationId: generateAccessKey
+      requestBody:
+        required: true
+        description: Access key details.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessKeyRequest'
+      responses:
+        '200':
+          description: Access key created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessKey'
+              examples:
+                MainAccessKey:
+                  $ref: '#/components/examples/MainAccessKey'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      tags:
+      - Access Keys
+      summary: Delete access key by name
+      description: Delete a specific access key by name.
+      externalDocs:
+        description: Learn more about deleting access keys.
+        url: https://cloudinary.com/documentation/provisioning_api#delete_an_access_key
+      operationId: deleteAccessKeyByName
+      parameters:
+      - name: name
+        description: The access key name.
+        in: query
+        required: true
+        schema:
+          type: string
+        example: main_key
+      responses:
+        '200':
+          description: Access Key deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /sub_accounts/{sub_account_id}/access_keys/{key}:
+    parameters:
+    - $ref: '#/components/parameters/subAccountId'
+    - $ref: '#/components/parameters/accessKey'
+    put:
+      tags:
+      - Access Keys
+      summary: Update an access key
+      description: Update the name and/or status of an existing access key.
+      externalDocs:
+        description: Learn more about updating access keys.
+        url: https://cloudinary.com/documentation/provisioning_api#update_an_access_key
+      operationId: updateAccessKey
+      requestBody:
+        required: true
+        description: Access key details for update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessKeyUpdateRequest'
+      responses:
+        '200':
+          description: Access key updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessKey'
+              examples:
+                MainAccessKey:
+                  $ref: '#/components/examples/MainAccessKey'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      tags:
+      - Access Keys
+      summary: Delete access key
+      description: Delete a specific access key.
+      externalDocs:
+        description: Learn more about deleting access keys.
+        url: https://cloudinary.com/documentation/provisioning_api#delete_an_access_key
+      operationId: deleteAccessKey
+      responses:
+        '200':
+          description: Access key deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+components:
+  responses:
+    429TooManyRequests:
+      description: Too many requests.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    403NotAllowed:
+      description: Not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    420MaxUsageRateExceeded:
+      description: Max usage rate exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    401Unauthorized:
+      description: Authorization required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: Invalid credentials
+    404NotFound:
+      description: Not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: not found
+    400BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    409AlreadyExists:
+      description: Already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    accessKey:
+      name: key
+      description: The access key (api key).
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '814814814814814'
+    subAccountId:
+      name: sub_account_id
+      description: The ID of the product environment.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: abcde1fghij2klmno3pqrst4uvwxy5z
+  schemas:
+    AccessKeyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the access key.
+          example: main_key
+        enabled:
+          type: boolean
+          description: Whether the access key is enabled or disabled.
+          example: true
+        dedicated_for:
+          type: string
+          enum:
+          - webhooks
+          description: "Designates the access key for a specific purpose while allowing it to be used for other purposes, as well. \nThis action replaces any previously assigned key. **Possible values**: `webhooks`\n"
+          example: webhooks
+    AccessKey:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the access key.
+        api_key:
+          type: string
+          description: The API key.
+        api_secret:
+          type: string
+          format: password
+          description: The API secret.
+        created_at:
+          type: string
+          format: date-time
+          description: The date when the access key was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date when the access key was last updated.
+        enabled:
+          type: boolean
+          description: Whether the access key is enabled or disabled.
+    AccessKeyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the access key.
+          example: main_key
+        enabled:
+          type: boolean
+          description: Whether the access key is enabled or disabled.
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: error
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: ok
+    AccessKeysResponse:
+      type: object
+      properties:
+        access_keys:
+          type: array
+          description: The list of the access keys.
+          items:
+            $ref: '#/components/schemas/AccessKey'
+        total:
+          type: integer
+          description: Total number of the access keys.
+  examples:
+    MainAccessKey:
+      summary: Access key sample value
+      value:
+        name: main_key
+        api_key: '814814814814814'
+        api_secret: QcsQcsQcsQcsQcsQcsQcsQcsQcs
+        created_at: '2022-03-15T11:44:48Z'
+        updated_at: '2023-08-10T09:23:45Z'
+        enabled: true
+    AccessKeys:
+      summary: Get access keys sample response
+      value:
+        access_keys:
+        - name: main_key
+          api_key: '814814814814814'
+          api_secret: QcsQcsQcsQcsQcsQcsQcsQcsQcs
+          created_at: '2022-03-15T11:44:48Z'
+          updated_at: '2023-08-10T09:23:45Z'
+          enabled: true
+        - name: secondary_key
+          api_key: '418418418418418'
+          api_secret: scQscQscQscQscQscQscQscQscQ
+          created_at: '2023-09-10T09:23:45Z'
+          updated_at: '2023-09-10T09:45:57Z'
+          enabled: false
+        total: 2
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

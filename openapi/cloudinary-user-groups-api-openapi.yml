@@ -1,0 +1,583 @@
+openapi: 3.2.0
+info:
+  title: Cloudinary Account Provisioning User Groups API
+  version: 0.2.0
+  description: 'Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.
+
+
+    Provisioning API access is available upon request for accounts on an Enterprise plan.
+
+
+    The API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.
+
+
+    The Provisioning API has dedicated SDKs for the following languages:
+
+
+    * JavaScript
+
+    * Python
+
+    * PHP
+
+    * Java
+
+
+    > **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.
+
+
+    Useful links:
+
+    * Provisioning API reference (Classic) (includes SDKs for additional languages)
+
+    * Permissions API reference'
+  contact:
+    name: Cloudinary Support
+    email: support@cloudinary.com
+    url: https://support.cloudinary.com
+  termsOfService: https://cloudinary.com/tou
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-cld-module-context: account
+  x-cld-module-name: account-provisioning
+servers:
+- url: https://api.cloudinary.com/v1_1/provisioning/accounts/{accountId}
+  variables:
+    accountId:
+      default: ACCOUNT_ID
+      description: Your Account ID.
+security:
+- basicAuth: []
+tags:
+- name: User Groups
+  description: Manage the groups for the users in your account
+  externalDocs:
+    description: Learn more about user groups management.
+    url: https://cloudinary.com/documentation/provisioning_api#user_groups
+paths:
+  /user_groups:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/userGroupExtendedDetails'
+      summary: Get User Groups
+      description: Retrieve an array of all user groups in the account.
+      externalDocs:
+        description: Learn more about retrieving user groups.
+        url: https://cloudinary.com/documentation/provisioning_api#get_user_groups
+      operationId: getUserGroups
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupsResponse'
+              examples:
+                UserGroups:
+                  $ref: '#/components/examples/UserGroups'
+                UserGroupsExtendedDetails:
+                  $ref: '#/components/examples/UserGroupsExtendedDetails'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    post:
+      summary: Create User Group
+      description: Create a new user group for the account.
+      externalDocs:
+        description: Learn more about creating user groups.
+        url: https://cloudinary.com/documentation/provisioning_api#create_user_group
+      operationId: createUserGroup
+      tags:
+      - User Groups
+      requestBody:
+        required: true
+        description: User group details.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserGroupRequest'
+      responses:
+        '200':
+          description: User group created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+              examples:
+                UserGroupDesigners:
+                  $ref: '#/components/examples/UserGroupDesigners'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /user_groups/{group_id}:
+    parameters:
+    - $ref: '#/components/parameters/userGroupId'
+    get:
+      parameters:
+      - $ref: '#/components/parameters/userGroupExtendedDetails'
+      summary: Get User Group
+      description: Retrieve a specific user group.
+      externalDocs:
+        description: Learn more about retrieving a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#get_user_group
+      operationId: getUserGroup
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+              examples:
+                UserGroupDesigners:
+                  $ref: '#/components/examples/UserGroupDesigners'
+                UserGroupDesignersExtendedDetails:
+                  $ref: '#/components/examples/UserGroupDesignersExtendedDetails'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    put:
+      summary: Update User Group
+      description: Update the name of a specified user group.
+      externalDocs:
+        description: Learn more about updating a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#update_user_group
+      operationId: updateUserGroup
+      tags:
+      - User Groups
+      requestBody:
+        required: true
+        description: User group details to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserGroupRequest'
+            examples:
+              UserGroupDesignersRequest:
+                $ref: '#/components/examples/UserGroupDesignersRequest'
+      responses:
+        '200':
+          description: User group updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+              examples:
+                UserGroupUpdate:
+                  $ref: '#/components/examples/UserGroupUpdate'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      summary: Delete User Group
+      description: Delete a user group with the specified ID.
+      externalDocs:
+        description: Learn more about deleting a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#delete_user_group
+      operationId: deleteUserGroup
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: User group deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /user_groups/{group_id}/users:
+    parameters:
+    - $ref: '#/components/parameters/userGroupId'
+    get:
+      summary: Get Users in User Group
+      description: Retrieve the users in the group with the specified ID.
+      externalDocs:
+        description: Learn more about retrieving users in a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#get_user_group_users
+      operationId: getUsersInUserGroup
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupUsersResponse'
+              examples:
+                UserGroupUsers:
+                  $ref: '#/components/examples/UserGroupUsers'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /user_groups/{group_id}/users/{user_id}:
+    parameters:
+    - $ref: '#/components/parameters/userGroupId'
+    - $ref: '#/components/parameters/userId'
+    post:
+      summary: Add User to User Group
+      description: Add a user to a group with the specified ID.
+      externalDocs:
+        description: Learn more about adding users to a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#add_user_to_group
+      operationId: addUserToUserGroup
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: User added to group successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupUser'
+              examples:
+                UserGroupUserJohn:
+                  $ref: '#/components/examples/UserGroupUserJohn'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      summary: Remove User from User Group
+      description: Remove a user from a group with the specified ID.
+      externalDocs:
+        description: Learn more about removing users from a specific user group.
+        url: https://cloudinary.com/documentation/provisioning_api#remove_user_from_group
+      operationId: removeUserFromUserGroup
+      tags:
+      - User Groups
+      responses:
+        '200':
+          description: User removed from group successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupUsersResponse'
+              examples:
+                UserGroupUsers:
+                  $ref: '#/components/examples/UserGroupUsersNoJohn'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+components:
+  schemas:
+    UserGroupUser:
+      type: object
+      description: User group user.
+      properties:
+        id:
+          type: string
+          description: The user's ID.
+        name:
+          type: string
+          description: The user's name.
+        email:
+          type: string
+          format: email
+          description: The user's email.
+    UserGroupRequest:
+      type: object
+      properties:
+        name:
+          description: The user group's name.
+          type: string
+          example: Designers
+        extended_details:
+          type: boolean
+          description: "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n"
+          example: false
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: error
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: ok
+    UserGroupUsersResponse:
+      type: object
+      properties:
+        users:
+          description: A list of user group users.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupUser'
+    UserGroupsResponse:
+      type: object
+      properties:
+        user_groups:
+          description: A list of user groups.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroup'
+    UserGroup:
+      description: User group.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The user group's ID.
+        name:
+          type: string
+          description: The user group's name.
+        users:
+          type: array
+          description: 'A list of user group users.
+
+            Only returned in extended_details.
+
+            '
+          items:
+            $ref: '#/components/schemas/UserGroupUser'
+        created_at:
+          type: string
+          format: date-time
+          description: 'The date when the user group was created.
+
+            Only returned in extended_details.
+
+            '
+        updated_at:
+          type: string
+          format: date-time
+          description: 'The date when the user group was last updated.
+
+            Only returned in extended_details.
+
+            '
+  examples:
+    UserGroupUserJohn:
+      summary: User group user example
+      value:
+        id: 0abed8dfcc039ea05e2a1d494fd442
+        name: John Doe
+        email: john.doe@example.com
+    UserGroupDesignersRequest:
+      summary: User group update example
+      value:
+        name: Designers and Creatives
+    UserGroupUsers:
+      summary: User group users example
+      value:
+        users:
+        - id: 0abed8dfcc039ea05e2a1d494fd442
+          name: John
+          email: john@example.com
+    UserGroupUpdate:
+      summary: User group update example
+      value:
+        id: 7f08f1f1fc910bf1f25274aef11d27
+        name: Designers and Creatives
+    UserGroupUsersNoJohn:
+      summary: User group users example
+      value:
+        users: []
+    UserGroupsExtendedDetails:
+      summary: Get user groups extended details example
+      value:
+        user_groups:
+        - id: 7f08f1f1fc910bf1f25274aef11d27
+          name: user_group_1
+          users:
+          - id: 0abed8dfcc039ea05e2a1d494fd442
+            name: John Doe
+            email: john.doe@example.com
+          - id: asdf1234uiopjkl7890wernmjlcaeg
+            name: Harry Potts
+            email: harry.potts@example.com
+          created_at: '2016-09-27T08:00:16Z'
+          updated_at: '2016-09-27T08:00:16Z'
+        - id: 1cc3808888154263ac1e5eb2e5c52d61
+          name: user_group_2
+          users:
+          - id: asdl23uioejafmckowpuafdaghjajw
+            name: Beth Poppins
+            email: beth.poppins@example.com
+          - id: iwejfjiwl83882kkswionvnnlxloow
+            name: Mike Smith
+            email: mike.smith@example.com
+          created_at: '2016-09-27T08:00:16Z'
+          updated_at: '2016-09-27T08:00:16Z'
+    UserGroups:
+      summary: Get user groups example
+      value:
+        user_groups:
+        - id: 7f08f1f1fc910bf1f25274aef11d27
+          name: user_group_1
+        - id: 1cc3808888154263ac1e5eb2e5c52d61
+          name: user_group_2
+    UserGroupDesignersExtendedDetails:
+      summary: User group extended details example
+      value:
+        id: 7f08f1f1fc910bf1f25274aef11d27
+        name: Designers
+        users:
+        - id: 0abed8dfcc039ea05e2a1d494fd442
+          name: John Doe
+          email: john.doe@example.com
+        - id: asdf1234uiopjkl7890wernmjlcaeg
+          name: Harry Potts
+          email: harry.potts@example.com
+        created_at: '2016-09-27T08:00:16Z'
+        updated_at: '2016-09-27T08:00:16Z'
+    UserGroupDesigners:
+      summary: User group example
+      value:
+        id: 7f08f1f1fc910bf1f25274aef11d27
+        name: Designers
+  responses:
+    401Unauthorized:
+      description: Authorization required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: Invalid credentials
+    420MaxUsageRateExceeded:
+      description: Max usage rate exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    400BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    409AlreadyExists:
+      description: Already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    429TooManyRequests:
+      description: Too many requests.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    403NotAllowed:
+      description: Not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    404NotFound:
+      description: Not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: not found
+  parameters:
+    userGroupExtendedDetails:
+      in: query
+      name: extended_details
+      schema:
+        type: boolean
+      description: "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n"
+      example: true
+    userId:
+      name: user_id
+      in: path
+      description: The ID of the user.
+      required: true
+      schema:
+        type: string
+      example: 0abed8dfcc039ea05e2a1d494fd442
+    userGroupId:
+      name: group_id
+      description: The ID of the user group.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 7f08f1f1fc910bf1f25274aef11d27
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -221,6 +221,58 @@ apis:
     url: https://cloudinary.com/documentation/image_upload_api_reference
   - type: GettingStarted
     url: https://cloudinary.com/documentation/upload_images
+- aid: cloudinary:cloudinary-access-keys-api
+  name: Cloudinary Access Keys API
+  description: >-
+    Manage the access keys, including a key and secret pair, for your product environment (sub-account).
+    (In the Cloudinary Console and documentation, these are referred to as product environment API keys.)
+  humanURL: https://cloudinary.com/documentation/admin_api
+  baseURL: https://api.cloudinary.com/v1_1
+  tags:
+  - Access Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudinary-access-keys-api-openapi.yml
+- aid: cloudinary:cloudinary-billing-usage-api
+  name: Cloudinary Billing Usage API
+  description: Access billing usage information for your account and product environments.
+  humanURL: https://cloudinary.com/documentation/admin_api
+  baseURL: https://api.cloudinary.com/v1_1
+  tags:
+  - Billing Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudinary-billing-usage-api-openapi.yml
+- aid: cloudinary:cloudinary-product-environments-api
+  name: Cloudinary Product Environments API
+  description: Manage the product environments (sub-accounts) of your main account.
+  humanURL: https://cloudinary.com/documentation/admin_api
+  baseURL: https://api.cloudinary.com/v1_1
+  tags:
+  - Product Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudinary-product-environments-api-openapi.yml
+- aid: cloudinary:cloudinary-user-groups-api
+  name: Cloudinary User Groups API
+  description: Manage the groups for the users in your account
+  humanURL: https://cloudinary.com/documentation/admin_api
+  baseURL: https://api.cloudinary.com/v1_1
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudinary-user-groups-api-openapi.yml
+- aid: cloudinary:cloudinary-users-api
+  name: Cloudinary Users API
+  description: Manage the users for your account.
+  humanURL: https://cloudinary.com/documentation/admin_api
+  baseURL: https://api.cloudinary.com/v1_1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/cloudinary-users-api-openapi.yml
 common:
 - type: Plans
   url: plans/cloudinary-plans-pricing.yml

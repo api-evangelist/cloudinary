@@ -1,0 +1,705 @@
+openapi: 3.2.0
+info:
+  title: Cloudinary Account Provisioning Users API
+  version: 0.2.0
+  description: 'Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.
+
+
+    Provisioning API access is available upon request for accounts on an Enterprise plan.
+
+
+    The API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.
+
+
+    The Provisioning API has dedicated SDKs for the following languages:
+
+
+    * JavaScript
+
+    * Python
+
+    * PHP
+
+    * Java
+
+
+    > **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.
+
+
+    Useful links:
+
+    * Provisioning API reference (Classic) (includes SDKs for additional languages)
+
+    * Permissions API reference'
+  contact:
+    name: Cloudinary Support
+    email: support@cloudinary.com
+    url: https://support.cloudinary.com
+  termsOfService: https://cloudinary.com/tou
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-cld-module-context: account
+  x-cld-module-name: account-provisioning
+servers:
+- url: https://api.cloudinary.com/v1_1/provisioning/accounts/{accountId}
+  variables:
+    accountId:
+      default: ACCOUNT_ID
+      description: Your Account ID.
+security:
+- basicAuth: []
+tags:
+- name: Users
+  description: Manage the users for your account.
+  externalDocs:
+    description: Learn more about users management.
+    url: https://cloudinary.com/documentation/provisioning_api#users
+paths:
+  /users:
+    get:
+      summary: Get users
+      description: Returns an array of all users in the account, or if conditions are specified, returns the relevant users.
+      externalDocs:
+        description: Learn more about retrieving users.
+        url: https://cloudinary.com/documentation/provisioning_api#get_users
+      operationId: getUsers
+      tags:
+      - Users
+      parameters:
+      - name: pending
+        in: query
+        schema:
+          type: boolean
+        description: 'Whether to return pending users. **Default**: `false` (all users)
+
+          '
+        example: false
+      - name: ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+        description: A list of up to 100 user IDs.  When provided, other parameters are ignored.
+      - name: emails
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+        description: A list of up to 100 user Emails.  When provided, other parameters are ignored.
+      - name: prefix
+        in: query
+        schema:
+          type: string
+        description: Returns users where the name begins with the specified case-insensitive string.
+        example: john
+      - name: sub_account_id
+        in: query
+        schema:
+          type: string
+        description: Only returns users who have access to the specified account.
+      - name: last_login
+        in: query
+        description: Specifies a date range for last login.
+        schema:
+          type: boolean
+      - name: from
+        in: query
+        description: 'All last logins after this date, given in the format: yyyy-mm-dd.
+
+          '
+        schema:
+          type: string
+          format: date
+        example: 2023-01-01
+      - name: to
+        in: query
+        description: 'All last logins before this date, given in the format: yyyy-mm-dd.
+
+          '
+        schema:
+          type: string
+          format: date
+        example: 2024-12-31
+      - name: union_type
+        in: query
+        description: 'Whether to return users who last logged in within the specified date range (include) or those who didn''t
+
+          last log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.
+
+          '
+        schema:
+          type: string
+          enum:
+          - include
+          - exclude
+      - name: sort_order
+        in: query
+        schema:
+          type: string
+          enum:
+          - desc
+          - asc
+        description: 'Control the order of returned users. **Possible values**: `desc` (default), `asc`.
+
+          '
+      - name: sort_by
+        in: query
+        schema:
+          type: string
+          enum:
+          - name
+          - role
+          - status
+          - activity
+          - created_at
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                Users:
+                  $ref: '#/components/examples/Users'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    post:
+      summary: Create user
+      description: Create a new user.
+      externalDocs:
+        description: Learn more about creating users.
+        url: https://cloudinary.com/documentation/provisioning_api#create_user
+      operationId: createUser
+      tags:
+      - Users
+      requestBody:
+        required: true
+        description: User details.
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UserRequest'
+              required:
+              - name
+              - email
+            examples:
+              CreateUserExample:
+                $ref: '#/components/examples/CreateUserExample'
+      responses:
+        '200':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                UserResponseExample:
+                  $ref: '#/components/examples/UserResponseExample'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /users/{user_id}:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    get:
+      summary: Get user
+      description: Retrieve a specific user.
+      externalDocs:
+        description: Learn more about retrieving a specific user.
+        url: https://cloudinary.com/documentation/provisioning_api#get_user
+      operationId: getUser
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                UserResponseExample:
+                  $ref: '#/components/examples/UserResponseExample'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    put:
+      summary: Update user
+      description: Update the details of a user.
+      externalDocs:
+        description: Learn more about updating a specific user.
+        url: https://cloudinary.com/documentation/provisioning_api#update_user
+      operationId: updateUser
+      tags:
+      - Users
+      requestBody:
+        required: true
+        description: User details to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                UserJohn:
+                  $ref: '#/components/examples/UserJohn'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      summary: Delete user
+      description: Delete a specific user.
+      externalDocs:
+        description: Learn more about deleting a specific user.
+        url: https://cloudinary.com/documentation/provisioning_api#delete_user
+      operationId: deleteUser
+      tags:
+      - Users
+      responses:
+        '200':
+          description: User deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /users/{user_id}/groups:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    get:
+      summary: Get user groups
+      description: Retrieve the groups that a specific user belongs to.
+      externalDocs:
+        description: Learn more about retrieving user groups.
+        url: https://cloudinary.com/documentation/provisioning_api#get_users_groups
+      operationId: getGroupsForUser
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupsListResponse'
+              examples:
+                UserGroupsList:
+                  $ref: '#/components/examples/UserGroupsList'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /users/{user_id}/sub_accounts:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    get:
+      summary: Get user sub-accounts
+      description: Retrieve the product environments (sub-accounts) that a specific user has access to.
+      externalDocs:
+        description: Learn more about retrieving user sub-accounts.
+        url: https://cloudinary.com/documentation/provisioning_api#get_user_sub_accounts
+      operationId: getSubAccountsForUser
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSubAccountsResponse'
+              examples:
+                UserSubAccounts:
+                  $ref: '#/components/examples/UserSubAccounts'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+components:
+  schemas:
+    UserSubAccountsResponse:
+      type: object
+      properties:
+        sub_accounts:
+          description: A list of product environments (sub-accounts) that the user has access to.
+          type: array
+          items:
+            $ref: '#/components/schemas/SubAccountSummary'
+    SubAccountSummary:
+      description: Product environment (sub-account) summary.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The product environment's ID.
+        name:
+          type: string
+          description: The product environment's name.
+        description:
+          type: string
+          description: The product environment's description.
+        cloud_name:
+          type: string
+          description: The Cloudinary cloud name of the product environment.
+        enabled:
+          type: boolean
+          description: Whether the product environment is enabled.
+    User:
+      description: User details.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The user's ID.
+        name:
+          type: string
+          description: The user's name.
+        first_name:
+          type: string
+          description: The user's first name.
+        last_name:
+          type: string
+          description: The user's last name.
+        role:
+          type: string
+          description: The user's role.
+        email:
+          type: string
+          format: email
+          description: The user's email.
+        pending:
+          type: boolean
+          description: Whether the user is pending.
+        enabled:
+          type: boolean
+          description: Whether the user is enabled.
+        created_at:
+          type: string
+          format: date-time
+          description: The date when the user was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date when the user was last updated.
+        last_login:
+          type: string
+          format: date-time
+          description: The date when the user was last logged in.
+        all_sub_accounts:
+          type: boolean
+        providers:
+          type: array
+          items:
+            type: string
+          description: The list of authentication providers for the user.
+        email_preferences:
+          type: object
+          description: The user's email preferences.
+        account_id:
+          type: string
+          description: The account ID.
+        two_factor:
+          type: boolean
+          description: Whether two-factor authentication is enabled.
+        status:
+          type: string
+          description: The user's status.
+        root:
+          type: boolean
+          description: Whether the user is a root user.
+        technical_role:
+          type: string
+          description: The user's technical role.
+        group_count:
+          type: integer
+          description: The number of groups the user belongs to.
+        sub_account_count:
+          type: integer
+          description: The number of sub-accounts the user has access to.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: error
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: ok
+    UsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    UserGroupSummary:
+      description: User group summary.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The user group's ID.
+        name:
+          type: string
+          description: The user group's name.
+    UserGroupsListResponse:
+      type: object
+      properties:
+        groups:
+          description: A list of user groups that the user belongs to.
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupSummary'
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user's name.
+          example: John
+        email:
+          type: string
+          description: A unique email address, which serves as the login name and notification address.
+          example: john@example.com
+        role:
+          type: string
+          description: The role to assign.
+          enum:
+          - master_admin
+          - admin
+          - billing
+          - technical_admin
+          - reports
+          - media_library_admin
+          - media_library_user
+          example: technical_admin
+        sub_account_ids:
+          type: array
+          description: "A list of product environment IDs that this user can access. Ignored if the role is `master_admin`. \n**Default**: all product environments.\n"
+          items:
+            type: string
+        enabled:
+          type: boolean
+          description: 'Whether the user is enabled. **Default**: true.
+
+            '
+          example: true
+  examples:
+    CreateUserExample:
+      summary: Create user
+      value:
+        name: jenny_bar
+        role: master_admin
+        email: jenny_bar@example.com
+    Users:
+      summary: Get users sample response
+      value:
+        users:
+        - id: 139147faa12ce11f22cfaffa84b307
+          name: john_smith
+          role: media_library_user
+          email: john_smith@example.com
+          pending: true
+          enabled: true
+          created_at: '2020-01-13T05:16:06Z'
+          updated_at: '2020-01-13T05:16:06Z'
+          last_login: '2022-01-11T15:11:04Z'
+          all_sub_accounts: true
+        - id: 28c84b2aa7924a5e64f949b5403981
+          name: john_jones
+          role: master_admin
+          email: john_jones@example.com
+          pending: true
+          enabled: true
+          created_at: '2019-01-13T05:16:05Z'
+          updated_at: '2019-01-13T05:16:05Z'
+          last_login: '2021-11-12T15:11:02Z'
+          all_sub_accounts: true
+    UserGroupsList:
+      summary: Get user groups for a user example
+      value:
+        groups:
+        - id: 7f08f1f1fc910bf1f25274aef11d27
+          name: user_group_1
+        - id: 1cc3808888154263ac1e5eb2e5c52d61
+          name: user_group_2
+    UserJohn:
+      summary: User details example
+      value:
+        id: 0abed8dfcc039ea05e2a1d494fd442
+        name: John
+        role: technical_admin
+        email: john@example.com
+        pending: true
+        enabled: true
+        created_at: '2020-09-03T13:33:25Z'
+        updated_at: '2020-09-03T13:33:25Z'
+        all_sub_accounts: true
+    UserResponseExample:
+      summary: User details example
+      value:
+        id: 7f08f1f1fc910bf1f25274aef11d27
+        name: jenny_bar
+        role: master_admin
+        email: jenny_bar@example.com
+        pending: true
+        enabled: true
+        created_at: '2019-09-12T11:53:57Z'
+        updated_at: '2019-09-12T11:53:57Z'
+        last_login: '2022-01-11T15:11:04Z'
+        all_sub_accounts: true
+    UserSubAccounts:
+      summary: Get sub-accounts for a user example
+      value:
+        sub_accounts:
+        - id: abcde1fghij2klmno3pqrst4uvwxy5z
+          name: Product1 Application
+          description: Main product environment
+          cloud_name: product1
+          enabled: true
+        - id: 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f
+          name: Product2 Application
+          description: Secondary product environment
+          cloud_name: product2
+          enabled: true
+  responses:
+    401Unauthorized:
+      description: Authorization required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: Invalid credentials
+    420MaxUsageRateExceeded:
+      description: Max usage rate exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    400BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    409AlreadyExists:
+      description: Already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    429TooManyRequests:
+      description: Too many requests.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    403NotAllowed:
+      description: Not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    404NotFound:
+      description: Not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: not found
+  parameters:
+    userId:
+      name: user_id
+      in: path
+      description: The ID of the user.
+      required: true
+      schema:
+        type: string
+      example: 0abed8dfcc039ea05e2a1d494fd442
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

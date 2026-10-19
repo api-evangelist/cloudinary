@@ -1,0 +1,499 @@
+openapi: 3.2.0
+info:
+  title: Cloudinary Account Provisioning Product Environments API
+  version: 0.2.0
+  description: 'Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.
+
+
+    Provisioning API access is available upon request for accounts on an Enterprise plan.
+
+
+    The API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.
+
+
+    The Provisioning API has dedicated SDKs for the following languages:
+
+
+    * JavaScript
+
+    * Python
+
+    * PHP
+
+    * Java
+
+
+    > **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.
+
+
+    Useful links:
+
+    * Provisioning API reference (Classic) (includes SDKs for additional languages)
+
+    * Permissions API reference'
+  contact:
+    name: Cloudinary Support
+    email: support@cloudinary.com
+    url: https://support.cloudinary.com
+  termsOfService: https://cloudinary.com/tou
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-cld-module-context: account
+  x-cld-module-name: account-provisioning
+servers:
+- url: https://api.cloudinary.com/v1_1/provisioning/accounts/{accountId}
+  variables:
+    accountId:
+      default: ACCOUNT_ID
+      description: Your Account ID.
+security:
+- basicAuth: []
+tags:
+- name: Product Environments
+  description: Manage the product environments (sub-accounts) of your main account.
+  externalDocs:
+    description: Learn more about product environments management.
+    url: https://cloudinary.com/documentation/provisioning_api#product_environments
+paths:
+  /sub_accounts:
+    get:
+      tags:
+      - Product Environments
+      summary: Get product environments
+      description: 'Return an array of all product environments, or if conditions are specified,
+
+        return the relevant product environments.'
+      externalDocs:
+        description: Learn more about getting product environments.
+        url: https://cloudinary.com/documentation/provisioning_api#get_product_environments
+      operationId: getProductEnvironments
+      x-cld-use-for-readme: true
+      parameters:
+      - name: enabled
+        in: query
+        schema:
+          type: boolean
+        description: "Whether to only return enabled product environments (true) or disabled product environments (false). \n**Default**: all product environments are returned (both enabled and disabled).\n"
+        example: true
+      - name: ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: A list of up to 100 product environment IDs. When provided, other parameters are ignored.
+      - name: cloud_names
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: A list of up to 100 product environment cloud names.
+      - name: prefix
+        in: query
+        schema:
+          type: string
+        description: Returns product environments where the name begins with the specified case-insensitive string.
+        example: product
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEnvironmentsResponse'
+              examples:
+                ProductEnvironments:
+                  $ref: '#/components/examples/ProductEnvironments'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    post:
+      tags:
+      - Product Environments
+      summary: Create product environment
+      description: 'Create a new product environment. Any users that have access to all product environments will also automatically
+
+        have access to the new product environment.'
+      externalDocs:
+        description: Learn more about creating product environments.
+        url: https://cloudinary.com/documentation/provisioning_api#create_product_environment
+      operationId: createProductEnvironment
+      requestBody:
+        required: true
+        description: Product environment details.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductEnvironmentRequest'
+      responses:
+        '200':
+          description: Product environment created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEnvironment'
+              examples:
+                ProductEnvironment3:
+                  $ref: '#/components/examples/ProductEnvironment3'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+  /sub_accounts/{sub_account_id}:
+    parameters:
+    - $ref: '#/components/parameters/subAccountId'
+    get:
+      tags:
+      - Product Environments
+      summary: Get product environment
+      description: Retrieve a specific product environment.
+      externalDocs:
+        description: Learn more about retrieving specific product environments.
+        url: https://cloudinary.com/documentation/provisioning_api#get_product_environment
+      operationId: getProductEnvironment
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEnvironment'
+              examples:
+                ProductEnvironment1:
+                  $ref: '#/components/examples/ProductEnvironment1'
+                ProductEnvironment2:
+                  $ref: '#/components/examples/ProductEnvironment2'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    put:
+      tags:
+      - Product Environments
+      summary: Update product environment
+      description: Update the details of a product environment.
+      externalDocs:
+        description: Learn more about updating product environments.
+        url: https://cloudinary.com/documentation/provisioning_api#update_product_environment
+      operationId: updateProductEnvironment
+      requestBody:
+        required: true
+        description: Product environment details to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductEnvironmentUpdateRequest'
+      responses:
+        '200':
+          description: Product environment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEnvironment'
+              examples:
+                ProductEnvironment1:
+                  $ref: '#/components/examples/ProductEnvironment1'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409AlreadyExists'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+    delete:
+      tags:
+      - Product Environments
+      summary: Delete product environment
+      description: Delete a specific product environment.
+      externalDocs:
+        description: Learn more about deleting product environments.
+        url: https://cloudinary.com/documentation/provisioning_api#delete_product_environment
+      operationId: deleteProductEnvironment
+      responses:
+        '200':
+          description: Product environment deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403NotAllowed'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '420':
+          $ref: '#/components/responses/420MaxUsageRateExceeded'
+        '429':
+          $ref: '#/components/responses/429TooManyRequests'
+components:
+  schemas:
+    ProductEnvironmentUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name for the product environment.
+          example: Product3 Application
+        cloud_name:
+          type: string
+          description: 'The Cloudinary cloud name. An error is returned if the requested name already exists.
+
+            **Note**: Can only be changed for accounts with fewer than 1000 images.
+
+            '
+          example: product3
+        custom_attributes:
+          type: object
+          description: Custom attributes associated with the product environment.
+        enabled:
+          type: boolean
+          description: 'Whether the product environment is enabled. **Default**: true.
+
+            '
+    ProductEnvironmentsResponse:
+      type: object
+      properties:
+        sub_accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEnvironment'
+    ProductEnvironment:
+      description: Product Environment
+      type: object
+      properties:
+        cloud_name:
+          type: string
+        name:
+          type: string
+          description: The cloud name of the product environment.
+        enabled:
+          type: boolean
+          description: Whether the product environment is enabled or disabled.
+        id:
+          type: string
+          description: The ID of the product environment.
+        api_access_keys:
+          type: array
+          description: The list of the product environment's access keys.
+          items:
+            $ref: '#/components/schemas/ApiAccessKey'
+        created_at:
+          type: string
+          format: date-time
+          description: The date when the product environment was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date when the product environment was last updated.
+    ApiAccessKey:
+      description: Brief details of a single API Access Key.
+      type: object
+      properties:
+        key:
+          type: string
+          description: The API key.
+        secret:
+          type: string
+          format: password
+          description: The API secret.
+        enabled:
+          type: boolean
+          description: Whether the access key is enabled or disabled.
+    ProductEnvironmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name for the product environment.
+          example: Product3 Application
+        cloud_name:
+          type: string
+          description: The Cloudinary cloud name (optional, default is auto-generated).
+          example: product3
+        base_sub_account_id:
+          type: string
+          description: The ID of another product environment to copy settings from (optional).
+          example: 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f
+        custom_attributes:
+          type: object
+          description: Custom attributes associated with the product environment (optional).
+      required:
+      - name
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: error
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: ok
+  examples:
+    ProductEnvironments:
+      summary: Get product environments sample response
+      value:
+        sub_accounts:
+        - cloud_name: product1
+          name: Product1 Application
+          enabled: true
+          id: abcde1fghij2klmno3pqrst4uvwxy5z
+          api_access_keys:
+          - key: '123456789012345'
+            secret: asdf1JKL2xyz3ABc4s3c5reT01DfaKez
+            enabled: true
+          created_at: '2016-09-27T08:00:16Z'
+          updated_at: '2016-09-27T08:00:16Z'
+        - cloud_name: product2
+          name: Product2 Application
+          enabled: true
+          id: 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f
+          api_access_keys:
+          - key: '543210987654321'
+            secret: T415i5mYs3cr3TkeYN0tR3a77y0o0
+            enabled: true
+          created_at: '2016-03-15T11:44:48Z'
+          updated_at: '2016-03-15T11:44:48Z'
+    ProductEnvironment3:
+      summary: Product environment sample response 3
+      value:
+        cloud_name: product3
+        name: Product3 Application
+        enabled: false
+        id: 555asdf0000zxcvb3456qwerty
+        api_access_keys:
+        - key: '135792468054321'
+          secret: w4aTi5Y0u6k3YN0773lL1nGyUt0Da8
+          enabled: true
+        created_at: '2016-09-27T11:15:35Z'
+        updated_at: '2016-09-27T11:15:35Z'
+    ProductEnvironment2:
+      summary: Product environment sample response 2
+      value:
+        cloud_name: product2
+        name: Product2 Application
+        enabled: true
+        id: 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f
+        api_access_keys:
+        - key: '543210987654321'
+          secret: T415i5mYs3cr3TkeYN0tR3a77y0o0
+          enabled: true
+        created_at: '2016-03-15T11:44:48Z'
+        updated_at: '2016-03-15T11:44:48Z'
+    ProductEnvironment1:
+      summary: Product environment sample response 1
+      value:
+        cloud_name: product1
+        name: Product1 Application
+        enabled: true
+        id: abcde1fghij2klmno3pqrst4uvwxy5z
+        api_access_keys:
+        - key: '123456789012345'
+          secret: asdf1JKL2xyz3ABc4s3c5reT01DfaKez
+          enabled: true
+        created_at: '2016-09-27T08:00:16Z'
+        updated_at: '2016-09-27T08:00:16Z'
+  parameters:
+    subAccountId:
+      name: sub_account_id
+      description: The ID of the product environment.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: abcde1fghij2klmno3pqrst4uvwxy5z
+  responses:
+    401Unauthorized:
+      description: Authorization required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: Invalid credentials
+    420MaxUsageRateExceeded:
+      description: Max usage rate exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    400BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    409AlreadyExists:
+      description: Already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    429TooManyRequests:
+      description: Too many requests.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    403NotAllowed:
+      description: Not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    404NotFound:
+      description: Not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              message: not found
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

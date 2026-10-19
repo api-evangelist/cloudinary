@@ -1,9 +1,15 @@
 {
   "provider": "cloudinary",
   "sources": [
+    "_original/cloudinary-openapi.yml",
     "_ae-authored/cloudinary-openapi.yml"
   ],
   "outputs": [
+    "cloudinary-access-keys-api-openapi.yml",
+    "cloudinary-billing-usage-api-openapi.yml",
+    "cloudinary-product-environments-api-openapi.yml",
+    "cloudinary-user-groups-api-openapi.yml",
+    "cloudinary-users-api-openapi.yml",
     "cloudinary-backup-api-openapi.yml",
     "cloudinary-transformation-api-openapi.yml",
     "cloudinary-upload-api-openapi.yml"
@@ -12,9 +18,10 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloudinary-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "cloudinary-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+5 apis, 14 total)"
   ],
   "skipped": [
     "cloudinary-backup-api-openapi.yml: previously refined output, superseded by openapi/_original/",

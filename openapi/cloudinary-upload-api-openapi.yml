@@ -185,9 +185,6 @@ paths:
                 $ref: '#/components/schemas/GenericResponse'
 components:
   schemas:
-    GenericRequest:
-      type: object
-      additionalProperties: true
     Asset:
       type: object
       properties:
@@ -205,7 +202,7 @@ components:
           type: string
           format: uri
       additionalProperties: true
-    GenericResponse:
+    GenericRequest:
       type: object
       additionalProperties: true
     UploadRequest:
@@ -222,6 +219,9 @@ components:
           type: string
         api_key:
           type: string
+      additionalProperties: true
+    GenericResponse:
+      type: object
       additionalProperties: true
   securitySchemes:
     basicAuth:
