@@ -1,5 +1,11 @@
-generated: '2026-10-13'
+generated: '2026-10-20'
 method: searched
+source:
+- https://ddex.net/membership/current-members/
+- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
+- https://zapier.com/apps/cloudinary/integrations
+- https://n8n.io/integrations/cloudinary/
+- https://composio.dev/toolkits/cloudinary
 checked:
 - https://aws.amazon.com/marketplace/
 - https://cloudsecurityalliance.org/star/registry
@@ -14,7 +20,154 @@ checked:
 - sanity/integrations/sanity-integration-edges.yml
 - shopify/integrations/shopify-integration-edges.yml
 - wordpress/integrations/wordpress-integration-edges.yml
-marketplace_apps: []
+- https://composio.dev/toolkits/cloudinary
+- https://monid.ai/tools/cloudinary
+- https://n8n.io/integrations/cloudinary/
+- https://zapier.com/apps/cloudinary/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations
+  external_url: https://cloudinary.com/
+  partner_tier: SILVER
+  triggers:
+  - key: new_uploaded_resource
+    label: New Uploaded Resource
+  - key: resources_by_tag
+    label: New Tagged Resource
+  actions:
+  - key: cloudinary_url
+    label: Transform Resource
+  - key: upload_signed
+    label: Upload Resource
+  - key: upload_signed_advanced
+    label: Upload Resource (Advanced)
+  - key: usage
+    label: Create Usage Report
+  searches: []
+- marketplace: n8n
+  channel: open-source-node
+  app: cloudinary
+  url: https://n8n.io/integrations/cloudinary/
+  identity: title
+  pair_pages: 0
+  pairs: []
+- marketplace: composio
+  channel: agent-gateway
+  app: cloudinary
+  url: https://composio.dev/toolkits/cloudinary
+  identity: action-prefix
+  actions:
+  - key: CLOUDINARY_ACTIVATE_LIVE_STREAM
+  - key: CLOUDINARY_CREATE_ASSET_RELATIONS_BY_ASSET_ID
+  - key: CLOUDINARY_CREATE_ASSET_RELATIONS_BY_PUBLIC_ID
+  - key: CLOUDINARY_CREATE_FOLDER
+  - key: CLOUDINARY_CREATE_IMAGE_FROM_TEXT
+  - key: CLOUDINARY_CREATE_LIVE_STREAM
+  - key: CLOUDINARY_CREATE_LIVE_STREAM_OUTPUT
+  - key: CLOUDINARY_CREATE_METADATA_FIELD
+  - key: CLOUDINARY_CREATE_METADATA_RULE
+  - key: CLOUDINARY_CREATE_MULTI_RESOURCE
+  - key: CLOUDINARY_CREATE_SLIDESHOW
+  - key: CLOUDINARY_CREATE_STREAMING_PROFILE
+  - key: CLOUDINARY_CREATE_TRANSFORMATION
+  - key: CLOUDINARY_CREATE_TRIGGER
+  - key: CLOUDINARY_CREATE_UPLOAD_MAPPING
+  - key: CLOUDINARY_CREATE_UPLOAD_PRESET
+  - key: CLOUDINARY_DELETE_ASSET_RELATIONS_BY_ASSET_ID
+  - key: CLOUDINARY_DELETE_ASSET_RELATIONS_BY_PUBLIC_ID
+  - key: CLOUDINARY_DELETE_DERIVED_RESOURCES
+  - key: CLOUDINARY_DELETE_ENTRIES_IN_METADATA_FIELD_DATASOURCE
+  - key: CLOUDINARY_DELETE_FOLDER
+  - key: CLOUDINARY_DELETE_LIVE_STREAM
+  - key: CLOUDINARY_DELETE_LIVE_STREAM_OUTPUT
+  - key: CLOUDINARY_DELETE_METADATA_FIELD
+  - key: CLOUDINARY_DELETE_METADATA_RULE
+  - key: CLOUDINARY_DELETE_RESOURCES_BY_ASSET_ID
+  - key: CLOUDINARY_DELETE_RESOURCES_BY_PUBLIC_ID
+  - key: CLOUDINARY_DELETE_RESOURCES_BY_TAGS
+  - key: CLOUDINARY_DELETE_STREAMING_PROFILE
+  - key: CLOUDINARY_DELETE_TRANSFORMATION2
+  - key: CLOUDINARY_DELETE_TRIGGER
+  - key: CLOUDINARY_DELETE_UPLOAD_MAPPING
+  - key: CLOUDINARY_DELETE_UPLOAD_PRESET
+  - key: CLOUDINARY_DESTROY_ASSET
+  - key: CLOUDINARY_DESTROY_ASSET_BY_ID
+  - key: CLOUDINARY_EXPLICIT_RESOURCE
+  - key: CLOUDINARY_EXPLODE_RESOURCE
+  - key: CLOUDINARY_GENERATE_ARCHIVE
+  - key: CLOUDINARY_GET_ADAPTIVE_STREAMING_PROFILES
+  - key: CLOUDINARY_GET_ANALYSIS_TASK_STATUS
+  - key: CLOUDINARY_GET_CONFIG
+  - key: CLOUDINARY_GET_LIVE_STREAM
+  - key: CLOUDINARY_GET_LIVE_STREAMS
+  - key: CLOUDINARY_GET_LIVE_STREAM_OUTPUT
+  - key: CLOUDINARY_GET_LIVE_STREAM_OUTPUTS
+  - key: CLOUDINARY_GET_METADATA_FIELD_BY_ID
+  - key: CLOUDINARY_GET_RESOURCES_BY_ASSET_FOLDER
+  - key: CLOUDINARY_GET_RESOURCES_BY_CONTEXT
+  - key: CLOUDINARY_GET_RESOURCES_IN_MODERATION
+  - key: CLOUDINARY_GET_RESOURCE_BY_ASSET_ID
+  - key: CLOUDINARY_GET_RESOURCE_BY_PUBLIC_ID
+  - key: CLOUDINARY_GET_ROOT_FOLDERS
+  - key: CLOUDINARY_GET_STREAMING_PROFILE_DETAILS
+  - key: CLOUDINARY_GET_TAGS
+  - key: CLOUDINARY_GET_TRANSFORMATION
+  - key: CLOUDINARY_GET_TRANSFORMATIONS
+  - key: CLOUDINARY_GET_TRIGGERS
+  - key: CLOUDINARY_GET_UPLOAD_MAPPINGS
+  - key: CLOUDINARY_GET_UPLOAD_MAPPING_DETAILS
+  - key: CLOUDINARY_GET_UPLOAD_PRESET
+  - key: CLOUDINARY_GET_USAGE
+  - key: CLOUDINARY_GET_VIDEO_VIEWS
+  - key: CLOUDINARY_IDLE_LIVE_STREAM
+  - key: CLOUDINARY_LIST_IMAGES
+  - key: CLOUDINARY_LIST_METADATA_FIELDS
+  - key: CLOUDINARY_LIST_METADATA_RULES
+  - key: CLOUDINARY_LIST_RAW_FILES
+  - key: CLOUDINARY_LIST_RESOURCES_BY_ASSET_IDS
+  - key: CLOUDINARY_LIST_RESOURCES_BY_EXTERNAL_IDS
+  - key: CLOUDINARY_LIST_RESOURCES_BY_TAG
+  - key: CLOUDINARY_LIST_RESOURCES_BY_TYPE
+  - key: CLOUDINARY_LIST_RESOURCE_TYPES
+  - key: CLOUDINARY_LIST_UPLOAD_PRESETS
+  - key: CLOUDINARY_LIST_VIDEOS
+  - key: CLOUDINARY_MANAGE_CONTEXT
+  - key: CLOUDINARY_ORDER_METADATA_FIELD_DATASOURCE
+  - key: CLOUDINARY_PING_CLOUDINARY_SERVERS
+  - key: CLOUDINARY_PUBLISH_RESOURCES
+  - key: CLOUDINARY_RENAME_RESOURCE
+  - key: CLOUDINARY_REORDER_METADATA_FIELD
+  - key: CLOUDINARY_REORDER_METADATA_FIELDS
+  - key: CLOUDINARY_RESTORE_ENTRIES_IN_METADATA_FIELD_DATASOURCE
+  - key: CLOUDINARY_RESTORE_RESOURCES
+  - key: CLOUDINARY_RESTORE_RESOURCES_BY_ASSET_IDS
+  - key: CLOUDINARY_SEARCH_ASSETS
+  - key: CLOUDINARY_SEARCH_DATASOURCE_IN_METADATA_FIELD
+  - key: CLOUDINARY_SEARCH_FOLDERS
+  - key: CLOUDINARY_SEARCH_METADATA_FIELD_DATASOURCE
+  - key: CLOUDINARY_SEARCH_VISUAL_ASSETS
+  - key: CLOUDINARY_SHOW_FOLDER
+  - key: CLOUDINARY_UPDATE_ASSET_METADATA
+  - key: CLOUDINARY_UPDATE_FOLDER
+  - key: CLOUDINARY_UPDATE_LIVE_STREAM
+  - key: CLOUDINARY_UPDATE_LIVE_STREAM_OUTPUT
+  - key: CLOUDINARY_UPDATE_METADATA_FIELD
+  - key: CLOUDINARY_UPDATE_METADATA_FIELD_DATASOURCE
+  - key: CLOUDINARY_UPDATE_METADATA_RULE
+  - key: CLOUDINARY_UPDATE_RESOURCE_BY_ASSET_ID
+  - key: CLOUDINARY_UPDATE_RESOURCE_BY_PUBLIC_ID
+  - key: CLOUDINARY_UPDATE_RESOURCE_TAGS
+  - key: CLOUDINARY_UPDATE_STREAMING_PROFILE
+  - key: CLOUDINARY_UPDATE_TRANSFORMATION2
+  - key: CLOUDINARY_UPDATE_TRIGGER
+  - key: CLOUDINARY_UPDATE_UPLOAD_MAPPING
+  - key: CLOUDINARY_UPDATE_UPLOAD_PRESET
+  - key: CLOUDINARY_UPLOAD_ASSET
+  - key: CLOUDINARY_UPLOAD_CHUNK
+  - key: CLOUDINARY_UPLOAD_FILE_AUTO_DETECT
 edges:
 - partner_name: AWS Marketplace
   partner: amazon-web-services
@@ -262,6 +415,425 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
-source:
-- https://ddex.net/membership/current-members/
-- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Tally
+  partner: tally
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/tally
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://try.tally.so/zapier
+- partner_name: MySQL
+  partner: mysql
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/mysql
+  direction: third-party
+  category: Databases
+  partner_url: https://www.mysql.com/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Feedly
+  partner: feedly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/feedly
+  direction: third-party
+  category: Social Media Accounts
+  partner_url: https://feedly.com/
+- partner_name: Firebase / Firestore
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/firebase
+  direction: third-party
+  category: Databases
+  partner_url: http://www.firebase.com/
+- partner_name: Uniqode
+  partner: uniqode
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/uniqode
+  direction: third-party
+  category: Marketing
+  partner_url: https://www.uniqode.com/
+- partner_name: Adalo
+  partner: adalo
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/adalo
+  direction: third-party
+  category: App Builder
+  partner_url: https://www.adalo.com/?utm_campaign=zapier_profile
+- partner_name: Knack
+  partner: knack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/knack
+  direction: third-party
+  category: Databases
+  partner_url: https://www.knackhq.com/
+- partner_name: Duda
+  partner: duda
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/duda
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.duda.co/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Zoho Forms
+  partner: zoho-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/zoho-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://go.zoho.com/LL2
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: Webflow
+  partner: webflow
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/webflow
+  direction: third-party
+  category: Website Builders
+  partner_url: https://webflow.com/
+- partner_name: All-Images.ai
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/all-imagesai
+  direction: third-party
+  category: AI Content Generation
+  partner_url: https://all-images.ai/
+- partner_name: SocialPilot
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/socialpilot
+  direction: third-party
+  category: Social Media Marketing
+  partner_url: http://www.socialpilot.co/
+- partner_name: Brick FTP
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/brick-ftp
+  direction: third-party
+  category: File Management & Storage
+  partner_url: http://brickftp.com/
+- partner_name: UpdateAI
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/updateai
+  direction: third-party
+  category: AI Assistants
+  partner_url: https://update.ai/
+- partner_name: OneDrive
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/onedrive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://onedrive.live.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Canva
+  partner: canva
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/canva
+  direction: third-party
+  category: Images & Design
+  partner_url: null
+- partner_name: Auphonic
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/auphonic
+  direction: third-party
+  category: Video & Audio
+  partner_url: https://auphonic.com/
+- partner_name: Squarespace Forms
+  partner: squarespace
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/squarespace-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.squarespace.com/
+- partner_name: Stacker Classic
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/stacker-classic
+  direction: third-party
+  category: App Builder
+  partner_url: https://www.stackerhq.com/
+- partner_name: SproutVideo
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/sproutvideo
+  direction: third-party
+  category: Video & Audio
+  partner_url: https://sproutvideo.com/
+- partner_name: DynaPictures
+  partner: dynapictures
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/cloudinary/integrations/dynapictures
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://dynapictures.com/
+templates:
+- title: Upload new Google Drive files to Cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations/google-drive/17336/upload-new-google-drive-files-to-cloudinary
+  apps:
+  - google-drive
+  - cloudinary
+- title: Get notified in Slack when images are added to Cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations/slack/17343/get-notified-in-slack-when-images-are-added-to-cloudinary
+  apps:
+  - cloudinary
+  - slack
+- title: Upload new Dropbox files to Cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations/dropbox/17330/upload-new-dropbox-files-to-cloudinary
+  apps:
+  - dropbox
+  - cloudinary
+- title: Create Webflow items from new tagged Cloudinary resources
+  url: https://zapier.com/apps/cloudinary/integrations/webflow/1312921/create-webflow-items-from-new-tagged-cloudinary-resources
+  apps:
+  - cloudinary
+  - webflow
+- title: Create and upload Cloudinary resources when new Airtable records are added
+  url: https://zapier.com/apps/airtable/integrations/cloudinary/1312211/create-and-upload-cloudinary-resources-when-new-airtable-records-are-added
+  apps:
+  - airtable
+  - cloudinary
+- title: Upload and manage new Jotform submissions as resources in Cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations/jotform/1626861/upload-and-manage-new-jotform-submissions-as-resources-in-cloudinary
+  apps:
+  - jotform
+  - cloudinary
+- title: Upload new Box files to Cloudinary
+  url: https://zapier.com/apps/box/integrations/cloudinary/17332/upload-new-box-files-to-cloudinary
+  apps:
+  - box
+  - cloudinary
+- title: Upload new Brick FTP files to Cloudinary
+  url: https://zapier.com/apps/brick-ftp/integrations/cloudinary/17334/upload-new-brick-ftp-files-to-cloudinary
+  apps:
+  - brick-ftp
+  - cloudinary
+- title: Upload new Cloudinary images to Google Drive
+  url: https://zapier.com/apps/cloudinary/integrations/google-drive/17337/upload-new-cloudinary-images-to-google-drive
+  apps:
+  - cloudinary
+  - google-drive
+- title: Save new Gmail attachments to Cloudinary [Business Gmail Accounts Only]
+  url: https://zapier.com/apps/cloudinary/integrations/gmail/17338/save-new-gmail-attachments-to-cloudinary-business-gmail-accounts-only
+  apps:
+  - gmail
+  - cloudinary
+- title: Send new Gmail emails when new files are uploaded to Cloudinary
+  url: https://zapier.com/apps/cloudinary/integrations/gmail/17339/send-new-gmail-emails-when-new-files-are-uploaded-to-cloudinary
+  apps:
+  - cloudinary
+  - gmail
+- title: Upload new Cloudinary images to Dropbox
+  url: https://zapier.com/apps/cloudinary/integrations/dropbox/17342/upload-new-cloudinary-images-to-dropbox
+  apps:
+  - cloudinary
+  - dropbox
+template_total: 87
