@@ -274,6 +274,8 @@ apis:
   - type: OpenAPI
     url: openapi/cloudinary-users-api-openapi.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/cloudinary/overview
 - type: Plans
   url: plans/cloudinary-plans-pricing.yml
 - type: RateLimits
