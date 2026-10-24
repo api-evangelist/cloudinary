@@ -1,173 +1,162 @@
 {
+  "info": {
+    "_postman_id": "1c68782d-bf06-4017-b860-f3dd86e02d21",
+    "name": "Cloudinary Upload Transformation API",
+    "description": "The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.\n\nContact Support:\n Name: Cloudinary Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:10.000Z",
+    "updatedAt": "2026-10-22T01:43:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c68782d-bf06-4017-b860-f3dd86e02d21"
+  },
   "item": [
     {
-      "id": "c92ddcb2-1398-4cbb-9364-a7cfb031fdbc",
-      "name": "Transformation",
-      "description": {
-        "content": "Apply transformations to existing assets.",
-        "type": "text/plain"
-      },
+      "name": "{resource_type}",
       "item": [
         {
-          "id": "d1877e48-404c-40e3-b55c-7baacdf81414",
-          "name": "Apply explicit actions to an existing asset",
-          "request": {
-            "name": "Apply explicit actions to an existing asset",
-            "description": {
-              "content": "Update tags, metadata, or apply eager transformations on an existing asset.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ":resource_type",
-                "explicit"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "resource_type",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "Your Cloudinary cloud name",
-                  "type": "any",
-                  "value": "{{cloud_name}}",
-                  "key": "cloud_name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "key_0",
-                  "value": "4431.899037004285"
-                },
-                {
-                  "disabled": false,
-                  "key": "key_1",
-                  "value": "1400"
-                },
-                {
-                  "disabled": false,
-                  "key": "key_2",
-                  "value": "string"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "explicit",
+          "item": [
             {
-              "id": "660f3e6b-af56-41c8-8950-e3aab0f6ccdc",
-              "name": "Action applied",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":resource_type",
-                    "explicit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "resource_type",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "Your Cloudinary cloud name",
-                      "type": "any",
-                      "value": "{{cloud_name}}",
-                      "key": "cloud_name"
-                    }
-                  ]
-                },
+              "name": "Apply explicit actions to an existing asset",
+              "id": "ada9b891-c2da-4643-b8aa-9f19f28668b3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "urlencoded",
                   "urlencoded": [
                     {
-                      "disabled": false,
-                      "key": "key_0",
-                      "value": "string"
+                      "key": "irure76a",
+                      "value": "-50303620.872879185"
+                    },
+                    {
+                      "key": "elit_9",
+                      "value": "Ut ullamco pariatur"
+                    },
+                    {
+                      "key": "in_5",
+                      "value": "23543005"
                     }
                   ]
-                }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:resource_type/explicit",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":resource_type",
+                    "explicit"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f3388d2f-1810-49c1-b52b-620036196177",
+                      "key": "resource_type",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update tags, metadata, or apply eager transformations on an existing asset."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "30f8d086-e2a6-4465-a767-3d852817be1d",
+                  "name": "Action applied",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "irure76a",
+                          "value": "-50303620.872879185"
+                        },
+                        {
+                          "key": "elit_9",
+                          "value": "Ut ullamco pariatur"
+                        },
+                        {
+                          "key": "in_5",
+                          "value": "23543005"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:resource_type/explicit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":resource_type",
+                        "explicit"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resource_type"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"asset_id\": \"<string>\",\n  \"public_id\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"format\": \"<string>\",\n  \"resource_type\": \"<string>\",\n  \"secure_url\": \"<uri>\"\n}",
+                  "createdAt": "2026-10-22T01:43:10.000Z",
+                  "updatedAt": "2026-10-22T01:43:10.000Z",
+                  "uid": "35240-30f8d086-e2a6-4465-a767-3d852817be1d"
                 }
               ],
-              "body": "{\n  \"asset_id\": \"string\",\n  \"public_id\": \"string\",\n  \"version\": 2225,\n  \"format\": \"string\",\n  \"resource_type\": \"string\",\n  \"secure_url\": \"http://xmfoxQGtxysoBEvfcERsjcI.ofzpCJKf+3Z9Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:43:10.000Z",
+              "updatedAt": "2026-10-22T01:43:10.000Z",
+              "uid": "35240-ada9b891-c2da-4643-b8aa-9f19f28668b3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "36bf492c-ced8-4b3a-be59-5c70938aba78",
+          "createdAt": "2026-10-22T01:43:10.000Z",
+          "updatedAt": "2026-10-22T01:43:10.000Z",
+          "uid": "35240-36bf492c-ced8-4b3a-be59-5c70938aba78"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Cloudinary cloud name",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "YOUR_CLOUD_NAME",
-      "key": "cloud_name"
-    },
-    {
-      "type": "string",
-      "value": "https://api.cloudinary.com/v1_1/{{cloud_name}}",
-      "key": "baseUrl"
+      "id": "83d486d5-9dfe-4f66-8b67-af7a03e0af5b",
+      "createdAt": "2026-10-22T01:43:10.000Z",
+      "updatedAt": "2026-10-22T01:43:10.000Z",
+      "uid": "35240-83d486d5-9dfe-4f66-8b67-af7a03e0af5b"
     }
   ],
   "auth": {
@@ -175,21 +164,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f59185df-aae1-46fc-85f2-99345be22209",
-    "name": "Cloudinary Upload Backup Transformation API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.\n\nContact Support:\n Name: Cloudinary Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "cloud_name",
+      "value": "YOUR_CLOUD_NAME"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/{{cloud_name}}"
     }
-  }
+  ]
 }

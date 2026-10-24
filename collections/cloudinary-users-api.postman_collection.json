@@ -1,0 +1,2967 @@
+{
+  "info": {
+    "_postman_id": "d92b2a00-325f-42bf-a35e-c7253bec87b2",
+    "name": "Cloudinary Account Provisioning Users API",
+    "description": "Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.\n\nProvisioning API access is available upon request for accounts on an Enterprise plan.\n\nThe API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.\n\nThe Provisioning API has dedicated SDKs for the following languages:\n\n* JavaScript\n* Python\n* PHP\n* Java\n\n> **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.\n\nUseful links:\n* Provisioning API reference (Classic) (includes SDKs for additional languages)\n* Permissions API reference\n\nContact Support:\n Name: Cloudinary Support\n Email: support@cloudinary.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:43.000Z",
+    "updatedAt": "2026-10-22T01:43:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d92b2a00-325f-42bf-a35e-c7253bec87b2"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{user_id}",
+          "item": [
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "Get user groups",
+                  "id": "6d7144fe-6aa3-4103-9e6e-48adb6d9b781",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id",
+                        "groups"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ddcda323-1ff9-4eab-8d75-9de3ad9fe4b8",
+                          "key": "user_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the user."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the groups that a specific user belongs to."
+                  },
+                  "response": [
+                    {
+                      "id": "c4e42cc2-464f-42ff-b8df-8a92794a05fd",
+                      "name": "Successful operation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"groups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-c4e42cc2-464f-42ff-b8df-8a92794a05fd"
+                    },
+                    {
+                      "id": "8c7b047b-cafb-4656-98d4-869d3c959ba2",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-8c7b047b-cafb-4656-98d4-869d3c959ba2"
+                    },
+                    {
+                      "id": "8ae74a0b-6d56-4db0-84f6-89bc31893837",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-8ae74a0b-6d56-4db0-84f6-89bc31893837"
+                    },
+                    {
+                      "id": "3e11d2b7-11f3-42d6-9aac-c08a388f8e22",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-3e11d2b7-11f3-42d6-9aac-c08a388f8e22"
+                    },
+                    {
+                      "id": "fd401dfb-9658-4166-b124-d5ab8563377d",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-fd401dfb-9658-4166-b124-d5ab8563377d"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-6d7144fe-6aa3-4103-9e6e-48adb6d9b781"
+                }
+              ],
+              "id": "20445185-8bfe-488f-9aa7-a056df6df899",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-20445185-8bfe-488f-9aa7-a056df6df899"
+            },
+            {
+              "name": "sub_accounts",
+              "item": [
+                {
+                  "name": "Get user sub-accounts",
+                  "id": "98669d36-5220-4bda-9c76-116463dde486",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id",
+                        "sub_accounts"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4fbf14f4-f9d5-41fd-8f1c-593185367b54",
+                          "key": "user_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the user."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the product environments (sub-accounts) that a specific user has access to."
+                  },
+                  "response": [
+                    {
+                      "id": "6a6cf848-51b0-4fdb-bfd2-dc929e4fcb1d",
+                      "name": "Successful operation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "sub_accounts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sub_accounts\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"cloud_name\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"cloud_name\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-6a6cf848-51b0-4fdb-bfd2-dc929e4fcb1d"
+                    },
+                    {
+                      "id": "af20a461-3e72-4141-b435-ea62a513e422",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "sub_accounts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-af20a461-3e72-4141-b435-ea62a513e422"
+                    },
+                    {
+                      "id": "ed31e786-22e7-4498-86a8-b33c5a85b264",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "sub_accounts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-ed31e786-22e7-4498-86a8-b33c5a85b264"
+                    },
+                    {
+                      "id": "5beb6ac1-d93e-4f4e-9a29-01e2b46da1af",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "sub_accounts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-5beb6ac1-d93e-4f4e-9a29-01e2b46da1af"
+                    },
+                    {
+                      "id": "a827e1f5-a185-4db8-980d-4891bd72b19e",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/sub_accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "sub_accounts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:44.000Z",
+                      "updatedAt": "2026-10-22T01:43:44.000Z",
+                      "uid": "35240-a827e1f5-a185-4db8-980d-4891bd72b19e"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-98669d36-5220-4bda-9c76-116463dde486"
+                }
+              ],
+              "id": "aa5c2931-c479-4d3f-9e71-0db92604364f",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-aa5c2931-c479-4d3f-9e71-0db92604364f"
+            },
+            {
+              "name": "Get user",
+              "id": "93608e44-2a3b-4143-b778-8617f5b96541",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "21c71b89-fd82-45f9-b814-847906239f09",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific user."
+              },
+              "response": [
+                {
+                  "id": "207ccd1c-ed05-4b6d-a2e7-5098930b557a",
+                  "name": "Successful operation.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"role\": \"<string>\",\n  \"email\": \"<email>\",\n  \"pending\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_login\": \"<dateTime>\",\n  \"all_sub_accounts\": \"<boolean>\",\n  \"providers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_preferences\": {},\n  \"account_id\": \"<string>\",\n  \"two_factor\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"root\": \"<boolean>\",\n  \"technical_role\": \"<string>\",\n  \"group_count\": \"<integer>\",\n  \"sub_account_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-207ccd1c-ed05-4b6d-a2e7-5098930b557a"
+                },
+                {
+                  "id": "0645c450-70f6-4011-b5ae-3999da5e7988",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-0645c450-70f6-4011-b5ae-3999da5e7988"
+                },
+                {
+                  "id": "6879ca64-1e8d-406c-bbf5-84e7388edebe",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-6879ca64-1e8d-406c-bbf5-84e7388edebe"
+                },
+                {
+                  "id": "75274961-4149-49b9-9bf0-c6cecd0bb233",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-75274961-4149-49b9-9bf0-c6cecd0bb233"
+                },
+                {
+                  "id": "9323b7c4-1b80-4a8c-a273-99b23300b6ef",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-9323b7c4-1b80-4a8c-a273-99b23300b6ef"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-93608e44-2a3b-4143-b778-8617f5b96541"
+            },
+            {
+              "name": "Update user",
+              "id": "a695652d-c3ac-4f40-8e6d-3fef2740e35e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "32d5c797-c471-4392-8e66-1fc79fed89af",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "description": "Update the details of a user."
+              },
+              "response": [
+                {
+                  "id": "dbf552dd-7692-432c-b063-a5d00f680b53",
+                  "name": "User updated successfully.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"role\": \"<string>\",\n  \"email\": \"<email>\",\n  \"pending\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_login\": \"<dateTime>\",\n  \"all_sub_accounts\": \"<boolean>\",\n  \"providers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_preferences\": {},\n  \"account_id\": \"<string>\",\n  \"two_factor\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"root\": \"<boolean>\",\n  \"technical_role\": \"<string>\",\n  \"group_count\": \"<integer>\",\n  \"sub_account_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-dbf552dd-7692-432c-b063-a5d00f680b53"
+                },
+                {
+                  "id": "c8a06572-560d-4e98-b089-30e593a04b8e",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-c8a06572-560d-4e98-b089-30e593a04b8e"
+                },
+                {
+                  "id": "f46df2b0-855d-441e-a1b5-84fd651e5273",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-f46df2b0-855d-441e-a1b5-84fd651e5273"
+                },
+                {
+                  "id": "9078ceb3-c870-4bc9-b1dc-20e046a33013",
+                  "name": "Not allowed.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-9078ceb3-c870-4bc9-b1dc-20e046a33013"
+                },
+                {
+                  "id": "7530a4a9-0994-4109-a21f-d2eb016f6ddf",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-7530a4a9-0994-4109-a21f-d2eb016f6ddf"
+                },
+                {
+                  "id": "f5976a5f-1f59-4f1f-ac20-1a05db47df98",
+                  "name": "Already exists.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-f5976a5f-1f59-4f1f-ac20-1a05db47df98"
+                },
+                {
+                  "id": "0a98b182-c8db-462f-b160-03472232ced6",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-0a98b182-c8db-462f-b160-03472232ced6"
+                },
+                {
+                  "id": "259d6442-2c5e-4ca6-b03e-b66fe70efff0",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"media_library_admin\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-259d6442-2c5e-4ca6-b03e-b66fe70efff0"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-a695652d-c3ac-4f40-8e6d-3fef2740e35e"
+            },
+            {
+              "name": "Delete user",
+              "id": "30f5ddd7-5aab-4690-9a8c-5985ba3b1350",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cab555bc-e403-4219-ac8d-d29dcdba72f9",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "description": "Delete a specific user."
+              },
+              "response": [
+                {
+                  "id": "8a073bef-8dd7-4668-8059-9578c71e78fa",
+                  "name": "User deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-8a073bef-8dd7-4668-8059-9578c71e78fa"
+                },
+                {
+                  "id": "60e237da-c091-46bb-b1e2-a50283e3733d",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-60e237da-c091-46bb-b1e2-a50283e3733d"
+                },
+                {
+                  "id": "f2db2554-a374-44cc-9bb1-1de43abd2d0c",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-f2db2554-a374-44cc-9bb1-1de43abd2d0c"
+                },
+                {
+                  "id": "cb6beff5-f555-4769-bff2-55cd4637e2cb",
+                  "name": "Not allowed.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-cb6beff5-f555-4769-bff2-55cd4637e2cb"
+                },
+                {
+                  "id": "79ca98fa-841a-4729-8073-ef55a7021f7f",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-79ca98fa-841a-4729-8073-ef55a7021f7f"
+                },
+                {
+                  "id": "8f7dfe62-bab5-4023-a182-246eaa69476a",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-8f7dfe62-bab5-4023-a182-246eaa69476a"
+                },
+                {
+                  "id": "19748b34-4220-4866-8452-3f21bf2e853a",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:44.000Z",
+                  "updatedAt": "2026-10-22T01:43:44.000Z",
+                  "uid": "35240-19748b34-4220-4866-8452-3f21bf2e853a"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-30f5ddd7-5aab-4690-9a8c-5985ba3b1350"
+            }
+          ],
+          "id": "f9df98c9-3b01-4fe2-ad3e-0dcf259c4e28",
+          "createdAt": "2026-10-22T01:43:44.000Z",
+          "updatedAt": "2026-10-22T01:43:44.000Z",
+          "uid": "35240-f9df98c9-3b01-4fe2-ad3e-0dcf259c4e28"
+        },
+        {
+          "name": "Get users",
+          "id": "cef3bb76-f15e-4ba0-a52b-466cf39e55a0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&ids=<string>&emails=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                  "key": "pending",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                  "key": "emails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                  "key": "emails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Returns users where the name begins with the specified case-insensitive string.",
+                  "key": "prefix",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Only returns users who have access to the specified account.",
+                  "key": "sub_account_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Specifies a date range for last login.",
+                  "key": "last_login",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                  "key": "from",
+                  "value": "<date>"
+                },
+                {
+                  "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                  "key": "to",
+                  "value": "<date>"
+                },
+                {
+                  "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                  "key": "union_type",
+                  "value": "include"
+                },
+                {
+                  "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                  "key": "sort_order",
+                  "value": "asc"
+                },
+                {
+                  "key": "sort_by",
+                  "value": "activity"
+                },
+                {
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "page_size",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns an array of all users in the account, or if conditions are specified, returns the relevant users."
+          },
+          "response": [
+            {
+              "id": "2455da3a-0254-447d-b1c8-945fe15d2837",
+              "name": "Successful operation.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                      "key": "emails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns users where the name begins with the specified case-insensitive string.",
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only returns users who have access to the specified account.",
+                      "key": "sub_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies a date range for last login.",
+                      "key": "last_login",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                      "key": "union_type",
+                      "value": "include"
+                    },
+                    {
+                      "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "activity"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"pending\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"last_login\": \"<dateTime>\",\n      \"all_sub_accounts\": \"<boolean>\",\n      \"providers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"email_preferences\": {},\n      \"account_id\": \"<string>\",\n      \"two_factor\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"root\": \"<boolean>\",\n      \"technical_role\": \"<string>\",\n      \"group_count\": \"<integer>\",\n      \"sub_account_count\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"pending\": \"<boolean>\",\n      \"enabled\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"last_login\": \"<dateTime>\",\n      \"all_sub_accounts\": \"<boolean>\",\n      \"providers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"email_preferences\": {},\n      \"account_id\": \"<string>\",\n      \"two_factor\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"root\": \"<boolean>\",\n      \"technical_role\": \"<string>\",\n      \"group_count\": \"<integer>\",\n      \"sub_account_count\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-2455da3a-0254-447d-b1c8-945fe15d2837"
+            },
+            {
+              "id": "116d3c3e-ba6f-4fa1-90f3-6247ff3aadb6",
+              "name": "Authorization required.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                      "key": "emails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns users where the name begins with the specified case-insensitive string.",
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only returns users who have access to the specified account.",
+                      "key": "sub_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies a date range for last login.",
+                      "key": "last_login",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                      "key": "union_type",
+                      "value": "include"
+                    },
+                    {
+                      "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "activity"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-116d3c3e-ba6f-4fa1-90f3-6247ff3aadb6"
+            },
+            {
+              "id": "f5da0bf3-6266-4f07-b43b-4c1958a27892",
+              "name": "Not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                      "key": "emails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns users where the name begins with the specified case-insensitive string.",
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only returns users who have access to the specified account.",
+                      "key": "sub_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies a date range for last login.",
+                      "key": "last_login",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                      "key": "union_type",
+                      "value": "include"
+                    },
+                    {
+                      "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "activity"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-f5da0bf3-6266-4f07-b43b-4c1958a27892"
+            },
+            {
+              "id": "df56cc43-4f83-4983-b09d-ffe7b0cefa5e",
+              "name": "Max usage rate exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                      "key": "emails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns users where the name begins with the specified case-insensitive string.",
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only returns users who have access to the specified account.",
+                      "key": "sub_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies a date range for last login.",
+                      "key": "last_login",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                      "key": "union_type",
+                      "value": "include"
+                    },
+                    {
+                      "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "activity"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-df56cc43-4f83-4983-b09d-ffe7b0cefa5e"
+            },
+            {
+              "id": "ef9199d9-14eb-485d-9404-9fc5be8d73d1",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?pending=<boolean>&ids=<string>&emails=<string>&prefix=<string>&sub_account_id=<string>&last_login=<boolean>&from=<date>&to=<date>&union_type=include&sort_order=asc&sort_by=activity&page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to return pending users. **Default**: `false` (all users)\n",
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "A list of up to 100 user IDs.  When provided, other parameters are ignored.",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of up to 100 user Emails.  When provided, other parameters are ignored.",
+                      "key": "emails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns users where the name begins with the specified case-insensitive string.",
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only returns users who have access to the specified account.",
+                      "key": "sub_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies a date range for last login.",
+                      "key": "last_login",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "All last logins after this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All last logins before this date, given in the format: yyyy-mm-dd.\n",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Whether to return users who last logged in within the specified date range (include) or those who didn't\nlast log in within the range (exclude). **Possible values**: `include`, `exclude`. **Default**: `include`.\n",
+                      "key": "union_type",
+                      "value": "include"
+                    },
+                    {
+                      "description": "Control the order of returned users. **Possible values**: `desc` (default), `asc`.\n",
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "activity"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-ef9199d9-14eb-485d-9404-9fc5be8d73d1"
+            }
+          ],
+          "createdAt": "2026-10-22T01:43:44.000Z",
+          "updatedAt": "2026-10-22T01:43:44.000Z",
+          "uid": "35240-cef3bb76-f15e-4ba0-a52b-466cf39e55a0"
+        },
+        {
+          "name": "Create user",
+          "id": "945da2eb-40c8-42c1-b006-09125244facc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Create a new user."
+          },
+          "response": [
+            {
+              "id": "b90efa17-3684-4d9e-941b-de578eef004f",
+              "name": "User created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"role\": \"<string>\",\n  \"email\": \"<email>\",\n  \"pending\": \"<boolean>\",\n  \"enabled\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_login\": \"<dateTime>\",\n  \"all_sub_accounts\": \"<boolean>\",\n  \"providers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"email_preferences\": {},\n  \"account_id\": \"<string>\",\n  \"two_factor\": \"<boolean>\",\n  \"status\": \"<string>\",\n  \"root\": \"<boolean>\",\n  \"technical_role\": \"<string>\",\n  \"group_count\": \"<integer>\",\n  \"sub_account_count\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-b90efa17-3684-4d9e-941b-de578eef004f"
+            },
+            {
+              "id": "27f05706-48b5-4a61-8aff-59a655642dc6",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-27f05706-48b5-4a61-8aff-59a655642dc6"
+            },
+            {
+              "id": "151222be-ca7e-4d28-b347-8eeaf3b72e95",
+              "name": "Authorization required.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-151222be-ca7e-4d28-b347-8eeaf3b72e95"
+            },
+            {
+              "id": "cb9502bb-6220-4fb3-ac59-9efefacb7a2b",
+              "name": "Not allowed.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-cb9502bb-6220-4fb3-ac59-9efefacb7a2b"
+            },
+            {
+              "id": "aaac3aaf-3668-4365-be32-7a06e8ead65e",
+              "name": "Not found.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-aaac3aaf-3668-4365-be32-7a06e8ead65e"
+            },
+            {
+              "id": "f23e051c-964b-4ff5-b11b-b4d84abba90d",
+              "name": "Already exists.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-f23e051c-964b-4ff5-b11b-b4d84abba90d"
+            },
+            {
+              "id": "d9efd425-58bb-4ec2-b5bb-ddf787a4bba0",
+              "name": "Max usage rate exceeded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-d9efd425-58bb-4ec2-b5bb-ddf787a4bba0"
+            },
+            {
+              "id": "dbdd2c2d-b71a-4b52-aeec-ff2de70f6782",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"reports\",\n  \"sub_account_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:44.000Z",
+              "updatedAt": "2026-10-22T01:43:44.000Z",
+              "uid": "35240-dbdd2c2d-b71a-4b52-aeec-ff2de70f6782"
+            }
+          ],
+          "createdAt": "2026-10-22T01:43:44.000Z",
+          "updatedAt": "2026-10-22T01:43:44.000Z",
+          "uid": "35240-945da2eb-40c8-42c1-b006-09125244facc"
+        }
+      ],
+      "id": "37ee629f-d2b6-41a4-a26c-0f8c9f70bc5f",
+      "createdAt": "2026-10-22T01:43:44.000Z",
+      "updatedAt": "2026-10-22T01:43:44.000Z",
+      "uid": "35240-37ee629f-d2b6-41a4-a26c-0f8c9f70bc5f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "accountId",
+      "value": "ACCOUNT_ID"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/provisioning/accounts/{{accountId}}"
+    }
+  ]
+}

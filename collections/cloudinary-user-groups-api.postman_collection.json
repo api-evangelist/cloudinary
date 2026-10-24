@@ -1,0 +1,3260 @@
+{
+  "info": {
+    "_postman_id": "13ffa842-af4b-4046-8f51-29eaa104764d",
+    "name": "Cloudinary Account Provisioning User Groups API",
+    "description": "Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.\n\nProvisioning API access is available upon request for accounts on an Enterprise plan.\n\nThe API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.\n\nThe Provisioning API has dedicated SDKs for the following languages:\n\n* JavaScript\n* Python\n* PHP\n* Java\n\n> **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.\n\nUseful links:\n* Provisioning API reference (Classic) (includes SDKs for additional languages)\n* Permissions API reference\n\nContact Support:\n Name: Cloudinary Support\n Email: support@cloudinary.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:38.000Z",
+    "updatedAt": "2026-10-22T01:43:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-13ffa842-af4b-4046-8f51-29eaa104764d"
+  },
+  "item": [
+    {
+      "name": "user_groups",
+      "item": [
+        {
+          "name": "{group_id}",
+          "item": [
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "Add User to User Group",
+                      "id": "5ca379b7-4109-4999-ae69-628630a36884",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users",
+                            ":user_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "578e91af-6050-4c10-a943-26e238ef5f49",
+                              "key": "group_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the user group."
+                            },
+                            {
+                              "id": "47753394-e3c4-4e38-bb00-aeaa1cff2ad0",
+                              "key": "user_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the user."
+                            }
+                          ]
+                        },
+                        "description": "Add a user to a group with the specified ID."
+                      },
+                      "response": [
+                        {
+                          "id": "4f8dfa5f-7613-4584-9d7c-2860b409311a",
+                          "name": "User added to group successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\"\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-4f8dfa5f-7613-4584-9d7c-2860b409311a"
+                        },
+                        {
+                          "id": "1c61bb5d-6b24-4d2c-b1a6-9fcfab20ce3e",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-1c61bb5d-6b24-4d2c-b1a6-9fcfab20ce3e"
+                        },
+                        {
+                          "id": "f72879c5-eff9-439b-8392-00e1d2316bdb",
+                          "name": "Authorization required.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-f72879c5-eff9-439b-8392-00e1d2316bdb"
+                        },
+                        {
+                          "id": "3866f185-c08a-4975-9be9-466832b373d8",
+                          "name": "Not allowed.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-3866f185-c08a-4975-9be9-466832b373d8"
+                        },
+                        {
+                          "id": "9f3bcc13-59de-40c3-b142-b14c4d9f54b1",
+                          "name": "Not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-9f3bcc13-59de-40c3-b142-b14c4d9f54b1"
+                        },
+                        {
+                          "id": "99572685-43a8-4d19-b9dd-36d611e5f2f7",
+                          "name": "Already exists.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-99572685-43a8-4d19-b9dd-36d611e5f2f7"
+                        },
+                        {
+                          "id": "982c9c72-3196-4faf-af9e-30610b6093c0",
+                          "name": "Max usage rate exceeded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-982c9c72-3196-4faf-af9e-30610b6093c0"
+                        },
+                        {
+                          "id": "6d5e307d-dd28-4528-8694-d38eb1b68e87",
+                          "name": "Too many requests.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-6d5e307d-dd28-4528-8694-d38eb1b68e87"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:43:38.000Z",
+                      "updatedAt": "2026-10-22T01:43:38.000Z",
+                      "uid": "35240-5ca379b7-4109-4999-ae69-628630a36884"
+                    },
+                    {
+                      "name": "Remove User from User Group",
+                      "id": "4b7ca440-0dc0-4757-9045-7a2eb7f894ce",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users",
+                            ":user_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c23230b1-ac13-4bab-a8a8-deea6462b39b",
+                              "key": "group_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the user group."
+                            },
+                            {
+                              "id": "5ee416cc-bc86-4317-a32e-ff86b7c176e9",
+                              "key": "user_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the user."
+                            }
+                          ]
+                        },
+                        "description": "Remove a user from a group with the specified ID."
+                      },
+                      "response": [
+                        {
+                          "id": "ef073cf7-6287-4eaf-98b5-4d1b732ebb27",
+                          "name": "User removed from group successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-ef073cf7-6287-4eaf-98b5-4d1b732ebb27"
+                        },
+                        {
+                          "id": "2e77a5f8-62c2-406a-977c-890c4d8cc2e9",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-2e77a5f8-62c2-406a-977c-890c4d8cc2e9"
+                        },
+                        {
+                          "id": "6ea735bf-56fc-4422-acac-13b16c9f4c1c",
+                          "name": "Authorization required.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-6ea735bf-56fc-4422-acac-13b16c9f4c1c"
+                        },
+                        {
+                          "id": "edb1d410-17d9-4441-95f2-82145a979ff9",
+                          "name": "Not allowed.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-edb1d410-17d9-4441-95f2-82145a979ff9"
+                        },
+                        {
+                          "id": "a6cf3aaa-b6a5-415d-85ac-e6b8409035ee",
+                          "name": "Not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-a6cf3aaa-b6a5-415d-85ac-e6b8409035ee"
+                        },
+                        {
+                          "id": "3ee713f2-cf71-4545-99ea-420b35cdc638",
+                          "name": "Max usage rate exceeded.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-3ee713f2-cf71-4545-99ea-420b35cdc638"
+                        },
+                        {
+                          "id": "c4190d62-8c23-43a9-bf16-db8063f68948",
+                          "name": "Too many requests.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user_groups/:group_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user_groups",
+                                ":group_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:39.000Z",
+                          "updatedAt": "2026-10-22T01:43:39.000Z",
+                          "uid": "35240-c4190d62-8c23-43a9-bf16-db8063f68948"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:43:38.000Z",
+                      "updatedAt": "2026-10-22T01:43:38.000Z",
+                      "uid": "35240-4b7ca440-0dc0-4757-9045-7a2eb7f894ce"
+                    }
+                  ],
+                  "id": "1fbf0c4e-9d83-47dc-bae6-c34b75fb4807",
+                  "createdAt": "2026-10-22T01:43:38.000Z",
+                  "updatedAt": "2026-10-22T01:43:38.000Z",
+                  "uid": "35240-1fbf0c4e-9d83-47dc-bae6-c34b75fb4807"
+                },
+                {
+                  "name": "Get Users in User Group",
+                  "id": "47101013-5330-4bc3-8b4d-390ddcfad2be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f9471665-8d90-40ec-a3ee-e33286ec0928",
+                          "key": "group_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the user group."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the users in the group with the specified ID."
+                  },
+                  "response": [
+                    {
+                      "id": "db4a250f-7318-461f-8dbf-36cd1c7ab4c5",
+                      "name": "Successful operation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:43:39.000Z",
+                      "updatedAt": "2026-10-22T01:43:39.000Z",
+                      "uid": "35240-db4a250f-7318-461f-8dbf-36cd1c7ab4c5"
+                    },
+                    {
+                      "id": "dfebaf32-1463-4f86-be54-833cc2838ef6",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:39.000Z",
+                      "updatedAt": "2026-10-22T01:43:39.000Z",
+                      "uid": "35240-dfebaf32-1463-4f86-be54-833cc2838ef6"
+                    },
+                    {
+                      "id": "6fe3942d-efbc-42f4-99ec-aa8893969d4d",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:39.000Z",
+                      "updatedAt": "2026-10-22T01:43:39.000Z",
+                      "uid": "35240-6fe3942d-efbc-42f4-99ec-aa8893969d4d"
+                    },
+                    {
+                      "id": "0c99358c-14b5-4f2a-b8c5-ebb9e151b088",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:39.000Z",
+                      "updatedAt": "2026-10-22T01:43:39.000Z",
+                      "uid": "35240-0c99358c-14b5-4f2a-b8c5-ebb9e151b088"
+                    },
+                    {
+                      "id": "3960483a-3e57-482b-bb84-36091f303cd4",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user_groups/:group_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user_groups",
+                            ":group_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:39.000Z",
+                      "updatedAt": "2026-10-22T01:43:39.000Z",
+                      "uid": "35240-3960483a-3e57-482b-bb84-36091f303cd4"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:38.000Z",
+                  "updatedAt": "2026-10-22T01:43:38.000Z",
+                  "uid": "35240-47101013-5330-4bc3-8b4d-390ddcfad2be"
+                }
+              ],
+              "id": "68ded663-de4c-4567-b6de-774aca13f406",
+              "createdAt": "2026-10-22T01:43:38.000Z",
+              "updatedAt": "2026-10-22T01:43:38.000Z",
+              "uid": "35240-68ded663-de4c-4567-b6de-774aca13f406"
+            },
+            {
+              "name": "Get User Group",
+              "id": "8c743da6-0fcd-46bf-9fe4-3794487a3c49",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups",
+                    ":group_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "72e11540-5ee8-48e3-8099-0c8488278943",
+                      "key": "group_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user group."
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific user group."
+              },
+              "response": [
+                {
+                  "id": "85fe86d8-02d9-41e2-ba63-c6d806721d59",
+                  "name": "Successful operation.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                          "key": "extended_details",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-85fe86d8-02d9-41e2-ba63-c6d806721d59"
+                },
+                {
+                  "id": "e370678a-eb0a-48c6-9df7-ff9a8fcb75dd",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                          "key": "extended_details",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-e370678a-eb0a-48c6-9df7-ff9a8fcb75dd"
+                },
+                {
+                  "id": "65c7dfbb-dda7-4146-b4db-2b834c2cfe3b",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                          "key": "extended_details",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-65c7dfbb-dda7-4146-b4db-2b834c2cfe3b"
+                },
+                {
+                  "id": "d06aeb21-9acf-4e56-b304-cf0c3cabff2f",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                          "key": "extended_details",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-d06aeb21-9acf-4e56-b304-cf0c3cabff2f"
+                },
+                {
+                  "id": "da5de423-4079-43b2-a86a-91926c0f0b17",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id?extended_details=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                          "key": "extended_details",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-da5de423-4079-43b2-a86a-91926c0f0b17"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:38.000Z",
+              "updatedAt": "2026-10-22T01:43:38.000Z",
+              "uid": "35240-8c743da6-0fcd-46bf-9fe4-3794487a3c49"
+            },
+            {
+              "name": "Update User Group",
+              "id": "9e1055f5-044c-4aa9-bf75-246044894cc4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups/:group_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups",
+                    ":group_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "712432c2-a213-4419-a479-0605fc98b93f",
+                      "key": "group_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user group."
+                    }
+                  ]
+                },
+                "description": "Update the name of a specified user group."
+              },
+              "response": [
+                {
+                  "id": "5aba31c9-a8a1-4c65-a012-7daafa20cbdf",
+                  "name": "User group updated successfully.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-5aba31c9-a8a1-4c65-a012-7daafa20cbdf"
+                },
+                {
+                  "id": "71cb9818-fe9d-4346-9349-efdfc19cdbd7",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-71cb9818-fe9d-4346-9349-efdfc19cdbd7"
+                },
+                {
+                  "id": "719c5814-e300-49f9-99f3-c9bcf1d1237b",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-719c5814-e300-49f9-99f3-c9bcf1d1237b"
+                },
+                {
+                  "id": "d320acb6-e5e6-42c0-8641-b79175c6b8cb",
+                  "name": "Not allowed.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-d320acb6-e5e6-42c0-8641-b79175c6b8cb"
+                },
+                {
+                  "id": "5acf6f7e-57f8-4474-9f1d-0a89903a9bef",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-5acf6f7e-57f8-4474-9f1d-0a89903a9bef"
+                },
+                {
+                  "id": "c3b9beac-43da-4bbb-ad9c-707b05c3f5a3",
+                  "name": "Already exists.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-c3b9beac-43da-4bbb-ad9c-707b05c3f5a3"
+                },
+                {
+                  "id": "6f37d63e-3ee8-4653-97f2-bef5e6344f0f",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-6f37d63e-3ee8-4653-97f2-bef5e6344f0f"
+                },
+                {
+                  "id": "0947e1a6-5ea4-4574-885c-6a08a5cecca4",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-0947e1a6-5ea4-4574-885c-6a08a5cecca4"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:38.000Z",
+              "updatedAt": "2026-10-22T01:43:38.000Z",
+              "uid": "35240-9e1055f5-044c-4aa9-bf75-246044894cc4"
+            },
+            {
+              "name": "Delete User Group",
+              "id": "a49d9ec5-17fd-4d13-ab9c-10d6ac70e3ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups/:group_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups",
+                    ":group_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9703f7fe-1775-4d14-90ff-ca931065d867",
+                      "key": "group_id",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the user group."
+                    }
+                  ]
+                },
+                "description": "Delete a user group with the specified ID."
+              },
+              "response": [
+                {
+                  "id": "13d21b84-2752-4991-ac8d-45265f3721f3",
+                  "name": "User group deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-13d21b84-2752-4991-ac8d-45265f3721f3"
+                },
+                {
+                  "id": "ae4f56cd-134d-4ab6-a96c-2f8ec57b5a54",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-ae4f56cd-134d-4ab6-a96c-2f8ec57b5a54"
+                },
+                {
+                  "id": "a9f933e5-a6b1-44c9-80d6-eb7283603862",
+                  "name": "Authorization required.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-a9f933e5-a6b1-44c9-80d6-eb7283603862"
+                },
+                {
+                  "id": "f1a06699-9b94-4c89-8475-d2dd9da47d76",
+                  "name": "Not allowed.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-f1a06699-9b94-4c89-8475-d2dd9da47d76"
+                },
+                {
+                  "id": "c2b419d2-75df-4303-8669-b3f7d4b0ddb2",
+                  "name": "Not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-c2b419d2-75df-4303-8669-b3f7d4b0ddb2"
+                },
+                {
+                  "id": "12430c69-0073-48ae-b315-807cbe7a1acc",
+                  "name": "Max usage rate exceeded.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-12430c69-0073-48ae-b315-807cbe7a1acc"
+                },
+                {
+                  "id": "4690d7ec-0a37-47c5-aa49-cd9285c3d3d8",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user_groups/:group_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user_groups",
+                        ":group_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:39.000Z",
+                  "updatedAt": "2026-10-22T01:43:39.000Z",
+                  "uid": "35240-4690d7ec-0a37-47c5-aa49-cd9285c3d3d8"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:38.000Z",
+              "updatedAt": "2026-10-22T01:43:38.000Z",
+              "uid": "35240-a49d9ec5-17fd-4d13-ab9c-10d6ac70e3ce"
+            }
+          ],
+          "id": "4fc0992c-b6f6-4409-a195-1138d32eda2d",
+          "createdAt": "2026-10-22T01:43:38.000Z",
+          "updatedAt": "2026-10-22T01:43:38.000Z",
+          "uid": "35240-4fc0992c-b6f6-4409-a195-1138d32eda2d"
+        },
+        {
+          "name": "Get User Groups",
+          "id": "b1a26887-2de2-4559-a855-d3876c6f5923",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user_groups"
+              ],
+              "query": [
+                {
+                  "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                  "key": "extended_details",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Retrieve an array of all user groups in the account."
+          },
+          "response": [
+            {
+              "id": "29b49d21-fe69-44ed-a0c2-310f9ada557b",
+              "name": "Successful operation.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"user_groups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"users\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"users\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-29b49d21-fe69-44ed-a0c2-310f9ada557b"
+            },
+            {
+              "id": "cd9129aa-2493-4fef-83c6-5e7f7536cd65",
+              "name": "Authorization required.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-cd9129aa-2493-4fef-83c6-5e7f7536cd65"
+            },
+            {
+              "id": "08f76777-93f5-42c1-80ee-cd0f81bb6c2d",
+              "name": "Not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-08f76777-93f5-42c1-80ee-cd0f81bb6c2d"
+            },
+            {
+              "id": "329e8635-c95e-4788-8b11-5592e33c349d",
+              "name": "Max usage rate exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-329e8635-c95e-4788-8b11-5592e33c349d"
+            },
+            {
+              "id": "b1c7059d-a6a5-4546-ba6d-8e64b75e92ad",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups?extended_details=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to only return extended (true) or basic information about the group (false). \n**Default**: false.\n",
+                      "key": "extended_details",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-b1c7059d-a6a5-4546-ba6d-8e64b75e92ad"
+            }
+          ],
+          "createdAt": "2026-10-22T01:43:38.000Z",
+          "updatedAt": "2026-10-22T01:43:38.000Z",
+          "uid": "35240-b1a26887-2de2-4559-a855-d3876c6f5923"
+        },
+        {
+          "name": "Create User Group",
+          "id": "d3fce54e-2fe8-480c-9833-e1a7928e1dcb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user_groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user_groups"
+              ]
+            },
+            "description": "Create a new user group for the account."
+          },
+          "response": [
+            {
+              "id": "fab59b3b-6119-42d8-8a80-e6d4602abe1d",
+              "name": "User group created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"users\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-fab59b3b-6119-42d8-8a80-e6d4602abe1d"
+            },
+            {
+              "id": "0e02956d-7e18-43d2-a0f7-9c08b9176f36",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-0e02956d-7e18-43d2-a0f7-9c08b9176f36"
+            },
+            {
+              "id": "c33fc83f-8229-4342-b52a-952fe4922773",
+              "name": "Authorization required.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-c33fc83f-8229-4342-b52a-952fe4922773"
+            },
+            {
+              "id": "47db4429-544a-42e7-bd17-e9ff17836851",
+              "name": "Not allowed.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-47db4429-544a-42e7-bd17-e9ff17836851"
+            },
+            {
+              "id": "d4fa8cc0-05fb-4e43-b4fd-f0d7a8ab938b",
+              "name": "Not found.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-d4fa8cc0-05fb-4e43-b4fd-f0d7a8ab938b"
+            },
+            {
+              "id": "1b1e48dd-a0a6-468b-8dc1-53dc478aee73",
+              "name": "Already exists.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-1b1e48dd-a0a6-468b-8dc1-53dc478aee73"
+            },
+            {
+              "id": "3f1e9d59-66ec-41e2-aade-92dac5ddc944",
+              "name": "Max usage rate exceeded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-3f1e9d59-66ec-41e2-aade-92dac5ddc944"
+            },
+            {
+              "id": "d6d09601-70d0-45a2-8505-8bba20d92536",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"extended_details\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user_groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user_groups"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:39.000Z",
+              "updatedAt": "2026-10-22T01:43:39.000Z",
+              "uid": "35240-d6d09601-70d0-45a2-8505-8bba20d92536"
+            }
+          ],
+          "createdAt": "2026-10-22T01:43:38.000Z",
+          "updatedAt": "2026-10-22T01:43:38.000Z",
+          "uid": "35240-d3fce54e-2fe8-480c-9833-e1a7928e1dcb"
+        }
+      ],
+      "id": "77fd41a1-ca29-4e51-8a04-69493fd9774f",
+      "createdAt": "2026-10-22T01:43:38.000Z",
+      "updatedAt": "2026-10-22T01:43:38.000Z",
+      "uid": "35240-77fd41a1-ca29-4e51-8a04-69493fd9774f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "accountId",
+      "value": "ACCOUNT_ID"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/provisioning/accounts/{{accountId}}"
+    }
+  ]
+}

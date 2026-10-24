@@ -1,0 +1,415 @@
+{
+  "info": {
+    "_postman_id": "2571ae77-7178-4790-8993-a4c8ad53edc9",
+    "name": "Cloudinary Account Provisioning Billing Usage API",
+    "description": "Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.\n\nProvisioning API access is available upon request for accounts on an Enterprise plan.\n\nThe API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.\n\nThe Provisioning API has dedicated SDKs for the following languages:\n\n* JavaScript\n* Python\n* PHP\n* Java\n\n> **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.\n\nUseful links:\n* Provisioning API reference (Classic) (includes SDKs for additional languages)\n* Permissions API reference\n\nContact Support:\n Name: Cloudinary Support\n Email: support@cloudinary.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:25.000Z",
+    "updatedAt": "2026-10-22T01:43:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2571ae77-7178-4790-8993-a4c8ad53edc9"
+  },
+  "item": [
+    {
+      "name": "billing_usage",
+      "item": [
+        {
+          "name": "Get billing usage information",
+          "id": "187b743e-f74e-4b16-8369-feeba63c9a88",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing_usage"
+              ],
+              "query": [
+                {
+                  "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                  "key": "year",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                  "key": "include_prodenv_breakdown",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Retrieve billing usage metrics for your account and product environments,\nincluding storage, bandwidth, impressions, and transformations.\n\nIf `year` is provided:\n- **Annual subscription**: Returns the single annual usage cycle that began in the specified year (if any).\n- **Monthly subscription**: Returns all monthly usage cycles that began in the specified year.\n\nIf `year` is not provided:\n- Returns usage for the year in which the current active subscription period began.\n- If no active subscription exists, an empty list is returned.\n\n**Note**: Usage metrics are updated daily, so calling this endpoint once per day gives you the latest data."
+          },
+          "response": [
+            {
+              "id": "10124b09-7d2f-423b-b55f-e133799e6af6",
+              "name": "Successful operation.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"plan_name\": \"<string>\",\n    \"metric_usage\": [\n      {\n        \"metric\": \"<string>\",\n        \"limit\": \"<number>\",\n        \"cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"monthly_cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"metric\": \"<string>\",\n        \"limit\": \"<number>\",\n        \"cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"monthly_cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"plan_name\": \"<string>\",\n    \"metric_usage\": [\n      {\n        \"metric\": \"<string>\",\n        \"limit\": \"<number>\",\n        \"cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"monthly_cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"metric\": \"<string>\",\n        \"limit\": \"<number>\",\n        \"cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ],\n        \"monthly_cycles\": [\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          },\n          {\n            \"from_day\": \"<date>\",\n            \"to_day\": \"<date>\",\n            \"usage\": \"<number>\",\n            \"breakdown\": {\n              \"storage_image\": \"<number>\",\n              \"storage_video\": \"<number>\",\n              \"storage_raw\": \"<number>\",\n              \"transformations_image\": \"<number>\",\n              \"transformations_video\": \"<number>\",\n              \"bandwidth_image\": \"<number>\",\n              \"bandwidth_video\": \"<number>\",\n              \"bandwidth_raw\": \"<number>\",\n              \"image_impressions\": \"<number>\",\n              \"video_seconds\": \"<number>\"\n            },\n            \"product_environment_breakdown\": [\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              },\n              {\n                \"storage_image\": \"<number>\",\n                \"storage_video\": \"<number>\",\n                \"storage_raw\": \"<number>\",\n                \"transformations_image\": \"<number>\",\n                \"transformations_video\": \"<number>\",\n                \"bandwidth_image\": \"<number>\",\n                \"bandwidth_video\": \"<number>\",\n                \"bandwidth_raw\": \"<number>\",\n                \"image_impressions\": \"<number>\",\n                \"video_seconds\": \"<number>\",\n                \"cloud_name\": \"<string>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-10124b09-7d2f-423b-b55f-e133799e6af6"
+            },
+            {
+              "id": "cff774b7-dbb9-466e-bf4b-4d3e98bf2ff4",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-cff774b7-dbb9-466e-bf4b-4d3e98bf2ff4"
+            },
+            {
+              "id": "4d4926e8-2058-441b-abdc-f3ccc399ccbc",
+              "name": "Authorization required.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-4d4926e8-2058-441b-abdc-f3ccc399ccbc"
+            },
+            {
+              "id": "8c321b5c-39ec-4316-b353-61eebefaa938",
+              "name": "Not allowed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-8c321b5c-39ec-4316-b353-61eebefaa938"
+            },
+            {
+              "id": "03fa0fd4-6970-4a13-b036-3620750c5e83",
+              "name": "Not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-03fa0fd4-6970-4a13-b036-3620750c5e83"
+            },
+            {
+              "id": "64265792-f992-4490-985f-fd0e295acfc7",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing_usage?year=<integer>&include_prodenv_breakdown=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing_usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "The year to retrieve billing usage for. Behavior depends on subscription type (see above).",
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include usage details by product environment. **Default**: false.\n",
+                      "key": "include_prodenv_breakdown",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:43:26.000Z",
+              "updatedAt": "2026-10-22T01:43:26.000Z",
+              "uid": "35240-64265792-f992-4490-985f-fd0e295acfc7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:43:26.000Z",
+          "updatedAt": "2026-10-22T01:43:26.000Z",
+          "uid": "35240-187b743e-f74e-4b16-8369-feeba63c9a88"
+        }
+      ],
+      "id": "01daf910-e479-4bf1-87d1-ed9f525bac1a",
+      "createdAt": "2026-10-22T01:43:26.000Z",
+      "updatedAt": "2026-10-22T01:43:26.000Z",
+      "uid": "35240-01daf910-e479-4bf1-87d1-ed9f525bac1a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "accountId",
+      "value": "ACCOUNT_ID"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/provisioning/accounts/{{accountId}}"
+    }
+  ]
+}

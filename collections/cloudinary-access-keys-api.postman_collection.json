@@ -1,0 +1,2499 @@
+{
+  "info": {
+    "_postman_id": "8a3b9f1e-6b96-4a03-902c-50290c0b1edf",
+    "name": "Cloudinary Account Provisioning Access Keys API",
+    "description": "Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.\n\nProvisioning API access is available upon request for accounts on an Enterprise plan.\n\nThe API uses **Basic Authentication** over HTTPS. Your **Account Management Key** and **Account Management Secret** (previously referred to as **Account API Keys** and **Provisioning API keys**) are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the Cloudinary Console under **Settings > Account Management Keys**.\n\nThe Provisioning API has dedicated SDKs for the following languages:\n\n* JavaScript\n* Python\n* PHP\n* Java\n\n> **Note:** The JavaScript and Python SDKs also wrap methods from the Permissions API.\n\nUseful links:\n* Provisioning API reference (Classic) (includes SDKs for additional languages)\n* Permissions API reference\n\nContact Support:\n Name: Cloudinary Support\n Email: support@cloudinary.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:20.000Z",
+    "updatedAt": "2026-10-22T01:43:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8a3b9f1e-6b96-4a03-902c-50290c0b1edf"
+  },
+  "item": [
+    {
+      "name": "sub_accounts",
+      "item": [
+        {
+          "name": "{sub_account_id}",
+          "item": [
+            {
+              "name": "access_keys",
+              "item": [
+                {
+                  "name": "{key}",
+                  "item": [
+                    {
+                      "name": "Update an access key",
+                      "id": "8c653182-fcee-42b3-b777-6ab6b1c93420",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2f87edb4-eb94-488d-8e34-d8f7ad6236b2",
+                              "key": "sub_account_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the product environment."
+                            },
+                            {
+                              "id": "e1574e4b-eb61-4ec3-baa6-ca1fc9e6440a",
+                              "key": "key",
+                              "value": "<string>",
+                              "description": "(Required) The access key (api key)."
+                            }
+                          ]
+                        },
+                        "description": "Update the name and/or status of an existing access key."
+                      },
+                      "response": [
+                        {
+                          "id": "5bb03e34-65f4-4d16-b8fc-fa710e78bb69",
+                          "name": "Access key updated successfully.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"name\": \"<string>\",\n  \"api_key\": \"<string>\",\n  \"api_secret\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-5bb03e34-65f4-4d16-b8fc-fa710e78bb69"
+                        },
+                        {
+                          "id": "a45cc09c-f490-47d6-a56c-a22ed836123c",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-a45cc09c-f490-47d6-a56c-a22ed836123c"
+                        },
+                        {
+                          "id": "14be4c9e-57ab-4c9b-8d41-22bb09c43ce9",
+                          "name": "Authorization required.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-14be4c9e-57ab-4c9b-8d41-22bb09c43ce9"
+                        },
+                        {
+                          "id": "6dc4d22a-a8f0-4350-8303-e9bfd3288b74",
+                          "name": "Not allowed.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-6dc4d22a-a8f0-4350-8303-e9bfd3288b74"
+                        },
+                        {
+                          "id": "8afd6179-1e80-453e-ae11-8165f0c2e87d",
+                          "name": "Not found.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-8afd6179-1e80-453e-ae11-8165f0c2e87d"
+                        },
+                        {
+                          "id": "bf4e080d-ac0d-41c5-842b-259d743c555a",
+                          "name": "Already exists.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-bf4e080d-ac0d-41c5-842b-259d743c555a"
+                        },
+                        {
+                          "id": "29e1d00e-2cf0-498e-8158-4d61ded07524",
+                          "name": "Max usage rate exceeded.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-29e1d00e-2cf0-498e-8158-4d61ded07524"
+                        },
+                        {
+                          "id": "500969e0-0ce6-45e2-a603-c6a080bc46de",
+                          "name": "Too many requests.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"dedicated_for\": \"webhooks\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-500969e0-0ce6-45e2-a603-c6a080bc46de"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-8c653182-fcee-42b3-b777-6ab6b1c93420"
+                    },
+                    {
+                      "name": "Delete access key",
+                      "id": "37d57f1c-7b8b-4e8c-939b-6a6caa8d1649",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cffc0602-1038-4dd5-8c5d-d9cf9726b7ad",
+                              "key": "sub_account_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the product environment."
+                            },
+                            {
+                              "id": "ff6ee1b9-55ea-4cf3-b233-263638c88143",
+                              "key": "key",
+                              "value": "<string>",
+                              "description": "(Required) The access key (api key)."
+                            }
+                          ]
+                        },
+                        "description": "Delete a specific access key."
+                      },
+                      "response": [
+                        {
+                          "id": "29411d4f-6e7a-4432-945c-93180eeb484a",
+                          "name": "Access key deleted successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-29411d4f-6e7a-4432-945c-93180eeb484a"
+                        },
+                        {
+                          "id": "a300831e-ab7f-404e-9039-98eebaaca006",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-a300831e-ab7f-404e-9039-98eebaaca006"
+                        },
+                        {
+                          "id": "0b3f3d30-ed03-49f9-b595-d3706b287fc1",
+                          "name": "Authorization required.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-0b3f3d30-ed03-49f9-b595-d3706b287fc1"
+                        },
+                        {
+                          "id": "b420cb53-09b0-4373-8a22-bb1ff2098c74",
+                          "name": "Not allowed.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-b420cb53-09b0-4373-8a22-bb1ff2098c74"
+                        },
+                        {
+                          "id": "6cfccff7-2f8e-4ea8-be06-e107cf54e3d0",
+                          "name": "Not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-6cfccff7-2f8e-4ea8-be06-e107cf54e3d0"
+                        },
+                        {
+                          "id": "4a324624-c5ad-4906-bfc8-c1134567e89d",
+                          "name": "Max usage rate exceeded.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-4a324624-c5ad-4906-bfc8-c1134567e89d"
+                        },
+                        {
+                          "id": "e38c6e71-c00b-4a47-8b27-f73609a1015f",
+                          "name": "Too many requests.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sub_accounts",
+                                ":sub_account_id",
+                                "access_keys",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sub_account_id"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:20.000Z",
+                          "updatedAt": "2026-10-22T01:43:20.000Z",
+                          "uid": "35240-e38c6e71-c00b-4a47-8b27-f73609a1015f"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-37d57f1c-7b8b-4e8c-939b-6a6caa8d1649"
+                    }
+                  ],
+                  "id": "6b73ea3a-0283-4f96-8012-a05ffc197787",
+                  "createdAt": "2026-10-22T01:43:20.000Z",
+                  "updatedAt": "2026-10-22T01:43:20.000Z",
+                  "uid": "35240-6b73ea3a-0283-4f96-8012-a05ffc197787"
+                },
+                {
+                  "name": "Get access keys",
+                  "id": "b8f1b59f-62ac-42c9-a362-351f1793e8a7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sub_accounts",
+                        ":sub_account_id",
+                        "access_keys"
+                      ],
+                      "query": [
+                        {
+                          "description": "How many entries to display on each page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                          "key": "sort_order",
+                          "value": "desc"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "85e2b1b5-e030-4f39-8de9-78baee3e3195",
+                          "key": "sub_account_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the product environment."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve an array of all access keys for a product environment."
+                  },
+                  "response": [
+                    {
+                      "id": "351f6b89-bef0-4fce-997a-722dbe605257",
+                      "name": "Successful operation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many entries to display on each page.",
+                              "key": "page_size",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                              "key": "sort_by",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                              "key": "sort_order",
+                              "value": "desc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_keys\": [\n    {\n      \"name\": \"<string>\",\n      \"api_key\": \"<string>\",\n      \"api_secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"api_key\": \"<string>\",\n      \"api_secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-351f6b89-bef0-4fce-997a-722dbe605257"
+                    },
+                    {
+                      "id": "e44e1a89-3bef-4430-8a17-0f8fc0ebb33a",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many entries to display on each page.",
+                              "key": "page_size",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                              "key": "sort_by",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                              "key": "sort_order",
+                              "value": "desc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-e44e1a89-3bef-4430-8a17-0f8fc0ebb33a"
+                    },
+                    {
+                      "id": "08bebbeb-e3ed-42e3-8747-b5fb71daafa7",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many entries to display on each page.",
+                              "key": "page_size",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                              "key": "sort_by",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                              "key": "sort_order",
+                              "value": "desc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-08bebbeb-e3ed-42e3-8747-b5fb71daafa7"
+                    },
+                    {
+                      "id": "a122697d-333a-48da-8584-f56981f847d6",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many entries to display on each page.",
+                              "key": "page_size",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                              "key": "sort_by",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                              "key": "sort_order",
+                              "value": "desc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-a122697d-333a-48da-8584-f56981f847d6"
+                    },
+                    {
+                      "id": "1ea9dced-5731-41e7-b8c0-a7f2ac04b6cc",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?page_size=<integer>&page=<integer>&sort_by=created_at&sort_order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many entries to display on each page.",
+                              "key": "page_size",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which page to return (maximum pages 100). **Default**: All pages are returned.\n",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.\n",
+                              "key": "sort_by",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Control the order of returned keys. **Possible values**: `desc` (default), `asc`.\n",
+                              "key": "sort_order",
+                              "value": "desc"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-1ea9dced-5731-41e7-b8c0-a7f2ac04b6cc"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:20.000Z",
+                  "updatedAt": "2026-10-22T01:43:20.000Z",
+                  "uid": "35240-b8f1b59f-62ac-42c9-a362-351f1793e8a7"
+                },
+                {
+                  "name": "Generate an access key",
+                  "id": "9dd78bd0-f966-48a4-a2db-3ad7223eb8f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sub_accounts",
+                        ":sub_account_id",
+                        "access_keys"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b41c9806-e29a-462b-a22c-e116682038a7",
+                          "key": "sub_account_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the product environment."
+                        }
+                      ]
+                    },
+                    "description": "Generate a new access key."
+                  },
+                  "response": [
+                    {
+                      "id": "e7cdf7a7-73c2-467b-bb96-abc685a8b178",
+                      "name": "Access key created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"api_key\": \"<string>\",\n  \"api_secret\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"enabled\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-e7cdf7a7-73c2-467b-bb96-abc685a8b178"
+                    },
+                    {
+                      "id": "14775c40-b808-4c5f-b35e-03eb6992ad7e",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-14775c40-b808-4c5f-b35e-03eb6992ad7e"
+                    },
+                    {
+                      "id": "fe4f13c9-4889-4131-a2b9-6733a255590e",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-fe4f13c9-4889-4131-a2b9-6733a255590e"
+                    },
+                    {
+                      "id": "dc9a7c53-a55f-400d-94d4-7db67b19bf3e",
+                      "name": "Not allowed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-dc9a7c53-a55f-400d-94d4-7db67b19bf3e"
+                    },
+                    {
+                      "id": "d75b1fbe-9970-4b43-a5bc-b74708bd7ae0",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-d75b1fbe-9970-4b43-a5bc-b74708bd7ae0"
+                    },
+                    {
+                      "id": "835acee6-f60c-49e5-aac6-77d736256c5d",
+                      "name": "Already exists.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-835acee6-f60c-49e5-aac6-77d736256c5d"
+                    },
+                    {
+                      "id": "5bb3b9ad-529b-4085-8464-a62c9457b564",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-5bb3b9ad-529b-4085-8464-a62c9457b564"
+                    },
+                    {
+                      "id": "c97f589e-721e-4be0-a527-6bace0ce3a45",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-c97f589e-721e-4be0-a527-6bace0ce3a45"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:20.000Z",
+                  "updatedAt": "2026-10-22T01:43:20.000Z",
+                  "uid": "35240-9dd78bd0-f966-48a4-a2db-3ad7223eb8f2"
+                },
+                {
+                  "name": "Delete access key by name",
+                  "id": "ed7f716b-a8b1-48b0-9fc6-08808705f5b7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sub_accounts",
+                        ":sub_account_id",
+                        "access_keys"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The access key name.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3f945f08-9f79-4dd6-badc-088e385697bd",
+                          "key": "sub_account_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the product environment."
+                        }
+                      ]
+                    },
+                    "description": "Delete a specific access key by name."
+                  },
+                  "response": [
+                    {
+                      "id": "fc6a19f6-d516-4024-b297-21d38af386d9",
+                      "name": "Access Key deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-fc6a19f6-d516-4024-b297-21d38af386d9"
+                    },
+                    {
+                      "id": "041e0890-6491-47b6-9cb5-24b978c8d382",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-041e0890-6491-47b6-9cb5-24b978c8d382"
+                    },
+                    {
+                      "id": "a69bb8e4-6c14-4c62-9fb2-d6dce4a2021f",
+                      "name": "Authorization required.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-a69bb8e4-6c14-4c62-9fb2-d6dce4a2021f"
+                    },
+                    {
+                      "id": "1b4433db-8c5f-4e70-976c-14dc3101127c",
+                      "name": "Not allowed.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-1b4433db-8c5f-4e70-976c-14dc3101127c"
+                    },
+                    {
+                      "id": "695acbd3-1039-48ba-8c03-35dec5968c3b",
+                      "name": "Not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-695acbd3-1039-48ba-8c03-35dec5968c3b"
+                    },
+                    {
+                      "id": "fe58419d-31a1-4613-8200-a1cf0213ad8b",
+                      "name": "Max usage rate exceeded.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-fe58419d-31a1-4613-8200-a1cf0213ad8b"
+                    },
+                    {
+                      "id": "264b47b4-8cff-47f0-9235-995f3778d6af",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sub_accounts/:sub_account_id/access_keys?name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sub_accounts",
+                            ":sub_account_id",
+                            "access_keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The access key name.",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:43:20.000Z",
+                      "updatedAt": "2026-10-22T01:43:20.000Z",
+                      "uid": "35240-264b47b4-8cff-47f0-9235-995f3778d6af"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:43:20.000Z",
+                  "updatedAt": "2026-10-22T01:43:20.000Z",
+                  "uid": "35240-ed7f716b-a8b1-48b0-9fc6-08808705f5b7"
+                }
+              ],
+              "id": "679ac389-b90d-4613-8ae8-e787cd9d623e",
+              "createdAt": "2026-10-22T01:43:20.000Z",
+              "updatedAt": "2026-10-22T01:43:20.000Z",
+              "uid": "35240-679ac389-b90d-4613-8ae8-e787cd9d623e"
+            }
+          ],
+          "id": "73f82b12-5445-4894-bd2d-493f730105ec",
+          "createdAt": "2026-10-22T01:43:20.000Z",
+          "updatedAt": "2026-10-22T01:43:20.000Z",
+          "uid": "35240-73f82b12-5445-4894-bd2d-493f730105ec"
+        }
+      ],
+      "id": "f1c48d52-3470-496b-8ff0-05b759e5f638",
+      "createdAt": "2026-10-22T01:43:20.000Z",
+      "updatedAt": "2026-10-22T01:43:20.000Z",
+      "uid": "35240-f1c48d52-3470-496b-8ff0-05b759e5f638"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "accountId",
+      "value": "ACCOUNT_ID"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/provisioning/accounts/{{accountId}}"
+    }
+  ]
+}

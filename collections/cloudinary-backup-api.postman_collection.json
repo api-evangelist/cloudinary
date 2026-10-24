@@ -1,70 +1,77 @@
 {
+  "info": {
+    "_postman_id": "6d883071-c685-4753-8ed4-a7306df91608",
+    "name": "Cloudinary Upload Backup API",
+    "description": "The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.\n\nContact Support:\n Name: Cloudinary Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:04.000Z",
+    "updatedAt": "2026-10-22T01:43:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d883071-c685-4753-8ed4-a7306df91608"
+  },
   "item": [
     {
-      "id": "f13fe5eb-5866-4539-8fa7-8e2c4ad4a8d5",
-      "name": "Backup",
-      "description": {
-        "content": "Backup retrieval operations.",
-        "type": "text/plain"
-      },
+      "name": "download_backup",
       "item": [
         {
-          "id": "e96770be-ab9a-446e-a659-cb641da6ca56",
           "name": "Download a backed-up asset version",
+          "id": "51e1e363-0d9c-4a85-bcf9-1adbbe2409fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Download a backed-up asset version",
-            "description": {
-              "content": "Retrieve a specific version of a backed-up asset.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "download_backup"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "asset_id",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "version_id",
-                  "value": "<string>"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Cloudinary cloud name",
-                  "type": "any",
-                  "value": "{{cloud_name}}",
-                  "key": "cloud_name"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/download_backup?asset_id=<string>&version_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "download_backup"
+              ],
+              "query": [
+                {
+                  "key": "asset_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "version_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a specific version of a backed-up asset."
           },
           "response": [
             {
-              "id": "8b990dbc-b48a-454e-8871-25010ea7e322",
+              "id": "3fbc382d-0d95-4196-8930-9fadbd7802a5",
               "name": "Backup download URL",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "download_backup"
-                  ],
+                  "raw": "{{baseUrl}}/download_backup?asset_id=<string>&version_id=<string>",
                   "host": [
                     "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "download_backup"
                   ],
                   "query": [
                     {
@@ -75,70 +82,35 @@
                       "key": "version_id",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Cloudinary cloud name",
-                      "type": "any",
-                      "value": "{{cloud_name}}",
-                      "key": "cloud_name"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"key_0\": 3213,\n  \"key_1\": \"string\",\n  \"key_2\": true\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"pariatur97\": 17660850,\n  \"elitc0d\": \"consequat cillum\"\n}",
+              "createdAt": "2026-10-22T01:43:05.000Z",
+              "updatedAt": "2026-10-22T01:43:05.000Z",
+              "uid": "35240-3fbc382d-0d95-4196-8930-9fadbd7802a5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:43:05.000Z",
+          "updatedAt": "2026-10-22T01:43:05.000Z",
+          "uid": "35240-51e1e363-0d9c-4a85-bcf9-1adbbe2409fa"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Cloudinary cloud name",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "YOUR_CLOUD_NAME",
-      "key": "cloud_name"
-    },
-    {
-      "type": "string",
-      "value": "https://api.cloudinary.com/v1_1/{{cloud_name}}",
-      "key": "baseUrl"
+      "id": "e2cbf50c-7fed-4890-939d-8ab0b01efe8f",
+      "createdAt": "2026-10-22T01:43:05.000Z",
+      "updatedAt": "2026-10-22T01:43:05.000Z",
+      "uid": "35240-e2cbf50c-7fed-4890-939d-8ab0b01efe8f"
     }
   ],
   "auth": {
@@ -146,21 +118,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8871fa84-406c-44c6-a0d7-234e65a922f4",
-    "name": "Cloudinary Upload Backup API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Cloudinary Upload API provides server-side endpoints for uploading, transforming, renaming, and managing assets (images, videos, raw files) in a Cloudinary product environment. Endpoints are versioned under /v1_1/{cloud_name}/{resource_type} and use HTTP Basic Auth with API key and secret.\n\nContact Support:\n Name: Cloudinary Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "cloud_name",
+      "value": "YOUR_CLOUD_NAME"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudinary.com/v1_1/{{cloud_name}}"
     }
-  }
+  ]
 }
