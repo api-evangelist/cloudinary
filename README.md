@@ -1,4 +1,4 @@
-# Cloudinary (cloudinary)
+# Cloudinary
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,189 +66,181 @@
 
 Cloudinary is a cloud-based service that provides comprehensive solutions for managing digital media assets, including images and videos, for websites and mobile applications. The platform exposes REST APIs for uploading and transforming media, administering assets and product environments, provisioning users and accounts, and configuring granular permissions. APIs use Basic Authentication with API key and secret over HTTPS.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cloudinary/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cloudinary/refs/heads/main/apis.yml)
+**Areas:** Asset Management · Digital Asset Management · Image Processing · Image Transformation · Media · Software-as-a-Service · Video Processing
 
-## Scope
+## Cloudinary on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Cloudinary is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cloudinary/](https://apis.io/providers/cloudinary/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Asset Management
-- Digital Asset Management
-- Image Processing
-- Image Transformation
-- Media
-- SaaS
-- Video Processing
+- [Cloudinary Admin API](https://apis.io/apis/cloudinary/admin/) — The Admin API supports bulk asset management (search, retrieval, update, delete, restore), and CRUD management of folders, metadata fields, metadata rules,…
+- [Cloudinary Search API](https://apis.io/apis/cloudinary/search/) — The Search API exposes Lucene-style query expressions across asset metadata, tags, contextual metadata, structured metadata, and AI-derived tags. Supports…
+- [Cloudinary Provisioning API](https://apis.io/apis/cloudinary/provisioning/) — The Provisioning API enables enterprise account-level management of product environments (sub-accounts), users, user groups, and API keys. Authentication…
+- [Cloudinary Permissions API](https://apis.io/apis/cloudinary/permissions/) — The Permissions API assigns granular permissions to principals (users, groups, API keys) by roles or directly. Supports folder-scoped, asset- scoped, and…
+- [Cloudinary Transformation URL API](https://apis.io/apis/cloudinary/transformations/) — The Transformation URL API delivers and transforms images and videos by composing parameters into the delivery URL path…
+- [Cloudinary Notifications and Webhooks](https://apis.io/apis/cloudinary/notifications/) — Cloudinary fires HTTP webhook notifications for upload completion, eager transformation completion, AI moderation outcomes, asset deletion, and backup…
+- [Cloudinary Backup API](https://apis.io/apis/cloudinary/cloudinary-backup-api/) — Backup retrieval operations.
+- [Cloudinary Transformation API](https://apis.io/apis/cloudinary/cloudinary-transformation-api/) — Apply transformations to existing assets.
+- [Cloudinary Upload API](https://apis.io/apis/cloudinary/cloudinary-upload-api/) — Asset upload and management.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-13
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Cloudinary Upload API
+Event-driven and webhook contracts.
 
-The Upload API exposes methods for uploading and managing assets, including advanced upload options, CRUD operations on assets, metadata management, eager and on-the-fly transformations, signed and unsigned uploads, and creation of new asset variants from existing originals. Endpoints are versioned under /v1_1/:cloud_name/:resource_type and use HTTP Basic Auth with API key and secret.
+- [Cloudinary Notifications](https://apis.io/asyncapis/cloudinary/cloudinary-notifications-asyncapi/)
 
-- **Human URL:** [https://cloudinary.com/documentation/image_upload_api_reference](https://cloudinary.com/documentation/image_upload_api_reference)
-- **Base URL:** `https://api.cloudinary.com/v1_1`
+#### Event channels (1)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Asset Upload
-- Image Processing
-- Media
-- Transformation
+- [/cloudinary/notifications](https://apis.io/channels/cloudinary/cloudinary-notifications/)
 
-#### Properties
+#### GraphQL (1)
 
-- [Documentation](https://cloudinary.com/documentation/image_upload_api_reference)
-- [Getting Started](https://cloudinary.com/documentation/upload_images)
-- [OpenAPI](openapi/cloudinary-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+GraphQL schemas.
 
-### Cloudinary Admin API
+- [Moved to /providers/cloudinary/](https://apis.io/graphqls/cloudinary/cloudinary-graphql/)
 
-The Admin API supports bulk asset management (search, retrieval, update, delete, restore), and CRUD management of folders, metadata fields, metadata rules, upload presets, transformations, streaming profiles, webhooks, mappings and product environment configuration. Authentication uses HTTP Basic Auth with API key and secret. EU and AP regional endpoints are available for enterprise customers (api-eu.cloudinary.com, api-ap.cloudinary.com).
+#### MCP servers (1)
 
-- **Human URL:** [https://cloudinary.com/documentation/admin_api](https://cloudinary.com/documentation/admin_api)
-- **Base URL:** `https://api.cloudinary.com/v1_1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [cloudinary](https://apis.io/servers/cloudinary/cloudinary/)
 
-- Administration
-- Asset Management
-- Folders
-- Metadata
-- Webhooks
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://cloudinary.com/documentation/admin_api)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cloudinary Agentic Access](https://apis.io/agentic-access/cloudinary/cloudinary-agentic-access/)
 
-### Cloudinary Search API
+#### JSON Schema (4)
 
-The Search API exposes Lucene-style query expressions across asset metadata, tags, contextual metadata, structured metadata, and AI-derived tags. Supports sorting, aggregation, pagination via cursors, and saved searches. Visual search and similarity search use perceptual hashes and embeddings to find visually similar assets.
+The data models the API reads and writes.
 
-- **Human URL:** [https://cloudinary.com/documentation/search_api](https://cloudinary.com/documentation/search_api)
-- **Base URL:** `https://api.cloudinary.com/v1_1`
+- [Asset](https://apis.io/schemas/cloudinary/cloudinary-asset/)
+- [GenericRequest](https://apis.io/schemas/cloudinary/cloudinary-genericrequest/)
+- [GenericResponse](https://apis.io/schemas/cloudinary/cloudinary-genericresponse/)
+- [UploadRequest](https://apis.io/schemas/cloudinary/cloudinary-uploadrequest/)
 
-#### Tags
+#### JSON Structure (1)
 
-- Asset Discovery
-- Search
-- Visual Search
+Data models expressed in JSON Structure.
 
-#### Properties
+- [Cloudinary Structure](https://apis.io/json-structure/cloudinary/cloudinary-structure/)
 
-- [Documentation](https://cloudinary.com/documentation/search_api)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Vocabulary (1)
 
-### Cloudinary Provisioning API
+The provider's domain terms, defined.
 
-The Provisioning API enables enterprise account-level management of product environments (sub-accounts), users, user groups, and API keys. Authentication uses provisioning API key and secret. Useful for onboarding teams, rotating credentials, and automating environment lifecycle in multi-tenant deployments.
+- [Cloudinary Domain Vocabulary](https://apis.io/vocabularies/cloudinary/cloudinary-vocabulary/)
 
-- **Human URL:** [https://cloudinary.com/documentation/provisioning_api](https://cloudinary.com/documentation/provisioning_api)
-- **Base URL:** `https://api.cloudinary.com/v1_1/provisioning`
+#### Collections (4)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Account Management
-- API Keys
-- Provisioning
-- Users
+- [Cloudinary Upload API](https://apis.io/collections/cloudinary/open-cloudinary/)
+- [Cloudinary Upload Backup API](https://apis.io/collections/cloudinary/open-cloudinary-backup-api/)
+- [Cloudinary Upload Backup Transformation API](https://apis.io/collections/cloudinary/open-cloudinary-transformation-api/)
+- [Cloudinary Backup Upload API](https://apis.io/collections/cloudinary/open-cloudinary-upload-api/)
 
-#### Properties
+#### Governance rules (2)
 
-- [Documentation](https://cloudinary.com/documentation/provisioning_api)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### Cloudinary Permissions API
+- [Cloudinary — asyncapi rules](https://apis.io/rules/cloudinary/cloudinary-asyncapi-spectral-rules/)
+- [Cloudinary — jsonschema rules](https://apis.io/rules/cloudinary/cloudinary-jsonschema-spectral-rules/)
 
-The Permissions API assigns granular permissions to principals (users, groups, API keys) by roles or directly. Supports folder-scoped, asset- scoped, and product-environment-scoped permission grants and listing.
+#### Security (2)
 
-- **Human URL:** [https://cloudinary.com/documentation/permissions_api](https://cloudinary.com/documentation/permissions_api)
-- **Base URL:** `https://api.cloudinary.com/v1_1`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Cloudinary Authentication](https://apis.io/security/cloudinary/cloudinary-authentication/)
+- [Cloudinary Domain Security](https://apis.io/security/cloudinary/cloudinary-domain-security/)
 
-- Access Control
-- Permissions
-- RBAC
-- Roles
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://cloudinary.com/documentation/permissions_api)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cloudinary Plans Pricing](https://apis.io/plans/cloudinary/cloudinary-plans-pricing/)
 
-### Cloudinary Transformation URL API
+#### Rate limits (1)
 
-The Transformation URL API delivers and transforms images and videos by composing parameters into the delivery URL path (/{cloud_name}/{resource_type}/{type}/{transformations}/{public_id}). Supports resizing, cropping, color and effect transformations, format conversion, watermarks, overlays, AI-driven content-aware operations, and conditional transformations.
+Published request limits.
 
-- **Human URL:** [https://cloudinary.com/documentation/transformation_reference](https://cloudinary.com/documentation/transformation_reference)
-- **Base URL:** `https://res.cloudinary.com`
+- [Cloudinary Rate Limits](https://apis.io/rate-limits/cloudinary/cloudinary-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Delivery
-- Image Transformation
-- URL API
-- Video Transformation
+What the API costs to run, by operation.
 
-#### Properties
+- [Cloudinary Finops](https://apis.io/finops/cloudinary/cloudinary-finops/)
 
-- [Documentation](https://cloudinary.com/documentation/transformation_reference)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Cloudinary Notifications and Webhooks
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-Cloudinary fires HTTP webhook notifications for upload completion, eager transformation completion, AI moderation outcomes, asset deletion, and backup events. Notifications include signatures for verification and can target multiple endpoints per product environment.
-
-- **Human URL:** [https://cloudinary.com/documentation/notifications](https://cloudinary.com/documentation/notifications)
-
-#### Tags
-
-- Events
-- Notifications
-- Webhooks
-
-#### Properties
-
-- [Documentation](https://cloudinary.com/documentation/notifications)
-- [AsyncAPI](asyncapi/cloudinary-notifications-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/cloudinary.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudinary.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/cloudinary)
 - [Website](https://cloudinary.com/)
-- [Portal](https://console.cloudinary.com/)
 - [Documentation](https://cloudinary.com/documentation)
-- [Sign Up](https://cloudinary.com/users/register_free)
 - [Pricing](https://cloudinary.com/pricing)
-- [Status Page](https://status.cloudinary.com/)
-- [Git Hub](https://github.com/cloudinary)
-- [Terms of Service](https://cloudinary.com/tos)
-- [Privacy](https://cloudinary.com/privacy)
-- [Features](undefined)
-- [Integrations](https://cloudinary.com/integrations)
-- [L L Ms Txt](https://cloudinary.com/llms.txt)
+- [Terms of service](https://cloudinary.com/tos)
+- [Status](https://status.cloudinary.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 45.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 55.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 42.9 |
+| Access clarity | 52.6 |
+
+**Agent readiness 45.0** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cloudinary/](https://apis.io/providers/cloudinary/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cloudinary: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cloudinary/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
